@@ -18,13 +18,12 @@ return new class extends Migration
             $table->string('color');
             $table->string('weight');
             $table->string('core_size');
-            $table->integer('wholesale');
+            $table->double('wholesale');
             $table->integer('percent');
             $table->timestamps();
 
-
-            $table->foreign('id_model')->references('id')->on('grip_models');
-            $table->foreign('id_size')->references('id')->on('sizes');
+            $table->foreign('id_model')->references('id')->on('grip_models')->cascadeOnDelete();
+            $table->foreign('id_size')->references('id')->on('sizes')->cascadeOnDelete();
         });
     }
 
