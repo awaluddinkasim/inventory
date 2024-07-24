@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('grips', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->foreignId('id_model');
             $table->foreignId('id_size');
             $table->string('color');
@@ -21,6 +20,7 @@ return new class extends Migration
             $table->string('core_size');
             $table->integer('wholesale');
             $table->integer('percent');
+            $table->timestamps();
 
 
             $table->foreign('id_model')->references('id')->on('grip_models');

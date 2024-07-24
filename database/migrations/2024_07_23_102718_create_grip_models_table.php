@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('grip_models', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('nama');
-            
+            $table->string('url');
+            $table->timestamps();
         });
     }
 
