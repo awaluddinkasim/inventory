@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class GripModel extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nama',
+        'url',
+    ];
 }
