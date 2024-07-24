@@ -1,11 +1,11 @@
-@props(['title', 'action'])
+@props(['title', 'action', 'label'])
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
-    Launch modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+    {{ $label }}
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="formModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

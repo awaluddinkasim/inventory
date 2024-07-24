@@ -25,5 +25,8 @@
 
 <div class="mb-3">
     <label class="form-label" for="{{ $id }}">{{ $label }}</label>
-    <input type="{{ $type }}" name="{{ $name }}" value="{{ $value }}" {{ $readonly ? 'readonly' : '' }} {{ $required ? 'required' : '' }} class="form-control" id="{{ $id }}" />
+    <input type="{{ $type }}" name="{{ $name }}" value="{{ $value }}"
+        class="form-control @if ($isNumeric) autonumeric @endif @error($name) is-invalid @enderror"
+        id="{{ $id }}" @if ($readonly) readonly @endif
+        @if ($required) required @endif>
 </div>
