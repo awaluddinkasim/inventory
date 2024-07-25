@@ -56,62 +56,36 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <!-- Dashboard -->
-        <li class="menu-item active">
-            <a href="/" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Dashboard">Dashboard</div>
-            </a>
-        </li>
-
-        <!-- Layouts -->
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Master Data">Master Data</div>
-            </a>
-
-            <ul class="menu-sub">
+        @foreach (config('menu') as $menu)
+            @if (isset($menu['submenu']))
+                {{-- add active & open classes in li tag --}}
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div data-i18n="Model">Model</div>
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx {{ $menu['icon'] ?? 'bx-circle' }}"></i>
+                        <div data-i18n="{{ $menu['label'] }}">{{ $menu['label'] }}</div>
+                    </a>
+
+                    <ul class="menu-sub">
+                        @foreach ($menu['submenu'] as $item)
+                            {{-- add active class in li tag --}}
+                            <li class="menu-item">
+                                <a href="{{ isset($item['route-name']) ? route($item['route-name']) : '#' }}"
+                                    class="menu-link">
+                                    <div data-i18n="{{ $item['label'] }}">{{ $item['label'] }}</div>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+            @else
+                {{-- add active class in li tag --}}
+                <li class="menu-item">
+                    <a href="{{ isset($menu['route-name']) ? route($menu['route-name']) : '#' }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx {{ $menu['icon'] ?? 'bx-circle' }}"></i>
+                        <div data-i18n="{{ $menu['label'] }}">{{ $menu['label'] }}</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div data-i18n="Size">Size</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Data Grip">Data Grip</div>
-            </a>
-        </li>
-
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Stock">Stock</div>
-            </a>
-        </li>
-
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-barcode"></i>
-                <div data-i18n="Barcode">Barcode</div>
-            </a>
-        </li>
-
-        <li class="menu-item">
-            <a href="#" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user"></i>
-                <div data-i18n="Users">Users</div>
-            </a>
-        </li>
-
+            @endif
+        @endforeach
     </ul>
 </aside>
