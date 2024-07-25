@@ -42,7 +42,7 @@ class AuthController extends BaseController
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return $this->redirect('/login', [
+        return $this->redirect(route('login'), [
             'status' => 'success',
             'message' => 'Logged out successfully',
         ]);
