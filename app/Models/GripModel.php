@@ -10,7 +10,7 @@ class GripModel extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama',
+        'name',
         'url',
     ];
 }
