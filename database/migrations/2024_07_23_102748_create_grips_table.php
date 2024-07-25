@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('id_model')->references('id')->on('grip_models')->cascadeOnDelete();
-            $table->foreign('id_size')->references('id')->on('sizes')->cascadeOnDelete();
+            $table->foreign('id_size')->references('id')->on('grip_sizes')->cascadeOnDelete();
         });
     }
 
