@@ -20,21 +20,21 @@ Route::middleware('auth')->group(function () {
         return view('pages.dashboard');
     })->name('dashboard');
 
-    Route::group(['prefix' => 'master'], function () {
-        Route::get('/model', [GripModelController::class, 'index']);
-        Route::post('/model', [GripModelController::class, 'store']);
-        Route::delete('/model/{model}', [GripModelController::class, 'destroy'])->can('delete', 'model');
+    Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
+        Route::get('/model', [GripModelController::class, 'index'])->name('model');
+        Route::post('/model', [GripModelController::class, 'store'])->name('model.store');
+        Route::delete('/model/{model}', [GripModelController::class, 'destroy'])->name('model.destroy')->can('delete', 'model');
 
-        Route::get('/size', [GripSizeController::class, 'index']);
-        Route::post('/size', [GripSizeController::class, 'store']);
-        Route::delete('/size/{size}', [GripSizeController::class, 'destroy'])->can('delete', 'size');
+        Route::get('/size', [GripSizeController::class, 'index'])->name('size');
+        Route::post('/size', [GripSizeController::class, 'store'])->name('size.store');
+        Route::delete('/size/{size}', [GripSizeController::class, 'destroy'])->name('size.destroy')->can('delete', 'size');
     });
 
-    Route::get('/grips', [GripController::class, 'index']);
-    Route::post('/grips', [GripController::class, 'store']);
-    Route::get('/grips/{grip}', [GripController::class, 'edit'])->can('update', 'grip');
-    Route::patch('/grips/{grip}', [GripController::class, 'update'])->can('update', 'grip');
-    Route::delete('/grips/{grip}', [GripController::class, 'destroy'])->can('delete', 'grip');
+    Route::get('/grips', [GripController::class, 'index'])->name('grips');
+    Route::post('/grips', [GripController::class, 'store'])->name('grips.store');
+    Route::get('/grips/{grip}', [GripController::class, 'edit'])->name('grips.edit')->can('update', 'grip');
+    Route::patch('/grips/{grip}', [GripController::class, 'update'])->name('grips.update')->can('update', 'grip');
+    Route::delete('/grips/{grip}', [GripController::class, 'destroy'])->name('grips.destroy')->can('delete', 'grip');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
