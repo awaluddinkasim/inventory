@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('grip_models', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('name');
             $table->string('url');
             $table->timestamps();
         });
