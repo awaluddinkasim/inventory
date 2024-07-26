@@ -2,18 +2,18 @@
 
 namespace App\Policies;
 
-use App\Models\GripSize;
+use App\Models\GripType;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class GripSizePolicy
+class GripTypePolicy
 {
-    public function update(User $user, GripSize $size): bool
+    public function update(User $user, GripType $type): bool
     {
         return $user->role == 'admin';
     }
 
-    public function delete(User $user, GripSize $size): bool
+    public function delete(User $user, GripType $type): bool
     {
         return $user->role == 'admin';
     }

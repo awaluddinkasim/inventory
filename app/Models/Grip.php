@@ -13,7 +13,6 @@ class Grip extends Model
 
     protected $fillable = [
         'model_id',
-        'size_id',
         'color',
         'weight',
         'core_size',
@@ -24,11 +23,6 @@ class Grip extends Model
     public function model(): BelongsTo
     {
         return $this->belongsTo(GripModel::class, 'model_id');
-    }
-
-    public function size(): BelongsTo
-    {
-        return $this->belongsTo(GripSize::class, 'size_id');
     }
 
     public function retail(): Attribute

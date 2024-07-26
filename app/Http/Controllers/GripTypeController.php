@@ -2,39 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GripSize;
+use App\Models\GripType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class GripSizeController extends BaseController
+class GripTypeController extends BaseController
 {
     public function index(): View
     {
-        return view('pages.master.size');
+        return view('pages.master.type');
     }
 
     public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
+            'mfg' => 'required',
             'name' => 'required',
         ]);
 
-        GripSize::create($data);
+        GripType::create($data);
 
         return $this->redirectBack([
             'status' => 'success',
-            'message' => 'Size created successfully',
+            'message' => 'Grip type created successfully',
         ]);
     }
 
-    public function destroy(GripSize $size): RedirectResponse
+    public function destroy(GripType $type): RedirectResponse
     {
-        $size->delete();
+        $type->delete();
 
         return $this->redirectBack([
             'status' => 'success',
-            'message' => 'Size deleted successfully',
+            'message' => 'Grip type deleted successfully',
         ]);
     }
 }

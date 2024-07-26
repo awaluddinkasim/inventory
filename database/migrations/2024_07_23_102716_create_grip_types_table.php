@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('grip_sizes', function (Blueprint $table) {
+        Schema::create('grip_types', function (Blueprint $table) {
             $table->id();
+            $table->string('mfg');
             $table->string('name');
             $table->timestamps();
         });
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('grip_sizes');
+        Schema::dropIfExists('grip_types');
     }
 };

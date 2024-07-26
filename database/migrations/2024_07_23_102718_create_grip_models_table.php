@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('grip_models', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('type_id');
             $table->string('name');
             $table->string('url');
             $table->timestamps();
+
+            $table->foreign('type_id')->references('id')->on('grip_types')->cascadeOnDelete();
         });
     }
 

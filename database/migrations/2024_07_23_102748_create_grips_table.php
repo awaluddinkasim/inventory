@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('grips', function (Blueprint $table) {
             $table->id();
             $table->foreignId('model_id');
-            $table->foreignId('size_id');
+            $table->string('size');
             $table->string('color');
             $table->string('weight');
             $table->string('core_size');
@@ -23,7 +23,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('model_id')->references('id')->on('grip_models')->cascadeOnDelete();
-            $table->foreign('size_id')->references('id')->on('grip_sizes')->cascadeOnDelete();
         });
     }
 

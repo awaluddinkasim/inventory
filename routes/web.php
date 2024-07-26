@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GripController;
 use App\Http\Controllers\GripModelController;
-use App\Http\Controllers\GripSizeController;
+use App\Http\Controllers\GripTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,13 +22,13 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
+        Route::get('/type', [GripTypeController::class, 'index'])->name('type');
+        Route::post('/type', [GripTypeController::class, 'store'])->name('type.store');
+        Route::delete('/type/{type}', [GripTypeController::class, 'destroy'])->name('type.destroy')->can('delete', 'type');
+
         Route::get('/model', [GripModelController::class, 'index'])->name('model');
         Route::post('/model', [GripModelController::class, 'store'])->name('model.store');
         Route::delete('/model/{model}', [GripModelController::class, 'destroy'])->name('model.destroy')->can('delete', 'model');
-
-        Route::get('/size', [GripSizeController::class, 'index'])->name('size');
-        Route::post('/size', [GripSizeController::class, 'store'])->name('size.store');
-        Route::delete('/size/{size}', [GripSizeController::class, 'destroy'])->name('size.destroy')->can('delete', 'size');
     });
 
     Route::get('/grips', [GripController::class, 'index'])->name('grips');

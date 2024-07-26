@@ -12,12 +12,12 @@ return [
         'icon' => 'bx-layout',
         'submenu' => [
             [
-                'label' => 'Model',
-                'route-name' => 'master.model',
+                'label' => 'Type',
+                'route-name' => 'master.type',
             ],
             [
-                'label' => 'Size',
-                'route-name' => 'master.size',
+                'label' => 'Model',
+                'route-name' => 'master.model',
             ],
         ],
         'admin-only' => false,

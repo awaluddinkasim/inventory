@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class GripSize extends Model
+class GripType extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'mfg',
         'name',
     ];
 
-    public function grips(): HasOne
+    public function models(): HasMany
     {
-        return $this->hasOne(Grip::class, 'size_id');
+        return $this->hasMany(GripModel::class, 'type_id');
     }
 }
