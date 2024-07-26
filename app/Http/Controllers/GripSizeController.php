@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Size;
+use App\Models\GripSize;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -20,7 +20,7 @@ class GripSizeController extends BaseController
             'name' => 'required',
         ]);
 
-        Size::create($data);
+        GripSize::create($data);
 
         return $this->redirectBack([
             'status' => 'success',
@@ -28,7 +28,7 @@ class GripSizeController extends BaseController
         ]);
     }
 
-    public function destroy(Size $size): RedirectResponse
+    public function destroy(GripSize $size): RedirectResponse
     {
         $size->delete();
 
