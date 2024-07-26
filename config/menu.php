@@ -31,7 +31,7 @@ return [
     [
         'label' => 'Stock',
         'icon' => 'bx-collection',
-        // 'route-name' => '#',
+        'route-name' => 'stock',
         'admin-only' => false,
     ],
     [
