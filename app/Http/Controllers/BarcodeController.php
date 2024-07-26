@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class BarcodeController extends Controller
+class BarcodeController extends BaseController
 {
     public function index(): View
     {
