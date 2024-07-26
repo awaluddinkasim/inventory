@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GripController;
 use App\Http\Controllers\GripModelController;
 use App\Http\Controllers\GripSizeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -35,6 +36,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/grips/{grip}', [GripController::class, 'edit'])->name('grips.edit')->can('update', 'grip');
     Route::patch('/grips/{grip}', [GripController::class, 'update'])->name('grips.update')->can('update', 'grip');
     Route::delete('/grips/{grip}', [GripController::class, 'destroy'])->name('grips.destroy')->can('delete', 'grip');
+
+    Route::middleware('admin')->group(function () {
+        Route::get('/users', [UserController::class, 'index'])->name('users');
+        Route::post('/users', [UserController::class, 'store'])->name('users.store');
+        Route::get('/users/{user}', [UserController::class, 'edit'])->name('users.edit');
+        Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
