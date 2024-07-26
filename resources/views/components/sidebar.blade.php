@@ -57,6 +57,10 @@
 
     <ul class="menu-inner py-1">
         @foreach (config('menu') as $menu)
+            @if ($menu['admin-only'] && auth()->user()->role != 'admin')
+                @continue
+            @endif
+
             @if (isset($menu['submenu']))
                 {{-- add active & open classes in li tag --}}
                 <li class="menu-item">
