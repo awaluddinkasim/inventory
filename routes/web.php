@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GripController;
 use App\Http\Controllers\GripModelController;
 use App\Http\Controllers\GripTypeController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/grips/{grip}', [GripController::class, 'edit'])->name('grips.edit')->can('update', 'grip');
     Route::patch('/grips/{grip}', [GripController::class, 'update'])->name('grips.update')->can('update', 'grip');
     Route::delete('/grips/{grip}', [GripController::class, 'destroy'])->name('grips.destroy')->can('delete', 'grip');
+
+    Route::get('/stock', [StockController::class, 'index'])->name('stock');
+    Route::post('/stock', [StockController::class, 'store'])->name('stock.store');
+    Route::delete('/stock/{stock}', [StockController::class, 'destroy'])->name('stock.destroy');
 
     Route::middleware('admin')->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('users');
