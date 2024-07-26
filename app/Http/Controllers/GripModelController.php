@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GripModel;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -11,7 +12,8 @@ class GripModelController extends BaseController
 {
     public function index(): View
     {
-        return view('pages.master.model');
+        $model = Model::all();
+        return view('pages.master.model', compact('model'));
     }
 
     public function store(Request $request): RedirectResponse

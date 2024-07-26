@@ -11,7 +11,8 @@ class GripController extends BaseController
 {
     public function index(): View
     {
-        return view('pages.grip.index');
+        $grips = Grip::all();
+        return view('pages.grip.index', compact('grips'));
     }
 
     public function store(Request $request): RedirectResponse
