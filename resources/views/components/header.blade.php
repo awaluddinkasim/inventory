@@ -27,8 +27,8 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">John Doe</span>
-                                    <small class="text-muted">Admin</small>
+                                    <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
+                                    <small class="text-muted">{{ Str::ucfirst(auth()->user()->role) }}</small>
                                 </div>
                             </div>
                         </a>
