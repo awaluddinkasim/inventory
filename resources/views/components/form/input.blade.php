@@ -5,14 +5,14 @@
     'name',
     'required' => false,
     'readonly' => false,
-    'isNumber' => false,
+    'isNumeric' => false,
     'value' => null,
     'helperText' => null,
 ])
 
 
 @push('scripts')
-    @if ($isNumber)
+    @if ($isNumeric)
         <script src="{{ asset('assets/libs/autonumeric/autoNumeric.min.js') }}"></script>
         <script>
             new AutoNumeric('#{{ $id }}', {
