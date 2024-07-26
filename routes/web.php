@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BarcodeController;
 use App\Http\Controllers\GripController;
 use App\Http\Controllers\GripModelController;
 use App\Http\Controllers\GripTypeController;
@@ -42,6 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/stock', [StockController::class, 'index'])->name('stock');
     Route::post('/stock', [StockController::class, 'store'])->name('stock.store');
     Route::delete('/stock/{stock}', [StockController::class, 'destroy'])->name('stock.destroy');
+
+    Route::get('/barcode', [BarcodeController::class, 'index'])->name('barcode');
 
     Route::middleware('admin')->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('users');

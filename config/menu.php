@@ -37,7 +37,7 @@ return [
     [
         'label' => 'Barcode',
         'icon' => 'bx-barcode',
-        // 'route-name' => '#',
+        'route-name' => 'barcode',
         'admin-only' => false,
     ],
     [
