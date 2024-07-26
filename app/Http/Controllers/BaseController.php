@@ -11,7 +11,7 @@ class BaseController extends Controller
     public function redirect(string $redirectTo, array $response): RedirectResponse
     {
         if (!isset($response['status']) || !isset($response['message'])) {
-            throw new InvalidArgumentException("Array response harus memiliki kunci 'status' dan 'message'");
+            throw new InvalidArgumentException("Array response harus memiliki key 'status' dan 'message'");
         }
 
         return redirect($redirectTo)->with($response['status'], $response['message']);
@@ -20,7 +20,7 @@ class BaseController extends Controller
     public function redirectBack(array $response, bool $withInput = false): RedirectResponse
     {
         if (!isset($response['status']) || !isset($response['message'])) {
-            throw new InvalidArgumentException("Array response harus memiliki kunci 'status' dan 'message'");
+            throw new InvalidArgumentException("Array response harus memiliki key 'status' dan 'message'");
         }
 
         if ($withInput) {
