@@ -13,6 +13,7 @@ class Grip extends Model
 
     protected $fillable = [
         'model_id',
+        'size',
         'color',
         'weight',
         'core_size',
