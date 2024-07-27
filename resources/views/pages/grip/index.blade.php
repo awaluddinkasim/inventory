@@ -33,7 +33,7 @@
                     <th>Color</th>
                     <th>Weight</th>
                     <th>Core Size</th>
-                    <th>Wholesale</th>
+                    <th>Wholesale Price</th>
                     <th>Percent</th>
                     <th>Retail</th>
                     <th></th>
@@ -42,7 +42,11 @@
                     @foreach ($grips as $grip)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $grip->model->name }}</td>
+                            <td>
+                                <a href="{{ $grip->model->url }}" target="_blank">
+                                    {{ $grip->model->name }}
+                                </a>
+                            </td>
                             <td>{{ $grip->size }}</td>
                             <td>{{ $grip->color }}</td>
                             <td>{{ $grip->weight }}</td>
