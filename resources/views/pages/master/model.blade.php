@@ -15,35 +15,7 @@
             </div>
         </div>
         <div class="card-body">
-            <x-component.datatable id="modelTable">
-                <thead>
-                    <th>#</th>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Url</th>
-                    <th></th>
-                </thead>
-                <tbody>
-                    @foreach ($models as $model)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $model->type->name }}</td>
-                            <td>{{ $model->name }}</td>
-                            <td><a href="{{ $model->url }}" target="_blank">{{ $model->url }}</a></td>
-
-                            <td class="text-center">
-                                <form action="{{ route('master.model.destroy', $model->id) }}" class="d-inline"
-                                    method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <x-component.button type="submit" label="Delete" color="danger" />
-                                </form>
-                            </td>
-
-                        </tr>
-                    @endforeach
-                </tbody>
-            </x-component.datatable>
+            <livewire:grip-model :$types />
         </div>
     </div>
 

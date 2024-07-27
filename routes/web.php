@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/model', [GripModelController::class, 'index'])->name('model');
         Route::post('/model', [GripModelController::class, 'store'])->name('model.store');
+        Route::patch('/model/{model}', [GripModelController::class, 'update'])->name('model.update');
         Route::delete('/model/{model}', [GripModelController::class, 'destroy'])->name('model.destroy')->can('delete', 'model');
     });
 

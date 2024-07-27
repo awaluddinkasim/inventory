@@ -12,12 +12,9 @@ class GripModelController extends BaseController
 {
     public function index(): View
     {
-        $data = [
-            'models' => GripModel::all(),
+        return view('pages.master.model', [
             'types' => GripType::all(),
-
-        ];
-        return view('pages.master.model', $data);
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
@@ -34,6 +31,22 @@ class GripModelController extends BaseController
         return $this->redirectBack([
             'status' => 'success',
             'message' => 'Model created successfully',
+        ]);
+    }
+
+    public function update(Request $request, GripModel $model): RedirectResponse
+    {
+        $data = $request->validate([
+            'type_id' => 'required',
+            'name' => 'required',
+            'url' => 'required',
+        ]);
+
+        $model->update($data);
+
+        return $this->redirectBack([
+            'status' => 'success',
+            'message' => 'Model updated successfully',
         ]);
     }
 
