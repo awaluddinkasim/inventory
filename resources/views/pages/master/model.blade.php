@@ -36,7 +36,7 @@
                                     method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <x-component.button type="submit" label="Hapus" color="danger" />
+                                    <x-component.button type="submit" label="Delete" color="danger" />
                                 </form>
                             </td>
 
