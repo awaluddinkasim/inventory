@@ -19,7 +19,7 @@ class GripController extends BaseController
     {
         $data = $request->validate([
             'id_model' => 'required',
-            'id_size' => 'required',
+            'size' => 'required',
             'color' => 'required',
             'weight' => 'required',
             'core_size' => 'required',
@@ -49,7 +49,7 @@ class GripController extends BaseController
     {
         $data = $request->validate([
             'id_model' => 'required',
-            'id_size' => 'required',
+            'size' => 'required',
             'color' => 'required',
             'weight' => 'required',
             'core_size' => 'required',
