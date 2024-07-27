@@ -1,6 +1,7 @@
-@props(['label', 'type' => 'button', 'color' => 'primary', 'block' => false, 'href' => null, 'disabled' => false])
+@props(['label', 'type' => 'button', 'color' => 'primary', 'small' => false, 'href' => null, 'disabled' => false])
 
-<button type="{{ $type }}" class="btn btn-{{ $color }}" {!! $href ? 'onclick="document.location.href= \'' . $href . '\' "' : '' !!}
+<button type="{{ $type }}" class="btn btn-{{ $color }} @if ($small) btn-sm @endif"
+    @if ($href) onclick="document.location.href='{{ $href }}'" @endif
     @if ($disabled) disabled @endif>
     {{ $label }}
 </button>
