@@ -4,11 +4,12 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">Grips</h5>
                 <x-form.modal label="New Data" title="Form Grip" action="{{ route('grips.store') }}">
-                    <x-form.select label="Model" name="model_id" id="modelSelect" :required="true">
+                    <x-form.select-search label="Model" name="model_id" id="modelSelect" :required="true"
+                        modalId="formModal">
                         @foreach ($models as $model)
                             <option value="{{ $model->id }}">{{ $model->name }}</option>
                         @endforeach
-                    </x-form.select>
+                    </x-form.select-search>
                     <x-form.datalist label="Size" name="size" id="sizeInput" :required="true">
                         @foreach ($sizes as $size)
                             <option value="{{ $size }}">{{ $size }}</option>
