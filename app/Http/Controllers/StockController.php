@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grip;
 use App\Models\Stock;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -11,7 +12,12 @@ class StockController extends BaseController
 {
     public function index(): View
     {
-        return view('pages.stock.index');
+        $data =[
+            'stocks' => Stock::all(),
+            'grips' => Grip::all()
+
+        ];
+        return view('pages.stock.index', $data);
     }
 
     public function store(Request $request): RedirectResponse
