@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class UserController extends BaseController
@@ -24,7 +25,9 @@ class UserController extends BaseController
             'phone' => 'required',
             'role' => 'required',
         ]);
-        $data['password'] = bcrypt($data['password']);
+
+        $data['password'] = Hash::make($data['password']);
+
         User::create($data);
 
         return $this->redirectBack([
@@ -49,7 +52,7 @@ class UserController extends BaseController
         ]);
 
         if ($data['password']) {
-            $data['password'] = bcrypt($data['password']);
+            $data['password'] = Hash::make($data['password']);
         } else {
             unset($data['password']);
         }
