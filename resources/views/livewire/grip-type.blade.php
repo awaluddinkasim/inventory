@@ -43,6 +43,10 @@
         </tbody>
     </x-component.table>
 
+    <div class="mt-3">
+        {{ $types->links() }}
+    </div>
+
     <x-component.modal id="editModal" title="Edit Data">
         <form action="@if ($currentEdit) {{ route('master.type.update', $currentEdit->id) }} @endif"
             method="POST" autocomplete="off">
