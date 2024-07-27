@@ -11,8 +11,7 @@ class GripTypeController extends BaseController
 {
     public function index(): View
     {
-        $types = GripType::all();
-        return view('pages.master.type', compact('types'));
+        return view('pages.master.type');
     }
 
     public function store(Request $request): RedirectResponse
@@ -27,6 +26,21 @@ class GripTypeController extends BaseController
         return $this->redirectBack([
             'status' => 'success',
             'message' => 'Grip type created successfully',
+        ]);
+    }
+
+    public function update(Request $request, GripType $type): RedirectResponse
+    {
+        $data = $request->validate([
+            'mfg' => 'required',
+            'name' => 'required',
+        ]);
+
+        $type->update($data);
+
+        return $this->redirectBack([
+            'status' => 'success',
+            'message' => 'Grip type updated successfully',
         ]);
     }
 

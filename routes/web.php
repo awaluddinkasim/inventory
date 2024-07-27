@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
         Route::get('/type', [GripTypeController::class, 'index'])->name('type');
         Route::post('/type', [GripTypeController::class, 'store'])->name('type.store');
+        Route::patch('/type/{type}', [GripTypeController::class, 'update'])->name('type.update');
         Route::delete('/type/{type}', [GripTypeController::class, 'destroy'])->name('type.destroy')->can('delete', 'type');
 
         Route::get('/model', [GripModelController::class, 'index'])->name('model');
@@ -46,7 +47,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/barcode', [BarcodeController::class, 'index'])->name('barcode');
 
-    
+
 
     Route::middleware('admin')->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('users');

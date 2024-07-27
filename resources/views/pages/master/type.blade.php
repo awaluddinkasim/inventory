@@ -10,32 +10,7 @@
             </div>
         </div>
         <div class="card-body">
-            <x-component.datatable id="typeTable">
-                <thead>
-                    <th>#</th>
-                    <th>MFG</th>
-                    <th>Name</th>
-                    <th></th>
-                </thead>
-                <tbody>
-                    @foreach ($types as $type)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $type->name }}</td>
-                            <td>{{ $type->mfg }}</td>
-
-                            <td class="text-center">
-                                <form action="{{ route('master.type.destroy', $type->id) }}" class="d-inline"
-                                    method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <x-component.button type="submit" label="Delete" color="danger" />
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </x-component.datatable>
+            <livewire:grip-type />
         </div>
     </div>
 
