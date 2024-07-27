@@ -33,11 +33,13 @@ class UserController extends BaseController
         ]);
     }
 
-    public function edit(User $user){
+    public function edit(User $user): View
+    {
         return view('pages.user.edit', compact('user'));
     }
 
-    public function update(Request $request, User $user){
+    public function update(Request $request, User $user): RedirectResponse
+    {
         $data = $request->validate([
             'name' => 'required',
             'email' => 'required',
@@ -46,18 +48,17 @@ class UserController extends BaseController
             'role' => 'required',
         ]);
 
-        if($data['password']){
-
+        if ($data['password']) {
             $data['password'] = bcrypt($data['password']);
-        }else{
+        } else {
             unset($data['password']);
         }
 
         $user->update($data);
 
-        return $this->redirectBack([
-            'message' => 'Data telah di update',
-            'status' => 'success'
+        return $this->redirect(route('users'), [
+            'status' => 'success',
+            'message' => 'User data updated successfully',
         ]);
     }
 

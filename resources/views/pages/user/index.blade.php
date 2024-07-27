@@ -1,7 +1,7 @@
 <x-layout>
     <div class="card">
         <div class="card-header">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">Users</h5>
                 <x-form.modal label="Create" title="Form User" action="{{ route('users.store') }}">
                     <x-form.input label="Name" name="name" id="nameInput" :required="true" />
@@ -10,7 +10,7 @@
                         :required="true" />
                     <x-form.input label="Phone Number" type="tel" name="phone" id="phoneInput"
                         :required="true" />
-                    <x-form.select label="role" id="roleSelect" name="role" :required="true">
+                    <x-form.select label="Role" name="role" id="roleSelect" :required="true">
                         <option value="admin">Admin</option>
                         <option value="user">User</option>
                     </x-form.select>
