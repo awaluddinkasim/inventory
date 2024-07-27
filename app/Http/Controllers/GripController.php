@@ -13,7 +13,7 @@ class GripController extends BaseController
     public function index(): View
     {
 
-        $data =[
+        $data = [
             'grips' => Grip::all(),
             'models' => GripModel::all()
 
@@ -29,9 +29,12 @@ class GripController extends BaseController
             'color' => 'required',
             'weight' => 'required',
             'core_size' => 'required',
-            'wholesale' => 'required|numeric',
-            'percent' => 'required|numeric',
+            'wholesale' => 'required',
+            'percent' => 'required',
         ]);
+
+        $data['wholesale'] = convertToNumber($data['wholesale']);
+        $data['percent'] = convertToNumber($data['percent']);
 
         Grip::create($data);
 
@@ -43,7 +46,7 @@ class GripController extends BaseController
 
     public function show(Grip $grip): View
     {
-        $data =[
+        $data = [
             'grip' => $grip,
             'models' => GripModel::all()
 
@@ -54,7 +57,7 @@ class GripController extends BaseController
 
     public function edit(Grip $grip): View
     {
-        $data =[
+        $data = [
             'grip' => $grip,
             'models' => GripModel::all()
 
@@ -65,14 +68,17 @@ class GripController extends BaseController
     public function update(Request $request, Grip $grip): RedirectResponse
     {
         $data = $request->validate([
-            'id_model' => 'required',
+            'model_id' => 'required',
             'size' => 'required',
             'color' => 'required',
             'weight' => 'required',
             'core_size' => 'required',
-            'wholesale' => 'required|numeric',
-            'percent' => 'required|numeric',
+            'wholesale' => 'required',
+            'percent' => 'required',
         ]);
+
+        $data['wholesale'] = convertToNumber($data['wholesale']);
+        $data['percent'] = convertToNumber($data['percent']);
 
         $grip->update($data);
 
@@ -86,7 +92,7 @@ class GripController extends BaseController
     {
         $grip->delete();
 
-        return $this->redirect( route('grips') ,[
+        return $this->redirect(route('grips'), [
             'status' => 'success',
             'message' => 'Grip data deleted successfully',
         ]);

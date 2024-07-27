@@ -4,22 +4,27 @@
             <div class="card">
                 <div class="card-body">
                     <form action="{{ route('grips.update', $grip->id) }}" method="POST">
-                        <x-form.input value="{{ $grip->size }}" label="size" name="size" id="size" :required="true" />
-                            <x-form.input value="{{ $grip->color }}" label="color" name="color" id="color" :required="true" />
-                            <x-form.input value="{{ $grip->weight }}" label="weight" name="weight" id="weight" :required="true" />
-                            <x-form.input value="{{ $grip->core_size }}" label="core size" name="core_size" id="core_size" :required="true" />
-                            <x-form.input value="{{ $grip->wholesale }}" label="wholesale" type="number" name="wholesale" id="wholesale" :required="true" />
-                            <x-form.input value="{{ $grip->percent }}" label="percent" type="number" name="percent" id="percent" :required="true" />
-                            @csrf
-                            @method('put')
-                            <x-form.select label="model" id="model_id" name="model_id" :required="true">
-                                @foreach ($models as $model )
-
-                                <option value="{{ $model->id }}" @if($model->id == $grip->model_id) selected @endif>{{ $model->name }}</option>
-                                @endforeach
-
-                            </x-form.select>
-                            <x-component.button label="simpan" color="warning" :block="True" type="submit"  />
+                        @csrf
+                        @method('PATCH')
+                        <x-form.select label="Model" id="modelSelect" name="model_id" :required="true">
+                            @foreach ($models as $model)
+                                <option value="{{ $model->id }}" @if ($model->id == $grip->model_id) selected @endif>
+                                    {{ $model->name }}</option>
+                            @endforeach
+                        </x-form.select>
+                        <x-form.input value="{{ $grip->size }}" label="Size" name="size" id="sizeInput"
+                            :required="true" />
+                        <x-form.input value="{{ $grip->color }}" label="Color" name="color" id="colorInput"
+                            :required="true" />
+                        <x-form.input value="{{ $grip->weight }}" label="Weight" name="weight" id="weightInput"
+                            :required="true" />
+                        <x-form.input value="{{ $grip->core_size }}" label="Core Size" name="core_size"
+                            id="coreSizeInput" :required="true" />
+                        <x-form.input value="{{ $grip->wholesale }}" label="Wholesale" name="wholesale"
+                            id="wholesaleInput" :isNumeric="true" :required="true" />
+                        <x-form.input value="{{ $grip->percent }}" label="Percent" name="percent" id="percentInput"
+                            :isNumeric="true" :required="true" />
+                        <x-component.button label="Save Changes" color="primary" type="submit" />
                     </form>
                 </div>
             </div>

@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">Users</h5>
-                <x-form.modal label="Create" title="Form User" action="{{ route('users.store') }}">
+                <x-form.modal label="New User" title="Form User" action="{{ route('users.store') }}">
                     <x-form.input label="Name" name="name" id="nameInput" :required="true" />
                     <x-form.input label="Email" type="email" name="email" id="emailInput" :required="true" />
                     <x-form.input label="Password" name="password" type="password" id="passwordInput"

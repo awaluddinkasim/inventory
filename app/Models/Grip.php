@@ -24,7 +24,7 @@ class Grip extends Model
 
     public function model(): BelongsTo
     {
-        return $this->belongsTo(GripModel::class, 'model_id');
+        return $this->belongsTo(GripModel::class);
     }
 
     public function stock(): HasOne
@@ -35,7 +35,7 @@ class Grip extends Model
     public function retail(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->wholesale + ($this->wholesale * $this->percent)
+            get: fn () => $this->wholesale + ($this->wholesale * $this->percent / 100)
         );
     }
 }
