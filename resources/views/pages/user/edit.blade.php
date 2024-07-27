@@ -4,19 +4,21 @@
             <div class="card">
                 <div class="card-body">
                     <form action="{{ route('users.update', $user->id) }}" method="POST">
-                    <x-form.input  :value="$user->name" label="name" name="name" id="name" :required="true" />
-                    <x-form.input value="{{ $user->email }}" label="email" name="email" id="email" :required="true" />
-                    <x-form.input  label="password" name="password" type="password" id="password"  />
-                    <x-form.input value="{{ $user->phone }}" label="phone" type="tel" name="phone" id="phone" :required="true" />
-                    <x-form.select  label="role" id="role" name="role" :required="true">
-                        <option value="admin">Admin</option>
-                        <option value="user">User</option>
-                    </x-form.select>
                         @csrf
-                        @method('put')
-                        <x-component.button label="simpan" :block="True" type="submit" />
-
-
+                        @method('PATCH')
+                        <x-form.input value="{{ $user->name }}" label="Name" name="name" id="nameInput"
+                            :required="true" />
+                        <x-form.input value="{{ $user->email }}" label="Email" name="email" id="emailInput"
+                            :required="true" />
+                        <x-form.input label="Password" name="password" type="password" id="passwordInput"
+                            helperText="If you don't want to change password, leave it blank" />
+                        <x-form.input value="{{ $user->phone }}" label="Phone Number" type="tel" name="phone"
+                            id="phoneInput" :required="true" />
+                        <x-form.select label="role" id="role" name="roleSelect" :required="true">
+                            <option value="admin" @if ($user->role == 'admin') selected @endif>Admin</option>
+                            <option value="user" @if ($user->role == 'user') selected @endif>User</option>
+                        </x-form.select>
+                        <x-component.button label="Save Changes" :block="true" type="submit" />
                     </form>
                 </div>
             </div>
