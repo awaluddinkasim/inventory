@@ -23,5 +23,10 @@ class DatabaseSeeder extends Seeder
             'phone' => '1234567890',
             'role' => 'admin',
         ]);
+
+        $this->call([
+            GripTypeSeeder::class,
+            GripModelSeeder::class,
+        ]);
     }
 }
