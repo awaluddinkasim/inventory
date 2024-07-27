@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GripModel;
+use App\Models\GripType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -11,13 +12,19 @@ class GripModelController extends BaseController
 {
     public function index(): View
     {
-        $model = GripModel::all();
-        return view('pages.master.model', compact('model'));
+        $data = [
+            'models' => GripModel::all(),
+            'types' => GripType::all(),
+
+        ];
+        return view('pages.master.model', $data);
     }
 
     public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
+
+            'type_id' => 'required',
             'name' => 'required',
             'url' => 'required',
         ]);

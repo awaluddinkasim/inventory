@@ -46,6 +46,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/barcode', [BarcodeController::class, 'index'])->name('barcode');
 
+    
+
     Route::middleware('admin')->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('users');
         Route::post('/users', [UserController::class, 'store'])->name('users.store');

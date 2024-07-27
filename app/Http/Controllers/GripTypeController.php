@@ -11,7 +11,8 @@ class GripTypeController extends BaseController
 {
     public function index(): View
     {
-        return view('pages.master.type');
+        $types = GripType::all();
+        return view('pages.master.type', compact('types'));
     }
 
     public function store(Request $request): RedirectResponse
