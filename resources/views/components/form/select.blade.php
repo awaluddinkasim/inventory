@@ -4,7 +4,7 @@
     <label for="{{ $id }}" class="form-label">{{ $label }}</label>
     <select class="form-select @error($name) is-invalid @enderror" id="{{ $id }}" name="{{ $name }}"
         @if ($required) required @endif aria-label="{{ $label }}">
-        <option value="" selected hidden>Pilih</option>
+        <option value="" selected hidden>Choose</option>
         {{ $slot }}
     </select>
 </div>
