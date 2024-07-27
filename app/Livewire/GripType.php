@@ -24,7 +24,7 @@ class GripType extends Component
     public function render()
     {
         return view('livewire.grip-type', [
-            'types' => Model::paginate(1),
+            'types' => Model::paginate(10),
         ]);
     }
 }
