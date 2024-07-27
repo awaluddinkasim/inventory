@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grip;
+use App\Models\GripModel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -11,14 +12,19 @@ class GripController extends BaseController
 {
     public function index(): View
     {
-        $grips = Grip::all();
-        return view('pages.grip.index', compact('grips'));
+
+        $data =[
+            'grips' => Grip::all(),
+            'models' => GripModel::all()
+
+        ];
+        return view('pages.grip.index', $data);
     }
 
     public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
-            'id_model' => 'required',
+            'model_id' => 'required',
             'size' => 'required',
             'color' => 'required',
             'weight' => 'required',
@@ -37,12 +43,23 @@ class GripController extends BaseController
 
     public function show(Grip $grip): View
     {
-        return view('pages.grip.show', compact('grip'));
+        $data =[
+            'grip' => $grip,
+            'models' => GripModel::all()
+
+        ];
+
+        return view('pages.grip.show', $data);
     }
 
     public function edit(Grip $grip): View
     {
-        return view('pages.grip.edit', compact('grip'));
+        $data =[
+            'grip' => $grip,
+            'models' => GripModel::all()
+
+        ];
+        return view('pages.grip.edit', $data);
     }
 
     public function update(Request $request, Grip $grip): RedirectResponse
@@ -69,7 +86,7 @@ class GripController extends BaseController
     {
         $grip->delete();
 
-        return $this->redirectBack([
+        return $this->redirect( route('grips') ,[
             'status' => 'success',
             'message' => 'Grip data deleted successfully',
         ]);
