@@ -25,13 +25,14 @@ class StockController extends BaseController
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request, Grip $grip): RedirectResponse
     {
         $data = $request->validate([
-            'grip_id' => 'required',
             'quantity' => 'required',
             'date' => 'required',
         ]);
+
+        $data['grip_id'] = $grip->id;
 
         Stock::create($data);
 

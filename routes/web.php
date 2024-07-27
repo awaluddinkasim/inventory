@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/stock', [StockController::class, 'index'])->name('stock');
     Route::get('/stock/{grip}', [StockController::class, 'show'])->name('stock.show');
-    Route::post('/stock', [StockController::class, 'store'])->name('stock.store');
+    Route::post('/stock/{grip}', [StockController::class, 'store'])->name('stock.store');
     Route::delete('/stock/{stock}', [StockController::class, 'destroy'])->name('stock.destroy');
 
     Route::get('/barcode', [BarcodeController::class, 'index'])->name('barcode');

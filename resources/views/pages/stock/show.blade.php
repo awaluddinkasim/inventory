@@ -3,8 +3,7 @@
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">{{ $grip->model->name }}</h5>
-                <x-form.modal label="New Stock" title="Form Model" action="{{ route('stock.store') }}">
-                    <input type="hidden" name="grip_id" value="{{ $grip->id }}">
+                <x-form.modal label="New Stock" title="Form Model" action="{{ route('stock.store', $grip->id) }}">
                     <x-form.input label="Grip Model" name="grip" id="gripInput"
                         value="{{ $grip->model->name }} - {{ $grip->size }} ({{ $grip->color }})"
                         :readonly="true" />
