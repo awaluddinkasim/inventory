@@ -13,7 +13,7 @@ class StockController extends BaseController
     public function index(): View
     {
         return view('pages.stock.index', [
-            'grips' => Grip::all(),
+            'grips' => Grip::with(['model', 'stock'])->get(),
         ]);
     }
 
@@ -21,7 +21,7 @@ class StockController extends BaseController
     {
         return view('pages.stock.show', [
             'grip' => $grip,
-            'stocks' => Stock::where('grip_id', $grip->id)->get(),
+            'stocks' => Stock::with(['grip'])->where('grip_id', $grip->id)->get(),
         ]);
     }
 

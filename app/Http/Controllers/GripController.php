@@ -14,7 +14,7 @@ class GripController extends BaseController
     {
         return view('pages.grip.index', [
             'models' => GripModel::all(),
-            'grips' => Grip::all(),
+            'grips' => Grip::with(['model'])->get(),
             'sizes' => Grip::groupBy('size')->pluck('size'),
         ]);
     }
@@ -47,7 +47,6 @@ class GripController extends BaseController
         $data = [
             'grip' => $grip,
             'models' => GripModel::all()
-
         ];
 
         return view('pages.grip.show', $data);

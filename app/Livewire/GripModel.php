@@ -27,7 +27,7 @@ class GripModel extends Component
     public function render()
     {
         return view('livewire.grip-model', [
-            'models' => Model::paginate(10),
+            'models' => Model::with(['type'])->paginate(10),
         ]);
     }
 }
