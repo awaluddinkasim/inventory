@@ -12,13 +12,11 @@ class GripController extends BaseController
 {
     public function index(): View
     {
-
-        $data = [
+        return view('pages.grip.index', [
+            'models' => GripModel::all(),
             'grips' => Grip::all(),
-            'models' => GripModel::all()
-
-        ];
-        return view('pages.grip.index', $data);
+            'sizes' => Grip::groupBy('size')->pluck('size'),
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
@@ -57,12 +55,11 @@ class GripController extends BaseController
 
     public function edit(Grip $grip): View
     {
-        $data = [
+        return view('pages.grip.edit', [
+            'models' => GripModel::all(),
             'grip' => $grip,
-            'models' => GripModel::all()
-
-        ];
-        return view('pages.grip.edit', $data);
+            'sizes' => Grip::groupBy('size')->pluck('size'),
+        ]);
     }
 
     public function update(Request $request, Grip $grip): RedirectResponse

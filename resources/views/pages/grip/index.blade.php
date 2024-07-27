@@ -9,7 +9,11 @@
                             <option value="{{ $model->id }}">{{ $model->name }}</option>
                         @endforeach
                     </x-form.select>
-                    <x-form.input label="Size" name="size" id="sizeInput" :required="true" />
+                    <x-form.datalist label="Size" name="size" id="sizeInput" :required="true">
+                        @foreach ($sizes as $size)
+                            <option value="{{ $size }}">{{ $size }}</option>
+                        @endforeach
+                    </x-form.datalist>
                     <x-form.input label="Color" name="color" id="colorInput" :required="true" />
                     <x-form.input label="Weight" name="weight" id="weightInput" :required="true" />
                     <x-form.input label="Core Size" name="core_size" id="coreSizeInput" :required="true" />
