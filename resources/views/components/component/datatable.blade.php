@@ -9,11 +9,10 @@
     <script>
         let table = new DataTable('#{{ $id }}', {
             sort: false,
-            lengthChange: false
         });
     </script>
 @endpush
 
-<table id="{{ $id }}" class="display">
+<table id="{{ $id }}" class="table table-hover">
     {{ $slot }}
 </table>

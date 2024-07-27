@@ -1,9 +1,9 @@
 @props(['label', 'id', 'name', 'required' => false])
 
 <div class="mb-3">
-    <label for="{{ $id }}" class="form-label">Example select</label>
+    <label for="{{ $id }}" class="form-label">{{ $label }}</label>
     <select class="form-select @error($name) is-invalid @enderror" id="{{ $id }}" name="{{ $name }}"
-        @if ($required) required @endif aria-label="Default select example">
+        @if ($required) required @endif aria-label="{{ $label }}">
         <option value="" selected hidden>Pilih</option>
         {{ $slot }}
     </select>
