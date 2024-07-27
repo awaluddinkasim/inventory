@@ -64,6 +64,13 @@ class UserController extends BaseController
 
     public function destroy(User $user): RedirectResponse
     {
+        if ($user->id == auth()->user()->id) {
+            return $this->redirectBack([
+                'status' => 'error',
+                'message' => 'You cannot delete your own account',
+            ]);
+        }
+
         $user->delete();
 
         return $this->redirectBack([
