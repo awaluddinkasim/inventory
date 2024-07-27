@@ -11,6 +11,8 @@ class GripType extends Component
 {
     use WithPagination, WithoutUrlPagination;
 
+    public $mfgs;
+
     public $currentEdit;
 
     public function edit($id)

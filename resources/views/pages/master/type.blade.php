@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="card-body">
-            <livewire:grip-type />
+            <livewire:grip-type :$mfgs />
         </div>
     </div>
 

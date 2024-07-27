@@ -53,7 +53,11 @@
             @csrf
             @method('PATCH')
             <div class="modal-body">
-                <x-form.input label="MFG" name="mfg" id="mfgInput" :value="$currentEdit?->mfg" :required="true" />
+                <x-form.datalist label="MFG" name="mfg" id="mfgInput" :value="$currentEdit?->mfg" :required="true">
+                    @foreach ($mfgs as $mfg)
+                        <option value="{{ $mfg }}">{{ $mfg }}</option>
+                    @endforeach
+                </x-form.datalist>
                 <x-form.input label="Name" name="name" id="nameInput" :value="$currentEdit?->name" :required="true" />
             </div>
             <div class="modal-footer">
