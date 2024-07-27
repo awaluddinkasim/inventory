@@ -24,7 +24,7 @@
                     <td><a href="{{ $model->url }}" target="_blank">{{ $model->url }}</a></td>
 
                     <td class="text-center">
-                        <button type="button" class="btn btn-primary" wire:click="edit({{ $model->id }})"
+                        <button type="button" class="btn btn-primary btn-sm" wire:click="edit({{ $model->id }})"
                             wire:loading.attr="disabled">
                             Edit
                         </button>
@@ -32,7 +32,7 @@
                             <form action="{{ route('master.model.destroy', $model->id) }}" class="d-inline" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <x-component.button type="submit" label="Delete" color="danger" />
+                                <x-component.button type="submit" label="Delete" color="danger" :small="true" />
                             </form>
                         @endcan
                     </td>

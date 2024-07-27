@@ -47,7 +47,8 @@
                                     method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <x-component.button type="submit" label="Delete" color="danger" />
+                                    <x-component.button type="submit" label="Delete" color="danger"
+                                        :small="true" />
                                 </form>
                             </td>
                         </tr>

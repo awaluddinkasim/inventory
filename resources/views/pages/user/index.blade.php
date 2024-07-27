@@ -39,15 +39,17 @@
                             <td>{{ $user->last_login }}</td>
                             <td class="text-center">
                                 @if ($user->id != auth()->user()->id)
-                                    <x-component.button label="Edit" href="{{ route('users.edit', $user->id) }}" />
+                                    <x-component.button label="Edit" href="{{ route('users.edit', $user->id) }}"
+                                        :small="true" />
                                     <form action="{{ route('users.destroy', $user->id) }}" class="d-inline"
                                         method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <x-component.button type="submit" label="Delete" color="danger" />
+                                        <x-component.button type="submit" label="Delete" color="danger"
+                                            :small="true" />
                                     </form>
                                 @else
-                                    <x-component.button type="submit" label="Delete" color="danger"
+                                    <x-component.button type="submit" label="Delete" color="danger" :small="true"
                                         :disabled="true" />
                                 @endif
                             </td>

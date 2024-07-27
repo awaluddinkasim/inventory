@@ -22,7 +22,7 @@
                     <td>{{ $type->name }}</td>
 
                     <td class="text-center">
-                        <button type="button" class="btn btn-primary" wire:click="edit({{ $type->id }})"
+                        <button type="button" class="btn btn-primary btn-sm" wire:click="edit({{ $type->id }})"
                             wire:loading.attr="disabled">
                             Edit
                         </button>
@@ -30,7 +30,7 @@
                             <form action="{{ route('master.type.destroy', $type->id) }}" class="d-inline" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <x-component.button type="submit" label="Delete" color="danger" />
+                                <x-component.button type="submit" label="Delete" color="danger" :small="true" />
                             </form>
                         @endcan
                     </td>
