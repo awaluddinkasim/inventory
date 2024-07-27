@@ -17,6 +17,8 @@ return new class extends Migration
             $table->integer('quantity');
             $table->date('date');
             $table->timestamps();
+
+            $table->foreign('grip_id')->references('id')->on('grips')->cascadeOnDelete();
         });
     }
 
