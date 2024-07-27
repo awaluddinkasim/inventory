@@ -15,7 +15,7 @@
             <th></th>
         </thead>
         <tbody>
-            @foreach ($types as $type)
+            @forelse ($types as $type)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $type->mfg }}</td>
@@ -33,7 +33,11 @@
                         </form>
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="4" class="text-center text-muted">No Data Available</td>
+                </tr>
+            @endforelse
         </tbody>
     </x-component.table>
 

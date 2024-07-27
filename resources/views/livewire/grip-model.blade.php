@@ -16,7 +16,7 @@
             <th></th>
         </thead>
         <tbody>
-            @foreach ($models as $model)
+            @forelse ($models as $model)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $model->type->name }}</td>
@@ -34,9 +34,12 @@
                             <x-component.button type="submit" label="Delete" color="danger" />
                         </form>
                     </td>
-
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="5" class="text-center text-muted">No Data Available</td>
+                </tr>
+            @endforelse
         </tbody>
     </x-component.table>
 
