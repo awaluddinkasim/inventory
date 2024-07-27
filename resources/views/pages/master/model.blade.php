@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Master Models">
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">

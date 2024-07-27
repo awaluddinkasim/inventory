@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Grips">
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
