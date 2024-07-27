@@ -12,12 +12,17 @@ class StockController extends BaseController
 {
     public function index(): View
     {
-        $data =[
-            'stocks' => Stock::all(),
-            'grips' => Grip::all()
+        return view('pages.stock.index', [
+            'grips' => Grip::all(),
+        ]);
+    }
 
-        ];
-        return view('pages.stock.index', $data);
+    public function show(Grip $grip): View
+    {
+        return view('pages.stock.show', [
+            'grip' => $grip,
+            'stocks' => Stock::where('grip_id', $grip->id)->get(),
+        ]);
     }
 
     public function store(Request $request): RedirectResponse

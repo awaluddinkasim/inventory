@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/grips/{grip}', [GripController::class, 'destroy'])->name('grips.destroy')->can('delete', 'grip');
 
     Route::get('/stock', [StockController::class, 'index'])->name('stock');
+    Route::get('/stock/{grip}', [StockController::class, 'show'])->name('stock.show');
     Route::post('/stock', [StockController::class, 'store'])->name('stock.store');
     Route::delete('/stock/{stock}', [StockController::class, 'destroy'])->name('stock.destroy');
 
