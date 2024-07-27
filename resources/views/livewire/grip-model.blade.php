@@ -46,7 +46,7 @@
     </x-component.table>
 
     <div class="mt-3">
-        {{ $types->links() }}
+        {{ $models->links() }}
     </div>
 
     <x-component.modal id="editModal" title="Edit Data">
