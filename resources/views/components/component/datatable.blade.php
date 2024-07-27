@@ -13,6 +13,8 @@
     </script>
 @endpush
 
-<table id="{{ $id }}" class="table table-hover">
-    {{ $slot }}
-</table>
+<div class="table-responsive text-nowrap pb-3">
+    <table id="{{ $id }}" class="table table-hover">
+        {{ $slot }}
+    </table>
+</div>
