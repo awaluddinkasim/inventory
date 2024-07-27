@@ -28,11 +28,13 @@
                             wire:loading.attr="disabled">
                             Edit
                         </button>
-                        <form action="{{ route('master.model.destroy', $model->id) }}" class="d-inline" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <x-component.button type="submit" label="Delete" color="danger" />
-                        </form>
+                        @can('delete', $model)
+                            <form action="{{ route('master.model.destroy', $model->id) }}" class="d-inline" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <x-component.button type="submit" label="Delete" color="danger" />
+                            </form>
+                        @endcan
                     </td>
                 </tr>
             @empty
