@@ -11,7 +11,9 @@ class GripTypeController extends BaseController
 {
     public function index(): View
     {
-        return view('pages.master.type');
+        return view('pages.master.type', [
+            'mfgs' => GripType::groupBy('mfg')->pluck('mfg'),
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
