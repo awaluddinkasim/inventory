@@ -43,9 +43,13 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
-                                <a href="{{ $grip->model->url }}" target="_blank">
+                                @if ($grip->model->url)
+                                    <a href="{{ $grip->model->url }}" target="_blank">
+                                        {{ $grip->model->name }}
+                                    </a>
+                                @else
                                     {{ $grip->model->name }}
-                                </a>
+                                @endif
                             </td>
                             <td>{{ $grip->size }}</td>
                             <td>{{ $grip->color }}</td>

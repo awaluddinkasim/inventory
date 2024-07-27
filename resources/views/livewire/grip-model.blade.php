@@ -21,7 +21,13 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $model->type->name }}</td>
                     <td>{{ $model->name }}</td>
-                    <td><a href="{{ $model->url }}" target="_blank">{{ $model->url }}</a></td>
+                    <td>
+                        @if ($model->url)
+                            <a href="{{ $model->url }}" target="_blank">{{ $model->url }}</a>
+                        @else
+                            -
+                        @endif
+                    </td>
 
                     <td class="text-center">
                         <button type="button" class="btn btn-primary btn-sm" wire:click="edit({{ $model->id }})"
@@ -62,7 +68,8 @@
                     @endforeach
                 </x-form.select>
                 <x-form.input label="Name" name="name" id="nameInput" :value="$currentEdit?->name" :required="true" />
-                <x-form.input label="URL" name="url" id="urlInput" :value="$currentEdit?->url" :required="true" />
+                <x-form.input label="URL" name="url" id="urlInput" :value="$currentEdit?->url"
+                    helperText="Leave empty if not exist" />
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">

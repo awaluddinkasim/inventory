@@ -10,7 +10,7 @@
                         @endforeach
                     </x-form.select>
                     <x-form.input label="Name" name="name" id="nameInput" :required="true" />
-                    <x-form.input label="URL" name="url" id="urlInput" :required="true" />
+                    <x-form.input label="URL" name="url" id="urlInput" helperText="Leave empty if not exist" />
                 </x-form.modal>
             </div>
         </div>

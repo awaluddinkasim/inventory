@@ -20,10 +20,9 @@ class GripModelController extends BaseController
     public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
-
             'type_id' => 'required',
             'name' => 'required',
-            'url' => 'required',
+            'url' => 'nullable',
         ]);
 
         GripModel::create($data);
@@ -39,7 +38,7 @@ class GripModelController extends BaseController
         $data = $request->validate([
             'type_id' => 'required',
             'name' => 'required',
-            'url' => 'required',
+            'url' => 'nullable',
         ]);
 
         $model->update($data);
