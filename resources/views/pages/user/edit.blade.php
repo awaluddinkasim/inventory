@@ -3,7 +3,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('users.update', $user->id) }}" method="POST">
+                    <form action="{{ route('users.update', $user->id) }}" method="POST" autocomplete="off">
                         @csrf
                         @method('PATCH')
                         <x-form.input value="{{ $user->name }}" label="Name" name="name" id="nameInput"
