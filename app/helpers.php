@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Grip;
+use Nette\Utils\Random;
 
 if (!function_exists('convertToNumber')) {
     function convertToNumber(string $value): float
@@ -19,9 +19,9 @@ if (!function_exists('generateCode')) {
         } else {
             $colorCode = substr($color, 0, 2);
         }
-        $modelId = str_pad($model, 6, '0', STR_PAD_LEFT);
-        $sizeCode = substr($size, 0, 1);
+        $modelId = str_pad($model, 4, '0', STR_PAD_LEFT);
+        $sizeCode = substr($size, 0, 2);
 
-        return strtoupper($colorCode . $modelId . $sizeCode);
+        return strtoupper($colorCode . $modelId . Random::generate(4, '0-9') . $sizeCode);
     }
 }
