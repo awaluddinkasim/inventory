@@ -26,7 +26,7 @@
 
                         </x-form.select>
                         <x-component.button label="edit" :block="true"
-                            href="{{ route('grips.edit', $grip->id) }}" />
+                            href="{{ route('grips.edit', $grip->code) }}" />
                         <form action="{{ route('grips.destroy', $grip->id) }}" class="d-inline" method="POST">
                             @method('DELETE')
                             @csrf

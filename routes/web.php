@@ -37,8 +37,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/grips', [GripController::class, 'index'])->name('grips');
     Route::post('/grips', [GripController::class, 'store'])->name('grips.store');
-    Route::get('/grips/{grip}', [GripController::class, 'show'])->name('grips.show');
-    Route::get('/grips/{grip}/edit', [GripController::class, 'edit'])->name('grips.edit');
+    Route::get('/grips/{grip:code}', [GripController::class, 'show'])->name('grips.show');
+    Route::get('/grips/{grip:code}/edit', [GripController::class, 'edit'])->name('grips.edit');
     Route::patch('/grips/{grip}', [GripController::class, 'update'])->name('grips.update');
     Route::delete('/grips/{grip}', [GripController::class, 'destroy'])->name('grips.destroy')->can('delete', 'grip');
 

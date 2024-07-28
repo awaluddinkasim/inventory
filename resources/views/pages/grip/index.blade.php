@@ -58,7 +58,7 @@
                             <td>{{ $grip->core_size }}</td>
                             <td>Rp. {{ number_format($grip->wholesale) }}</td>
                             <td class="text-center">
-                                <x-component.button label="Detail" href="{{ route('grips.show', $grip->id) }}" />
+                                <x-component.button label="Detail" href="{{ route('grips.show', $grip->code) }}" />
                             </td>
                         </tr>
                     @endforeach
