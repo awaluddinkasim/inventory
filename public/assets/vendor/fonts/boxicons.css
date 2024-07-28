@@ -6497,9 +6497,7 @@
 }
 
 .bx {
-  vertical-align: middle;
-  font-size: 1.15rem;
-  line-height: 1;
+  line-height: 0;
 }
 
 @font-face {
