@@ -32,6 +32,15 @@ class GripController extends BaseController
             'percent' => 'required',
         ]);
 
+        // cek apabila ada grip dengan model, warna, dan ukuran yang sama
+        $check = Grip::where('model_id', $data['model_id'])->where('color', $data['color'])->where('size', $data['size'])->first();
+        if ($check) {
+            return $this->redirectBack([
+                'status' => 'danger',
+                'message' => 'Grip already exists',
+            ]);
+        }
+
         $data['code'] = generateCode($data['color'], $data['model_id'], $data['size']);
         $data['wholesale'] = convertToNumber($data['wholesale']);
         $data['percent'] = convertToNumber($data['percent']);
