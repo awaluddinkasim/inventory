@@ -102,7 +102,7 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                                <span class="app-brand-text fs-4 text-body fw-bolder">INVENTORY</span>
                             </a>
                         </div>
                         <!-- /Logo -->
