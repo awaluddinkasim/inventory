@@ -41,7 +41,7 @@
                             <td>Rp. {{ number_format($grip->stock->sum('amount')) }}</td>
 
                             <td class="text-center">
-                                <x-component.button label="Show" color="primary"
+                                <x-component.button-icon label="Show" color="primary" icon="bx-show"
                                     href="{{ route('stock.show', $grip->id) }}" />
                             </td>
                         </tr>

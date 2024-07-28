@@ -58,7 +58,8 @@
                             <td>{{ $grip->core_size }}</td>
                             <td>Rp. {{ number_format($grip->retail) }}</td>
                             <td class="text-center">
-                                <x-component.button label="Detail" href="{{ route('grips.show', $grip->code) }}" />
+                                <x-component.button-icon label="Detail" icon="bx-detail"
+                                    href="{{ route('grips.show', $grip->code) }}" />
                             </td>
                         </tr>
                     @endforeach
