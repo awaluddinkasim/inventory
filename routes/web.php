@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarcodeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GripController;
 use App\Http\Controllers\GripModelController;
 use App\Http\Controllers\GripTypeController;
@@ -19,9 +20,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('pages.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
         Route::get('/type', [GripTypeController::class, 'index'])->name('type');
