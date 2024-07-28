@@ -10,18 +10,29 @@
                             <option value="{{ $model->id }}">{{ $model->name }}</option>
                         @endforeach
                     </x-form.select-search>
-                    <x-form.datalist label="Size" name="size" id="sizeInput" :required="true">
-                        @foreach ($sizes as $size)
-                            <option value="{{ $size }}">{{ $size }}</option>
-                        @endforeach
-                    </x-form.datalist>
-                    <x-form.input label="Color" name="color" id="colorInput" :required="true" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <x-form.datalist label="Size" name="size" id="sizeInput" :required="true">
+                                @foreach ($sizes as $size)
+                                    <option value="{{ $size }}">{{ $size }}</option>
+                                @endforeach
+                            </x-form.datalist>
+                        </div>
+                        <div class="col-md-6">
+                            <x-form.input label="Color" name="color" id="colorInput" :required="true" />
+                        </div>
+                    </div>
                     <x-form.input label="Weight" name="weight" id="weightInput" :required="true" />
                     <x-form.input label="Core Size" name="core_size" id="coreSizeInput" :required="true" />
-                    <x-form.input label="Wholesale Price" name="wholesale" id="wholesaleInput" :isNumeric="true"
-                        :required="true" />
-                    <x-form.input label="Retail Percentage (%)" name="percent" id="percentInput" :isNumeric="true"
-                        :required="true" />
+                    <div class="row">
+                        <div class="col-md-7">
+                            <x-form.input label="Wholesale Price" name="wholesale" id="wholesaleInput" :isNumeric="true"
+                                :required="true" />
+                        </div>
+                        <div class="col-md-5">
+                            <x-form.input label="Retail Percentage (%)" name="percent" id="percentInput"
+                                :isNumeric="true" :required="true" />
+                        </div>
                 </x-form.modal>
             </div>
         </div>
