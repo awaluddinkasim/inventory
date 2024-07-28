@@ -35,7 +35,7 @@ class GripController extends BaseController
         $check = Grip::where('model_id', $data['model_id'])->where('color', $data['color'])->where('size', $data['size'])->first();
         if ($check) {
             return $this->redirectBack([
-                'status' => 'danger',
+                'status' => 'error',
                 'message' => 'Grip already exists',
             ]);
         }
