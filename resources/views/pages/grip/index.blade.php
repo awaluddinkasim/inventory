@@ -35,7 +35,7 @@
                     <th>Color</th>
                     <th>Weight</th>
                     <th>Core Size</th>
-                    <th>Wholesale Price</th>
+                    <th>Retail Price</th>
                     <th></th>
                 </thead>
                 <tbody>
@@ -56,7 +56,7 @@
                             <td>{{ $grip->color }}</td>
                             <td>{{ $grip->weight }}</td>
                             <td>{{ $grip->core_size }}</td>
-                            <td>Rp. {{ number_format($grip->wholesale) }}</td>
+                            <td>Rp. {{ number_format($grip->retail) }}</td>
                             <td class="text-center">
                                 <x-component.button label="Detail" href="{{ route('grips.show', $grip->code) }}" />
                             </td>
