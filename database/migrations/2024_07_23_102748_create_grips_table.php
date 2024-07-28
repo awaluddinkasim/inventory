@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('grips', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
             $table->foreignId('model_id');
             $table->string('size');
             $table->string('color');
