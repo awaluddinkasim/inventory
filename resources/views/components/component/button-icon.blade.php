@@ -10,6 +10,6 @@
 
 <button type="{{ $type }}" class="btn btn-{{ $color }} @if ($small) btn-sm @endif"
     @if ($href) onclick="document.location.href='{{ $href }}'" @endif
-    @if ($disabled) disabled @endif>
+    @if ($disabled) disabled @endif {{ $attributes }}>
     <span class="tf-icons bx {{ $icon }}"></span>&nbsp; {{ $label }}
 </button>

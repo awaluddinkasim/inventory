@@ -4,7 +4,7 @@
     <label class="form-label" for="{{ $id }}">{{ $label }}</label>
     <input name="{{ $name }}" value="{{ $value }}" list="{{ $name }}Options"
         class="form-control @error($name) is-invalid @enderror" id="{{ $id }}"
-        @if ($required) required @endif>
+        @if ($required) required @endif {{ $attributes }}>
     <datalist id="{{ $name }}Options">
         {{ $slot }}
     </datalist>
