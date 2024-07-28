@@ -17,6 +17,6 @@ class GripType extends Model
 
     public function models(): HasMany
     {
-        return $this->hasMany(GripModel::class);
+        return $this->hasMany(GripModel::class, 'type_id');
     }
 }

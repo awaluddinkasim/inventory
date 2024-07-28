@@ -29,20 +29,20 @@
             <x-component.datatable id="gripTable">
                 <thead>
                     <th>#</th>
+                    <th>Code</th>
                     <th>Model</th>
                     <th>Size</th>
                     <th>Color</th>
                     <th>Weight</th>
                     <th>Core Size</th>
                     <th>Wholesale Price</th>
-                    <th>Percent</th>
-                    <th>Retail</th>
                     <th></th>
                 </thead>
                 <tbody>
                     @foreach ($grips as $grip)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
+                            <td>{{ $grip->code }}</td>
                             <td>
                                 @if ($grip->model->url)
                                     <a href="{{ $grip->model->url }}" target="_blank">
@@ -57,8 +57,6 @@
                             <td>{{ $grip->weight }}</td>
                             <td>{{ $grip->core_size }}</td>
                             <td>Rp. {{ number_format($grip->wholesale) }}</td>
-                            <td>{{ $grip->percent }}%</td>
-                            <td>Rp. {{ number_format($grip->retail) }}</td>
                             <td class="text-center">
                                 <x-component.button label="Detail" href="{{ route('grips.show', $grip->id) }}" />
                             </td>

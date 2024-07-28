@@ -20,11 +20,11 @@ class GripModel extends Model
 
     public function type(): BelongsTo
     {
-        return $this->belongsTo(GripType::class);
+        return $this->belongsTo(GripType::class, 'type_id');
     }
 
     public function grips(): HasMany
     {
-        return $this->hasMany(Grip::class);
+        return $this->hasMany(Grip::class, 'model_id');
     }
 }

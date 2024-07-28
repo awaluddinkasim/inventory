@@ -20,7 +20,7 @@ class Stock extends Model
 
     public function grip(): BelongsTo
     {
-        return $this->belongsTo(Grip::class);
+        return $this->belongsTo(Grip::class, 'grip_id');
     }
 
     public function date(): Attribute

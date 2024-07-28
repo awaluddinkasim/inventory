@@ -6,6 +6,7 @@ use App\Models\Grip;
 use App\Models\GripModel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 
 class GripController extends BaseController
@@ -31,6 +32,7 @@ class GripController extends BaseController
             'percent' => 'required',
         ]);
 
+        $data['code'] = generateCode($data['color'], $data['model_id'], $data['size']);
         $data['wholesale'] = convertToNumber($data['wholesale']);
         $data['percent'] = convertToNumber($data['percent']);
 
@@ -86,6 +88,8 @@ class GripController extends BaseController
 
     public function destroy(Grip $grip): RedirectResponse
     {
+        File::delete(public_path('barcodes/' . $grip->code . '.png'));
+
         $grip->delete();
 
         return $this->redirect(route('grips'), [
