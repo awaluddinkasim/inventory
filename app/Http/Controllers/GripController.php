@@ -36,7 +36,7 @@ class GripController extends BaseController
         if ($check) {
             return $this->redirectBack([
                 'status' => 'error',
-                'message' => 'Grip already exists',
+                'message' => 'Grip model with the same color and size already exists',
             ]);
         }
 
@@ -82,6 +82,14 @@ class GripController extends BaseController
             'wholesale' => 'required',
             'percent' => 'required',
         ]);
+
+        $check = Grip::where('model_id', $data['model_id'])->where('color', $data['color'])->where('size', $data['size'])->first();
+        if ($check) {
+            return $this->redirectBack([
+                'status' => 'error',
+                'message' => 'Grip model with the same color and size already exists',
+            ]);
+        }
 
         $data['wholesale'] = convertToNumber($data['wholesale']);
         $data['percent'] = convertToNumber($data['percent']);
