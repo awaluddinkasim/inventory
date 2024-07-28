@@ -6,12 +6,12 @@
                     <form action="{{ route('grips.update', $grip->id) }}" method="POST" autocomplete="off">
                         @csrf
                         @method('PATCH')
-                        <x-form.select label="Model" id="modelSelect" name="model_id" :required="true">
+                        <x-form.select-search label="Model" name="model_id" id="modelSelect" :required="true">
                             @foreach ($models as $model)
                                 <option value="{{ $model->id }}" @if ($model->id == $grip->model_id) selected @endif>
                                     {{ $model->name }}</option>
                             @endforeach
-                        </x-form.select>
+                        </x-form.select-search>
                         <x-form.datalist value="{{ $grip->size }}" label="Size" name="size" id="sizeInput"
                             :required="true">
                             @foreach ($sizes as $size)
