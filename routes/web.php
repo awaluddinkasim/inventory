@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function () {
         Route::delete('/model/{model}', [GripModelController::class, 'destroy'])->name('model.destroy')->can('delete', 'model');
     });
 
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+    Route::patch('/profile', [UserController::class, 'updateProfile'])->name('profile-update');
+
     Route::get('/grips', [GripController::class, 'index'])->name('grips');
     Route::post('/grips', [GripController::class, 'store'])->name('grips.store');
     Route::get('/grips/{grip:code}', [GripController::class, 'show'])->name('grips.show');
