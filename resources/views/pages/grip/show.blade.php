@@ -77,11 +77,13 @@
                         <div class="text-end">
                             <x-component.button-icon icon="bx-edit" label="Edit" color="primary"
                                 href="{{ route('grips.edit', $grip) }}" />
-                            <form action="{{ route('grips.destroy', $grip) }}" method="post" class="d-inline">
-                                @csrf
-                                @method('delete')
-                                <x-component.button-icon icon="bx-trash" label="Delete" color="danger" type="submit" />
-                            </form>
+                            @can('delete', $grip)
+                                <form action="{{ route('grips.destroy', $grip) }}" method="post" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                    <x-component.button-icon icon="bx-trash" label="Delete" color="danger" type="submit" />
+                                </form>
+                            @endcan
                         </div>
                     </div>
                 </div>
