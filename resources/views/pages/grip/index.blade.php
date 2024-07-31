@@ -33,6 +33,7 @@
                             <x-form.input label="Retail Percentage (%)" name="percent" id="percentInput"
                                 :isNumeric="true" :required="true" />
                         </div>
+                    </div>
                 </x-form.modal>
             </div>
         </div>
