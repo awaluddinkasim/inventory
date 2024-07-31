@@ -158,21 +158,11 @@
     <!-- Main JS -->
     <script src=" {{ asset('assets/js/main.js') }}"></script>
 
-    {{ asset('assets/libs/sweetalert2/sweetalert2.all.min.js') }}
+    <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-
-    @if (Session::has('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: '{{ Session::get('success') }}',
-            })
-        </script>
-    @endif
     @if (Session::has('error'))
         <script>
             Swal.fire({
