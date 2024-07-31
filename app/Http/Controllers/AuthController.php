@@ -26,7 +26,7 @@ class AuthController extends BaseController
             $user->last_login = now();
             $user->update();
 
-            return redirect()->intended('/');
+            return redirect()->intended(route('dashboard'));
         }
 
         return $this->redirectBack([
