@@ -1,43 +1,85 @@
 <x-layout title="Grip Detail">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-5">
             <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Grip Model Type</h5>
+                </div>
                 <div class="card-body">
-                    <form action="{{ route('grips.update', $grip->id) }}" method="POST">
-                        <x-form.input value="{{ $grip->size }}" label="size" name="size" id="size"
-                            :required="true" />
-                        <x-form.input value="{{ $grip->color }}" label="color" name="color" id="color"
-                            :required="true" />
-                        <x-form.input value="{{ $grip->weight }}" label="weight" name="weight" id="weight"
-                            :required="true" />
-                        <x-form.input value="{{ $grip->core_size }}" label="core size" name="core_size" id="core_size"
-                            :required="true" />
-                        <x-form.input value="{{ $grip->wholesale }}" label="wholesale" type="number" name="wholesale"
-                            id="wholesale" :required="true" />
-                        <x-form.input value="{{ $grip->percent }}" label="percent" type="number" name="percent"
-                            id="percent" :required="true" />
-                        @csrf
-                        @method('put')
-                        <x-form.select label="model" id="model_id" name="model_id" :required="true">
-                            @foreach ($models as $model)
-                                <option value="{{ $model->id }}" @if ($model->id == $grip->model_id) selected @endif>
-                                    {{ $model->name }}</option>
-                            @endforeach
-
-                        </x-form.select>
-                        <x-component.button label="edit" :block="true"
-                            href="{{ route('grips.edit', $grip->code) }}" />
-                        <form action="{{ route('grips.destroy', $grip->id) }}" class="d-inline" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <x-component.button type="submit" label="Hapus" color="danger" />
-                        </form>
-                    </form>
+                    <div class="mb-3">
+                        <h5 class="mb-0">MFG</h5>
+                        <p>{{ $grip->model->type->mfg }}</p>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="mb-0">Type</h5>
+                        <p>{{ $grip->model->type->name }}</p>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="mb-0">Model</h5>
+                        <p>{{ $grip->model->name }}</p>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="mb-0">Link</h5>
+                        <p>{{ $grip->model->url ?? '-' }}</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
-
+        <div class="col-lg-7">
+            <div class="card my-2 my-md-0">
+                <div class="card-header">
+                    <h5 class="card-title">Grip Detail</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <h5 class="mb-0">Size</h5>
+                                <p>{{ $grip->size }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <h5 class="mb-0">Color</h5>
+                                <p>{{ $grip->color }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <h5 class="mb-0">Weight</h5>
+                                <p>{{ $grip->weight }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <h5 class="mb-0">Core Size</h5>
+                                <p>{{ $grip->core_size }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <h5 class="mb-0">Wholesale Price</h5>
+                                <p>Rp. {{ number_format($grip->wholesale) }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <h5 class="mb-0">Retail Percentage</h5>
+                                <p>{{ number_format($grip->percent) }}%</p>
+                            </div>
+                            <div class="mb-3">
+                                <h5 class="mb-0">Retail Price</h5>
+                                <p>Rp. {{ number_format($grip->retail) }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <h5 class="mb-0">Stock</h5>
+                                <p>{{ $grip->stock->sum('quantity') }}</p>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <x-component.button-icon icon="bx-edit" label="Edit" color="primary"
+                                href="{{ route('grips.edit', $grip) }}" />
+                            <form action="{{ route('grips.destroy', $grip) }}" method="post" class="d-inline">
+                                @csrf
+                                @method('delete')
+                                <x-component.button-icon icon="bx-trash" label="Delete" color="danger" type="submit" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </x-layout>
