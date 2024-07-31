@@ -20,7 +20,13 @@
                     </div>
                     <div class="mb-3">
                         <h5 class="mb-0">Link</h5>
-                        <p>{{ $grip->model->url ?? '-' }}</p>
+                        <p>
+                            @if ($grip->model->url)
+                                <a href="{{ $grip->model->url }}" target="_blank">{{ $grip->model->url }}</a>
+                            @else
+                                -
+                            @endif
+                        </p>
                     </div>
                 </div>
             </div>
