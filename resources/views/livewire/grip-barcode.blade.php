@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5 my-2 my-md-0">
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">Barcode</h5>
