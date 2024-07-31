@@ -57,7 +57,7 @@ class DashboardController extends Controller
             'totalGrips' => $totalGrips,
             'cumulativeStock' => [
                 'labels' => ['', ...$labels],
-                'data' => [$cumulativeStock[0], ...$cumulativeStock],
+                'data' => [$cumulativeStock[0] ?? 0, ...$cumulativeStock],
             ],
             'topGripModels' => $topGripModels,
         ]);
