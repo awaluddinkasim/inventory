@@ -15,8 +15,10 @@ class GripController extends BaseController
     {
         return view('pages.grip.index', [
             'models' => GripModel::all(),
-            'grips' => Grip::with(['model'])->get(),
             'sizes' => Grip::groupBy('size')->pluck('size'),
+            'grips' => Grip::with(['model'])->get()->sortBy(function ($query) {
+                return $query->model->type_id;
+            }),
         ]);
     }
 

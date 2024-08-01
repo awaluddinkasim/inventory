@@ -13,7 +13,9 @@ class StockController extends BaseController
     public function index(): View
     {
         return view('pages.stock.index', [
-            'grips' => Grip::with(['model', 'stock'])->get(),
+            'grips' => Grip::with(['model', 'stock'])->get()->sortBy(function ($query) {
+                return $query->model->type_id;
+            }),
         ]);
     }
 
