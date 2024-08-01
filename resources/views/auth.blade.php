@@ -36,10 +36,6 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css') }}">
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{ asset('assets/js/config.js') }}"></script>
 </head>
 
 <body>
@@ -107,8 +103,8 @@
                         </div>
                         <!-- /Logo -->
                         <h4 class="mb-2">Welcome! 👋</h4>
-                        <form id="formAuthentication" class="mb-3" action="{{ route('authenticate') }}"
-                            method="POST" autocomplete="off">
+                        <form id="formAuthentication" class="mb-3" action="{{ route('authenticate') }}" method="POST"
+                            autocomplete="off">
                             @csrf
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
@@ -159,9 +155,6 @@
     <script src=" {{ asset('assets/js/main.js') }}"></script>
 
     <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.all.min.js') }}"></script>
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     @if (Session::has('error'))
         <script>
