@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="col-lg-6">
-
+            <img src="{{ asset('assets/img/illustrations/server.svg') }}" alt="">
         </div>
     </div>
 </x-layout>

@@ -1,5 +1,8 @@
 <x-layout title="Edit User">
     <div class="row">
+        <div class="col-lg-6 d-none d-lg-block">
+            <img src="{{ asset('assets/img/illustrations/user-form.svg') }}" alt="">
+        </div>
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
@@ -22,9 +25,6 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-6">
-
         </div>
     </div>
 </x-layout>
