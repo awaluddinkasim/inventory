@@ -202,7 +202,7 @@
     <h4 class="fw-bold py-3 mb-4">Dashboard</h4>
     <div class="row mb-3">
         <div class="col-md-3">
-            <div class="card">
+            <div class="card my-2 my-md-0">
                 <div class="card-body">
                     <span class="fw-semibold d-block mb-1">Total Users</span>
                     <h3 class="card-title mb-2">{{ number_format($users) }}</h3>
@@ -210,7 +210,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card">
+            <div class="card my-2 my-md-0">
                 <div class="card-body">
                     <span class="fw-semibold d-block mb-1">Grip Types</span>
                     <h3 class="card-title mb-2">{{ number_format($totalGripTypes) }}</h3>
@@ -218,7 +218,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card">
+            <div class="card my-2 my-md-0">
                 <div class="card-body">
                     <span class="fw-semibold d-block mb-1">Grip Models</span>
                     <h3 class="card-title mb-2">{{ number_format($totalGripModels) }}</h3>
@@ -226,7 +226,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card">
+            <div class="card my-2 my-md-0">
                 <div class="card-body">
                     <span class="fw-semibold d-block mb-1">Grips</span>
                     <h3 class="card-title mb-2">{{ number_format($totalGrips) }}</h3>
@@ -237,7 +237,7 @@
 
     <div class="row">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card my-2 my-md-0">
                 <h5 class="card-header m-0 pb-3">Top 5 Grip Models Stock</h5>
                 <div id="topGripModelsChart" class="px-2"></div>
             </div>
