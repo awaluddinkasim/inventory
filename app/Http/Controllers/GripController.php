@@ -83,7 +83,10 @@ class GripController extends BaseController
             'percent' => 'required',
         ]);
 
-        $check = Grip::where('model_id', $data['model_id'])->where('color', $data['color'])->where('size', $data['size'])->first();
+        $check = Grip::where('id', '!=', $grip->id)
+            ->where('model_id', $data['model_id'])
+            ->where('color', $data['color'])
+            ->where('size', $data['size'])->first();
         if ($check) {
             return $this->redirectBack([
                 'status' => 'error',
