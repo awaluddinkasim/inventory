@@ -101,7 +101,7 @@ class GripController extends BaseController
 
         $grip->update($data);
 
-        return $this->redirectBack([
+        return $this->redirect(route('grips.show', $grip->code), [
             'status' => 'success',
             'message' => 'Grip data updated successfully',
         ]);
