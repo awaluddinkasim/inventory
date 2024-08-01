@@ -5,6 +5,9 @@
         </div>
         <div class="col-lg-6">
             <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Edit User</h5>
+                </div>
                 <div class="card-body">
                     <form action="{{ route('users.update', $user->id) }}" method="POST" autocomplete="off">
                         @csrf

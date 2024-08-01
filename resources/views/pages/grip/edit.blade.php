@@ -2,6 +2,9 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Edit Grip</h5>
+                </div>
                 <div class="card-body">
                     <form action="{{ route('grips.update', $grip->id) }}" method="POST" autocomplete="off">
                         @csrf
