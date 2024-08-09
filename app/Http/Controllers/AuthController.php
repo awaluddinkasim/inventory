@@ -19,7 +19,7 @@ class AuthController extends BaseController
     {
         $remember = $request->has('remember') ? true : false;
 
-        if (Auth::attempt($request->only('email', 'password'), $remember)) {
+        if (Auth::guard('admin')->attempt($request->only('email', 'password'), $remember)) {
             $request->session()->regenerate();
 
             $user = User::find(Auth::user()->id);
@@ -37,7 +37,7 @@ class AuthController extends BaseController
 
     public function logout(Request $request): RedirectResponse
     {
-        Auth::logout();
+        Auth::guard('admin')->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
