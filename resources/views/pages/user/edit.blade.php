@@ -22,7 +22,7 @@
                             id="phoneInput" :required="true" />
                         <x-form.select label="Role" name="role" id="roleSelect" :required="true">
                             <option value="admin" @if ($user->role == 'admin') selected @endif>Admin</option>
-                            <option value="user" @if ($user->role == 'user') selected @endif>User</option>
+                            <option value="operator" @if ($user->role == 'operator') selected @endif>Operator</option>
                         </x-form.select>
                         <x-component.button label="Save Changes" :block="true" type="submit" />
                     </form>

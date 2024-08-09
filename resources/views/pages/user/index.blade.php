@@ -12,7 +12,7 @@
                         :required="true" />
                     <x-form.select label="Role" name="role" id="roleSelect" :required="true">
                         <option value="admin">Admin</option>
-                        <option value="user">User</option>
+                        <option value="operator">Operator</option>
                     </x-form.select>
                 </x-form.modal>
             </div>
