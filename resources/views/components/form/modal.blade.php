@@ -1,4 +1,4 @@
-@props(['title', 'action', 'label'])
+@props(['title', 'action', 'label', 'hasFile' => false])
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
     {{ $label }}
@@ -6,7 +6,8 @@
 
 <!-- Modal -->
 <x-component.modal id="formModal" :title="$title">
-    <form action="{{ $action }}" method="POST" autocomplete="off">
+    <form action="{{ $action }}" method="POST" autocomplete="off"
+        @if ($hasFile) enctype="multipart/form-data" @endif>
         @csrf
         <div class="modal-body">
             {{ $slot }}
