@@ -6,7 +6,8 @@
                     <h5 class="card-title">Edit Grip</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('grips.update', $grip->id) }}" method="POST" autocomplete="off">
+                    <form action="{{ route('grips.update', $grip->id) }}" method="POST" autocomplete="off"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <x-form.select-search label="Model" name="model_id" id="modelSelect" :required="true">
@@ -43,6 +44,8 @@
                                     id="percentInput" :isNumeric="true" :required="true" />
                             </div>
                         </div>
+                        <x-form.input label="Image" type="file" name="img" id="imgInput"
+                            accept=".jpg,.jpeg,.png" />
                         <x-component.button label="Save Changes" color="primary" type="submit" />
                     </form>
                 </div>

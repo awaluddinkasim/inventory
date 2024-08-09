@@ -32,6 +32,7 @@ class GripController extends BaseController
             'core_size' => 'required',
             'wholesale' => 'required',
             'percent' => 'required',
+            'img' => 'required|image',
         ]);
 
         $check = Grip::where('model_id', $data['model_id'])->where('color', $data['color'])->where('size', $data['size'])->first();
@@ -45,6 +46,11 @@ class GripController extends BaseController
         $data['code'] = generateCode($data['color'], $data['model_id'], $data['size']);
         $data['wholesale'] = convertToNumber($data['wholesale']);
         $data['percent'] = convertToNumber($data['percent']);
+
+        $file = $request->file('img');
+        $fileName = $data['code'] . '.' . $file->extension();
+        $file->move(public_path('img/grips'), $fileName);
+        $data['img'] = $fileName;
 
         Grip::create($data);
 
@@ -83,6 +89,7 @@ class GripController extends BaseController
             'core_size' => 'required',
             'wholesale' => 'required',
             'percent' => 'required',
+            'img' => 'nullable|image',
         ]);
 
         $check = Grip::where('id', '!=', $grip->id)
@@ -98,6 +105,12 @@ class GripController extends BaseController
 
         $data['wholesale'] = convertToNumber($data['wholesale']);
         $data['percent'] = convertToNumber($data['percent']);
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+            $fileName = $grip->code . '.' . $file->extension();
+            $file->move(public_path('img/grips'), $fileName);
+            $data['img'] = $fileName;
+        }
 
         $grip->update($data);
 

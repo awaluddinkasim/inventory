@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">Grips</h5>
-                <x-form.modal label="New Data" title="Form Grip" action="{{ route('grips.store') }}">
+                <x-form.modal label="New Data" title="Form Grip" action="{{ route('grips.store') }}" :hasFile="true">
                     <x-form.select-search label="Model" name="model_id" id="modelSelect" :required="true"
                         modalId="formModal">
                         @foreach ($models as $model)
@@ -34,6 +34,8 @@
                                 :isNumeric="true" :required="true" />
                         </div>
                     </div>
+                    <x-form.input label="Image" type="file" name="img" id="imgInput" :required="true"
+                        accept=".jpg,.jpeg,.png" />
                 </x-form.modal>
             </div>
         </div>

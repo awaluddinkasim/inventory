@@ -20,7 +20,8 @@ class Grip extends Model
         'weight',
         'core_size',
         'wholesale',
-        'percent'
+        'percent',
+        'img',
     ];
 
     public function model(): BelongsTo
@@ -36,14 +37,14 @@ class Grip extends Model
     public function retail(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->wholesale + ($this->wholesale * $this->percent / 100)
+            get: fn() => $this->wholesale + ($this->wholesale * $this->percent / 100)
         );
     }
 
     public function amount(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->stock->sum('amount')
+            get: fn() => $this->stock->sum('amount')
         );
     }
 }
