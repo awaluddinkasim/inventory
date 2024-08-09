@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="light-style customizer-hide" data-theme="theme-default" data-template="vertical-menu-template-free">
+<html class="light-style customizer-hide" data-theme="theme-default">
 
 <head>
     <meta charset="utf-8">
