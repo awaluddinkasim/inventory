@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class AuthController extends BaseController
         if (Auth::guard('admin')->attempt($request->only('email', 'password'), $remember)) {
             $request->session()->regenerate();
 
-            $user = User::find(Auth::user()->id);
+            $user = Admin::find(auth('admin')->user()->id);
             $user->last_login = now();
             $user->update();
 
