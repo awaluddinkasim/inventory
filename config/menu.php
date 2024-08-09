@@ -51,7 +51,7 @@ return [
     ],
     [
         'route-active' => 'clubhead',
-        'label' => 'Clubhead',
+        'label' => 'Club Head',
         'icon' => 'bx-archive',
         'submenu' => [
             [
@@ -101,12 +101,12 @@ return [
         'icon' => 'bx-user',
         'submenu' => [
             [
-                'route-active' => 'type',
+                'route-active' => 'admin',
                 'label' => 'Admin',
                 // 'route-name' => 'master.type',
             ],
             [
-                'route-active' => 'model',
+                'route-active' => 'member',
                 'label' => 'Member',
                 // 'route-name' => 'master.model',
             ],
