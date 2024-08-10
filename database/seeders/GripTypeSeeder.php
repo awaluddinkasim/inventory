@@ -14,11 +14,11 @@ class GripTypeSeeder extends Seeder
     public function run(): void
     {
         $types = [
-            ['mfg' => 'Golf Pride', 'name' => 'Align Technology'],
-            ['mfg' => 'Golf Pride', 'name' => 'Hybrid'],
-            ['mfg' => 'Golf Pride', 'name' => 'Cord'],
-            ['mfg' => 'Golf Pride', 'name' => 'All Rubber'],
-            ['mfg' => 'Golf Pride', 'name' => 'Putter'],
+            ['brand' => 'Golf Pride', 'name' => 'Align Technology'],
+            ['brand' => 'Golf Pride', 'name' => 'Hybrid'],
+            ['brand' => 'Golf Pride', 'name' => 'Cord'],
+            ['brand' => 'Golf Pride', 'name' => 'All Rubber'],
+            ['brand' => 'Golf Pride', 'name' => 'Putter'],
         ];
 
         GripType::insert($types);
