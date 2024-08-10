@@ -40,7 +40,7 @@ class UserController extends BaseController
 
         $user->update($data);
 
-        return $this->redirect(route('users'), [
+        return $this->redirectBack([
             'status' => 'success',
             'message' => 'User data updated successfully',
         ]);
