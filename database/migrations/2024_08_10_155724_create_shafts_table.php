@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('flex');
             $table->float('length');
             $table->string('weight');
+            $table->double('wholesale');
+            $table->integer('percent');
             $table->string('img');
             $table->timestamps();
 

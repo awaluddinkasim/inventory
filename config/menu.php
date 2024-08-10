@@ -10,7 +10,7 @@ return [
     ],
     [
         'route-active' => 'grips',
-        'label' => 'Grips',
+        'label' => 'Grip',
         'icon' => 'bx-archive',
         'submenu' => [
             [
@@ -37,12 +37,12 @@ return [
         'icon' => 'bx-archive',
         'submenu' => [
             [
-                'route-active' => 'type',
+                'route-active' => 'types',
                 'label' => 'Type',
                 'route-name' => 'shaft.type',
             ],
             [
-                'route-active' => 'grips',
+                'route-active' => 'items',
                 'label' => 'Item',
                 'route-name' => 'shaft.items',
             ],

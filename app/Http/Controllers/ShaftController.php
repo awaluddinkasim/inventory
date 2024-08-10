@@ -28,6 +28,8 @@ class ShaftController extends BaseController
             'flex' => 'required',
             'length' => 'required',
             'weight' => 'required',
+            'wholesale' => 'required',
+            'percent' => 'required',
             'img' => 'required|image',
         ]);
 
@@ -71,6 +73,8 @@ class ShaftController extends BaseController
             'flex' => 'required',
             'length' => 'required',
             'weight' => 'required',
+            'wholesale' => 'required',
+            'percent' => 'required',
             'img' => 'nullable|image',
         ]);
 
@@ -87,7 +91,7 @@ class ShaftController extends BaseController
 
         $shaft->update($data);
 
-        return $this->redirectBack([
+        return $this->redirect(route('shaft.items.show', $shaft->code), [
             'status' => 'success',
             'message' => 'Shaft updated successfully',
         ]);

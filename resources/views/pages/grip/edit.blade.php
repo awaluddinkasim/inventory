@@ -6,6 +6,10 @@
                     <h5 class="card-title">Edit Grip</h5>
                 </div>
                 <div class="card-body">
+                    <div class="img-container text-center mb-3" style="height: 250px">
+                        <img src="{{ asset('img/grips/' . $grip->img) }}" alt="" class="img-fluid rounded">
+                    </div>
+
                     <form action="{{ route('grip.items.update', $grip->id) }}" method="POST" autocomplete="off"
                         enctype="multipart/form-data">
                         @csrf
@@ -44,7 +48,7 @@
                                     id="percentInput" :isNumeric="true" :required="true" />
                             </div>
                         </div>
-                        <x-form.image label="Image" name="img" id="imgInput" />
+                        <x-form.image label="Change Image" name="img" id="imgInput" />
                         <x-component.button label="Save Changes" color="primary" type="submit" />
                     </form>
                 </div>

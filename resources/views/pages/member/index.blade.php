@@ -3,7 +3,6 @@
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">Members</h5>
-
             </div>
         </div>
         <div class="card-body">
@@ -27,7 +26,6 @@
                             <td>{{ $user->last_login ?? '-' }}</td>
 
                             <td class="text-center">
-
                                 <x-component.button label="Edit" href="{{ route('user.members.edit', $user->id) }}"
                                     :small="true" />
                                 <form action="{{ route('user.members.destroy', $user->id) }}" class="d-inline"
@@ -37,9 +35,6 @@
                                     <x-component.button type="submit" label="Delete" color="danger"
                                         :small="true" />
                                 </form>
-
-
-
                             </td>
                         </tr>
                     @endforeach

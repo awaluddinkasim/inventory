@@ -7,8 +7,8 @@
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <h5 class="mb-0">MFG</h5>
-                        <p>{{ $grip->model->type->mfg }}</p>
+                        <h5 class="mb-0">Brand</h5>
+                        <p>{{ $grip->model->type->brand }}</p>
                     </div>
                     <div class="mb-3">
                         <h5 class="mb-0">Type</h5>
@@ -37,6 +37,10 @@
                     <h5 class="card-title">Grip Detail</h5>
                 </div>
                 <div class="card-body">
+                    <div class="mb-5 img-container text-center">
+                        <img src="{{ asset('img/grips/' . $grip->img) }}" alt="" style="height: 300px"
+                            class="img-fluid rounded">
+                    </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">

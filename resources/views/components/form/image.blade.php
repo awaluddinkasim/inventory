@@ -36,7 +36,7 @@
     @if ($helperText)
         <small class="text-muted">{{ $helperText }}</small>
     @endif
-    <div class="border rounded mt-3 dashed img-preview d-flex justify-content-center align-items-center p-1"
+    <div class="border rounded mt-3 dashed img-container d-flex justify-content-center align-items-center p-1"
         style="height: 250px" id="{{ $id }}Preview" onclick="$('#{{ $id }}').click()">
         <span>Choose Image</span>
     </div>
