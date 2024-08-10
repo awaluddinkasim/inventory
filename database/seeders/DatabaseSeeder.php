@@ -15,8 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         Admin::create([
             'name' => 'Administrator',
             'email' => 'admin@example',
@@ -24,6 +22,8 @@ class DatabaseSeeder extends Seeder
             'phone' => '0123456789',
             'role' => 'admin',
         ]);
+
+        User::factory(10)->create();
 
         $this->call([
             GripTypeSeeder::class,
