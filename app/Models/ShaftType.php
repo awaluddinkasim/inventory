@@ -10,7 +10,7 @@ class ShaftType extends Model
     use HasFactory;
 
     protected $fillable = [
-        'mfg',
+        'brand',
         'name',
         'url',
     ];

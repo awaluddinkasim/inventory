@@ -10,6 +10,7 @@ class Shaft extends Model
     use HasFactory;
 
     protected $fillable = [
+        'code',
         'type_id',
         'shaft',
         'flex',

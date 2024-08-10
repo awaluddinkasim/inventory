@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('shafts', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
             $table->foreignId('type_id');
             $table->string('shaft');
             $table->string('flex');

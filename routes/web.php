@@ -55,7 +55,7 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/items/{shaft:code}', [ShaftController::class, 'show'])->name('items.show');
         Route::get('/items/{shaft:code}/edit', [ShaftController::class, 'edit'])->name('items.edit');
         Route::patch('/items/{shaft}', [ShaftController::class, 'update'])->name('items.update');
-        Route::delete('/items/{shaft}', [ShaftController::class, 'destroy'])->name('items.destroy')->can('delete', 'shaft');
+        Route::delete('/items/{shaft}', [ShaftController::class, 'destroy'])->name('items.destroy');
     });
 
     Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
