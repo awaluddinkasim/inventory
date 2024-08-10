@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
-                <h5 class="card-title">Grips</h5>
+                <h5 class="card-title">Shafts</h5>
 
                 <x-form.modal label="New Item" title="Form Grip" action="{{ route('shaft.items.store') }}"
                     :hasFile="true">
