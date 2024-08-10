@@ -12,14 +12,14 @@ class GripTypeController extends BaseController
     public function index(): View
     {
         return view('pages.grip.type', [
-            'mfgs' => GripType::groupBy('mfg')->pluck('mfg'),
+            'brands' => GripType::groupBy('brand')->pluck('brand'),
         ]);
     }
 
     public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
-            'mfg' => 'required',
+            'brand' => 'required',
             'name' => 'required',
         ]);
 
@@ -34,7 +34,7 @@ class GripTypeController extends BaseController
     public function update(Request $request, GripType $type): RedirectResponse
     {
         $data = $request->validate([
-            'mfg' => 'required',
+            'brand' => 'required',
             'name' => 'required',
         ]);
 

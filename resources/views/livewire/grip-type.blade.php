@@ -10,7 +10,7 @@
     <x-component.table>
         <thead>
             <th>#</th>
-            <th>MFG</th>
+            <th>Brand</th>
             <th>Name</th>
             <th></th>
         </thead>
@@ -18,7 +18,7 @@
             @forelse ($types as $type)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $type->mfg }}</td>
+                    <td>{{ $type->brand }}</td>
                     <td>{{ $type->name }}</td>
 
                     <td class="text-center">
@@ -53,9 +53,9 @@
             @csrf
             @method('PATCH')
             <div class="modal-body">
-                <x-form.datalist label="MFG" name="mfg" id="mfgInput" :value="$currentEdit?->mfg" :required="true">
-                    @foreach ($mfgs as $mfg)
-                        <option value="{{ $mfg }}">{{ $mfg }}</option>
+                <x-form.datalist label="MFG" name="brand" id="brandInput" :value="$currentEdit?->brand" :required="true">
+                    @foreach ($brands as $brand)
+                        <option value="{{ $brand }}">{{ $brand }}</option>
                     @endforeach
                 </x-form.datalist>
                 <x-form.input label="Name" name="name" id="nameInput" :value="$currentEdit?->name" :required="true" />

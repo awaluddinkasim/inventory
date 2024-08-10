@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('grip_types', function (Blueprint $table) {
             $table->id();
-            $table->string('mfg');
+            $table->string('brand');
             $table->string('name');
             $table->timestamps();
         });
