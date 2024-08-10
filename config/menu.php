@@ -43,7 +43,7 @@ return [
             ],
             [
                 'route-active' => 'grips',
-                'label' => 'Data',
+                'label' => 'Item',
                 'route-name' => 'shaft.items',
             ],
         ],
