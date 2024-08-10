@@ -122,7 +122,7 @@ class GripController extends BaseController
 
     public function destroy(Grip $grip): RedirectResponse
     {
-        File::delete(public_path('barcodes/' . $grip->code . '.png'));
+        File::delete(public_path('barcodes/' . $grip->img));
 
         $grip->delete();
 
