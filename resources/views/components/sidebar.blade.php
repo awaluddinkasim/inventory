@@ -24,11 +24,11 @@
                     </a>
 
                     <ul class="menu-sub">
-                        @foreach ($menu['submenu'] as $item)
-                            <li class="menu-item @if ($item['route-active'] == request()->segment(2)) active @endif">
-                                <a href="{{ isset($item['route-name']) ? route($item['route-name']) : '#' }}"
+                        @foreach ($menu['submenu'] as $submenu)
+                            <li class="menu-item @if ($menu['route-active'] == request()->segment(1) && $submenu['route-active'] == request()->segment(2)) active @endif">
+                                <a href="{{ isset($submenu['route-name']) ? route($submenu['route-name']) : '#' }}"
                                     class="menu-link">
-                                    <div data-i18n="{{ $item['label'] }}">{{ $item['label'] }}</div>
+                                    <div data-i18n="{{ $submenu['label'] }}">{{ $submenu['label'] }}</div>
                                 </a>
                             </li>
                         @endforeach
