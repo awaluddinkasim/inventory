@@ -8,6 +8,7 @@ use App\Http\Controllers\GripController;
 use App\Http\Controllers\GripModelController;
 use App\Http\Controllers\GripTypeController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -57,6 +58,11 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/admins/{admin}/edit', [AdminController::class, 'edit'])->name('admins.edit');
         Route::patch('/admins/{admin}/update', [AdminController::class, 'update'])->name('admins.update');
         Route::delete('/admins/{admin}', [AdminController::class, 'destroy'])->name('admins.destroy');
+
+        Route::get('/members', [UserController::class, 'index'])->name('members');
+        Route::get('/members/{user}/edit', [UserController::class, 'edit'])->name('members.edit');
+        Route::patch('/members/{user}/update', [UserController::class, 'update'])->name('members.update');
+        Route::delete('/members/{user}', [UserController::class, 'destroy'])->name('members.destroy');
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
