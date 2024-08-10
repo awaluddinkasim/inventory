@@ -106,11 +106,11 @@ return [
                 'route-name' => 'user.admins',
             ],
             [
-                'route-active' => 'member',
+                'route-active' => 'members',
                 'label' => 'Member',
-                // 'route-name' => 'master.model',
+                'route-name' => 'user.members',
             ],
         ],
-        'admin-only' => false,
+        'admin-only' => true,
     ],
 ];

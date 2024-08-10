@@ -13,12 +13,12 @@ class UserController extends BaseController
     public function index(): View
     {
         $users = User::all();
-        return view('pages.user.index', compact('users'));
+        return view('pages.member.index', compact('users'));
     }
 
     public function edit(User $user): View
     {
-        return view('pages.user.edit', compact('user'));
+        return view('pages.member.edit', compact('user'));
     }
 
     public function update(Request $request, User $user): RedirectResponse
