@@ -30,8 +30,8 @@
                                     :required="true" />
                             </div>
                         </div>
-                        <x-form.input value="{{ $grip->weight }}" label="Weight" name="weight" id="weightInput"
-                            :required="true" />
+                        <x-form.input value="{{ $grip->weight }}" label="Weight" :isNumeric="true" name="weight"
+                            id="weightInput" :required="true" />
                         <x-form.input value="{{ $grip->core_size }}" label="Core Size" name="core_size"
                             id="coreSizeInput" :required="true" />
                         <div class="row">

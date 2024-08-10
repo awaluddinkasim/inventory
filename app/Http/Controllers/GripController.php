@@ -43,7 +43,8 @@ class GripController extends BaseController
             ]);
         }
 
-        $data['code'] = generateCode($data['color'], $data['model_id'], $data['size']);
+        $data['code'] = generateGripCode($data['color'], $data['model_id'], $data['size']);
+        $data['weight'] = convertToNumber($data['weight']);
         $data['wholesale'] = convertToNumber($data['wholesale']);
         $data['percent'] = convertToNumber($data['percent']);
 
@@ -62,12 +63,9 @@ class GripController extends BaseController
 
     public function show(Grip $grip): View
     {
-        $data = [
+        return view('pages.grip.show', [
             'grip' => $grip,
-            'models' => GripModel::all()
-        ];
-
-        return view('pages.grip.show', $data);
+        ]);
     }
 
     public function edit(Grip $grip): View
@@ -104,6 +102,7 @@ class GripController extends BaseController
         }
 
         $data['wholesale'] = convertToNumber($data['wholesale']);
+        $data['weight'] = convertToNumber($data['weight']);
         $data['percent'] = convertToNumber($data['percent']);
         if ($request->hasFile('img')) {
             $file = $request->file('img');
@@ -114,7 +113,7 @@ class GripController extends BaseController
 
         $grip->update($data);
 
-        return $this->redirect(route('grips.show', $grip->code), [
+        return $this->redirect(route('grip.items.show', $grip->code), [
             'status' => 'success',
             'message' => 'Grip data updated successfully',
         ]);
@@ -122,11 +121,11 @@ class GripController extends BaseController
 
     public function destroy(Grip $grip): RedirectResponse
     {
-        File::delete(public_path('barcodes/' . $grip->img));
+        File::delete(public_path('img/grips/' . $grip->img));
 
         $grip->delete();
 
-        return $this->redirect(route('grips'), [
+        return $this->redirect(route('grip.items'), [
             'status' => 'success',
             'message' => 'Grip data deleted successfully',
         ]);

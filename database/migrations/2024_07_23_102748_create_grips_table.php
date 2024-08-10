@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('model_id');
             $table->string('size');
             $table->string('color');
-            $table->string('weight');
+            $table->float('weight');
             $table->string('core_size');
             $table->double('wholesale');
             $table->integer('percent');

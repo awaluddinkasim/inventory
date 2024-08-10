@@ -23,7 +23,7 @@
                             <x-form.input label="Color" name="color" id="colorInput" :required="true" />
                         </div>
                     </div>
-                    <x-form.input label="Weight" name="weight" id="weightInput" :required="true" />
+                    <x-form.input label="Weight" name="weight" id="weightInput" :isNumeric="true" :required="true" />
                     <x-form.input label="Core Size" name="core_size" id="coreSizeInput" :required="true" />
                     <div class="row">
                         <div class="col-md-7">
@@ -69,7 +69,7 @@
                             </td>
                             <td>{{ $grip->size }}</td>
                             <td>{{ $grip->color }}</td>
-                            <td>{{ $grip->weight }}</td>
+                            <td>{{ $grip->weight }}g</td>
                             <td>{{ $grip->core_size }}</td>
                             <td>Rp. {{ number_format($grip->retail) }}</td>
                             <td class="text-center">
