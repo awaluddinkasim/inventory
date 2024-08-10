@@ -1,10 +1,10 @@
-<x-layout title="Master Types">
+<x-layout title="Grip Types">
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">Types</h5>
                 <x-form.modal label="New Type" title="Form Type" action="{{ route('grip.type.store') }}">
-                    <x-form.datalist label="MFG" name="brand" id="brandInput" :required="true">
+                    <x-form.datalist label="Brand" name="brand" id="brandInput" :required="true">
                         @foreach ($brands as $brand)
                             <option value="{{ $brand }}">{{ $brand }}</option>
                         @endforeach
