@@ -99,7 +99,7 @@ class ShaftController extends BaseController
 
         $shaft->delete();
 
-        return $this->redirectBack([
+        return $this->redirect(route('shaft.items'), [
             'status' => 'success',
             'message' => 'Shaft deleted successfully',
         ]);
