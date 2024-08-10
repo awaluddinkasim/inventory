@@ -14,17 +14,17 @@ return [
         'icon' => 'bx-archive',
         'submenu' => [
             [
-                'route-active' => 'type',
+                'route-active' => 'types',
                 'label' => 'Type',
                 'route-name' => 'grip.type',
             ],
             [
-                'route-active' => 'model',
+                'route-active' => 'models',
                 'label' => 'Model',
                 'route-name' => 'grip.model',
             ],
             [
-                'route-active' => 'grips',
+                'route-active' => 'items',
                 'label' => 'Item',
                 'route-name' => 'grip.items',
             ],
@@ -101,9 +101,9 @@ return [
         'icon' => 'bx-user',
         'submenu' => [
             [
-                'route-active' => 'admin',
+                'route-active' => 'admins',
                 'label' => 'Admin',
-                // 'route-name' => 'master.type',
+                'route-name' => 'user.admins',
             ],
             [
                 'route-active' => 'member',

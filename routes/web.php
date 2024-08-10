@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarcodeController;
 use App\Http\Controllers\DashboardController;
@@ -7,7 +8,6 @@ use App\Http\Controllers\GripController;
 use App\Http\Controllers\GripModelController;
 use App\Http\Controllers\GripTypeController;
 use App\Http\Controllers\StockController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -41,8 +41,8 @@ Route::middleware('auth:admin')->group(function () {
         Route::delete('/items/{grip}', [GripController::class, 'destroy'])->name('items.destroy')->can('delete', 'grip');
     });
 
-    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-    Route::patch('/profile', [UserController::class, 'updateProfile'])->name('profile-update');
+    Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
+    Route::patch('/profile', [AdminController::class, 'updateProfile'])->name('profile-update');
 
     Route::get('/stock', [StockController::class, 'index'])->name('stock');
     Route::get('/stock/{grip}', [StockController::class, 'show'])->name('stock.show');
@@ -51,12 +51,12 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::get('/barcode', [BarcodeController::class, 'index'])->name('barcode');
 
-    Route::middleware('admin')->group(function () {
-        Route::get('/users', [UserController::class, 'index'])->name('users');
-        Route::post('/users', [UserController::class, 'store'])->name('users.store');
-        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-        Route::patch('/users/{user}/update', [UserController::class, 'update'])->name('users.update');
-        Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::group(['middleware' => 'admin', 'prefix' => 'users', 'as' => 'user.'], function () {
+        Route::get('/admins', [AdminController::class, 'index'])->name('admins');
+        Route::post('/admins', [AdminController::class, 'store'])->name('admins.store');
+        Route::get('/admins/{admin}/edit', [AdminController::class, 'edit'])->name('admins.edit');
+        Route::patch('/admins/{admin}/update', [AdminController::class, 'update'])->name('admins.update');
+        Route::delete('/admins/{admin}', [AdminController::class, 'destroy'])->name('admins.destroy');
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
