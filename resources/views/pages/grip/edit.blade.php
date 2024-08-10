@@ -44,8 +44,7 @@
                                     id="percentInput" :isNumeric="true" :required="true" />
                             </div>
                         </div>
-                        <x-form.input label="Image" type="file" name="img" id="imgInput"
-                            accept=".jpg,.jpeg,.png" />
+                        <x-form.image label="Image" name="img" id="imgInput" />
                         <x-component.button label="Save Changes" color="primary" type="submit" />
                     </form>
                 </div>

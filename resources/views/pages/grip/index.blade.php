@@ -35,8 +35,7 @@
                                 :isNumeric="true" :required="true" />
                         </div>
                     </div>
-                    <x-form.input label="Image" type="file" name="img" id="imgInput" :required="true"
-                        accept=".jpg,.jpeg,.png" />
+                    <x-form.image label="Image" name="img" id="imgInput" :required="true" />
                 </x-form.modal>
             </div>
         </div>
