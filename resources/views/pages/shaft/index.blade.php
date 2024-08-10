@@ -44,7 +44,7 @@
                     <th>#</th>
                     <th>Shaft</th>
                     <th>Flex</th>
-                    <th>Lenght</th>
+                    <th>Length</th>
                     <th>Weight</th>
                     <th>Retail Price</th>
                     <th></th>
