@@ -4,7 +4,8 @@
     <script>
         $('#{{ $id }}').on('change', function() {
             if (this.files && this.files[0]) {
-                if (this.files[0].type != 'image/jpeg' && this.files[0].type != 'image/png') {
+                if (this.files[0].type != 'image/jpeg' && this.files[0].type != 'image/jpg' && this.files[0].type !=
+                    'image/png') {
                     Swal.fire({
                         icon: 'error',
                         title: 'Failed',

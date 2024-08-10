@@ -24,21 +24,21 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->phone }}</td>
-                            <td>{{ $user->last_login }}</td>
+                            <td>{{ $user->last_login ?? '-' }}</td>
 
                             <td class="text-center">
 
-                                    <x-component.button label="Edit"
-                                        href="{{ route('user.members.edit', $user->id) }}" :small="true" />
-                                    <form action="{{ route('user.members.destroy', $user->id) }}" class="d-inline"
-                                        method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <x-component.button type="submit" label="Delete" color="danger"
-                                            :small="true" />
-                                    </form>
+                                <x-component.button label="Edit" href="{{ route('user.members.edit', $user->id) }}"
+                                    :small="true" />
+                                <form action="{{ route('user.members.destroy', $user->id) }}" class="d-inline"
+                                    method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <x-component.button type="submit" label="Delete" color="danger"
+                                        :small="true" />
+                                </form>
 
-                                  
+
 
                             </td>
                         </tr>
