@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\BaseController;
 
 class UserController extends BaseController
 {
@@ -39,7 +40,7 @@ class UserController extends BaseController
 
         $user->update($data);
 
-        return $this->redirect(route('users'), [
+        return $this->redirectBack([
             'status' => 'success',
             'message' => 'User data updated successfully',
         ]);
