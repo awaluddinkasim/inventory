@@ -12,7 +12,7 @@ class GripModelController extends BaseController
 {
     public function index(): View
     {
-        return view('pages.master.model', [
+        return view('pages.grip.model', [
             'types' => GripType::all(),
         ]);
     }

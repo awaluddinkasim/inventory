@@ -11,7 +11,7 @@ class GripTypeController extends BaseController
 {
     public function index(): View
     {
-        return view('pages.master.type', [
+        return view('pages.grip.type', [
             'mfgs' => GripType::groupBy('mfg')->pluck('mfg'),
         ]);
     }

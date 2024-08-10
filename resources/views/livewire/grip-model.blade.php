@@ -35,7 +35,7 @@
                             Edit
                         </button>
                         @can('delete', $model)
-                            <form action="{{ route('master.model.destroy', $model->id) }}" class="d-inline" method="POST">
+                            <form action="{{ route('grip.model.destroy', $model->id) }}" class="d-inline" method="POST">
                                 @method('DELETE')
                                 @csrf
                                 <x-component.button type="submit" label="Delete" color="danger" :small="true" />
@@ -56,7 +56,7 @@
     </div>
 
     <x-component.modal id="editModal" title="Edit Data">
-        <form action="@if ($currentEdit) {{ route('master.model.update', $currentEdit->id) }} @endif"
+        <form action="@if ($currentEdit) {{ route('grip.model.update', $currentEdit->id) }} @endif"
             method="POST" autocomplete="off">
             @csrf
             @method('PATCH')

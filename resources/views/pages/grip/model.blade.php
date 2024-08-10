@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">Models</h5>
-                <x-form.modal label="New Model" title="Form Model" action="{{ route('master.model.store') }}">
+                <x-form.modal label="New Model" title="Form Model" action="{{ route('grip.model.store') }}">
                     <x-form.select label="Type" name="type_id" id="typeSelect" :required="true">
                         @foreach ($types as $type)
                             <option value="{{ $type->id }}">{{ $type->mfg }} - {{ $type->name }}</option>

@@ -16,17 +16,17 @@ return [
             [
                 'route-active' => 'type',
                 'label' => 'Type',
-                'route-name' => 'master.type',
+                'route-name' => 'grip.type',
             ],
             [
                 'route-active' => 'model',
                 'label' => 'Model',
-                'route-name' => 'master.model',
+                'route-name' => 'grip.model',
             ],
             [
                 'route-active' => 'grips',
-                'label' => 'Data',
-                'route-name' => 'grips',
+                'label' => 'Item',
+                'route-name' => 'grip.items',
             ],
         ],
         'admin-only' => false,

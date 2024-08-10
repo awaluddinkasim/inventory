@@ -6,7 +6,7 @@
                     <h5 class="card-title">Edit Grip</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('grips.update', $grip->id) }}" method="POST" autocomplete="off"
+                    <form action="{{ route('grip.items.update', $grip->id) }}" method="POST" autocomplete="off"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')

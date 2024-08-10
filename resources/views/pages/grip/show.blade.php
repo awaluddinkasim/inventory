@@ -76,9 +76,9 @@
                         </div>
                         <div class="text-end">
                             <x-component.button-icon icon="bx-edit" label="Edit" color="primary"
-                                href="{{ route('grips.edit', $grip) }}" />
+                                href="{{ route('grip.items.edit', $grip) }}" />
                             @can('delete', $grip)
-                                <form action="{{ route('grips.destroy', $grip) }}" method="post" class="d-inline">
+                                <form action="{{ route('grip.items.destroy', $grip) }}" method="post" class="d-inline">
                                     @csrf
                                     @method('delete')
                                     <x-component.button-icon icon="bx-trash" label="Delete" color="danger" type="submit" />

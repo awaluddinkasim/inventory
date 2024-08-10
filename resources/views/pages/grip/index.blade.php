@@ -3,7 +3,8 @@
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">Grips</h5>
-                <x-form.modal label="New Data" title="Form Grip" action="{{ route('grips.store') }}" :hasFile="true">
+                <x-form.modal label="New Item" title="Form Grip" action="{{ route('grip.items.store') }}"
+                    :hasFile="true">
                     <x-form.select-search label="Model" name="model_id" id="modelSelect" :required="true"
                         modalId="formModal">
                         @foreach ($models as $model)
@@ -73,7 +74,7 @@
                             <td>Rp. {{ number_format($grip->retail) }}</td>
                             <td class="text-center">
                                 <x-component.button-icon label="Detail" icon="bx-detail"
-                                    href="{{ route('grips.show', $grip->code) }}" />
+                                    href="{{ route('grip.items.show', $grip->code) }}" />
                             </td>
                         </tr>
                     @endforeach
