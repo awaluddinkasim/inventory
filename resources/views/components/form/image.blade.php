@@ -4,6 +4,16 @@
     <script>
         $('#{{ $id }}').on('change', function() {
             if (this.files && this.files[0]) {
+                if (this.files[0].type != 'image/jpeg' && this.files[0].type != 'image/png') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Failed',
+                        text: 'File must be an image with .jpg, .jpeg, or .png extension',
+                    });
+
+                    return;
+                }
+
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     $('#{{ $id }}Preview').html('<img src="' + e.target.result +
