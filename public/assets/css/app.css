@@ -99,3 +99,11 @@ img.app-brand-logo {
   text-align: center;
   margin-top: 1rem;
 }
+
+.border.dashed {
+  border-style: dashed !important;
+}
+
+.img-preview img {
+    height: 100%;
+}
