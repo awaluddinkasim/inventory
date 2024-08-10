@@ -7,6 +7,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GripController;
 use App\Http\Controllers\GripModelController;
 use App\Http\Controllers\GripTypeController;
+use App\Http\Controllers\ShaftController;
+use App\Http\Controllers\ShaftTypeController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +42,20 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/items/{grip:code}/edit', [GripController::class, 'edit'])->name('items.edit');
         Route::patch('/items/{grip}', [GripController::class, 'update'])->name('items.update');
         Route::delete('/items/{grip}', [GripController::class, 'destroy'])->name('items.destroy')->can('delete', 'grip');
+    });
+
+    Route::group(['prefix' => 'shafts', 'as' => 'shaft.'], function () {
+        Route::get('/types', [ShaftTypeController::class, 'index'])->name('type');
+        Route::post('/types', [ShaftTypeController::class, 'store'])->name('type.store');
+        Route::patch('/types/{type}', [ShaftTypeController::class, 'update'])->name('type.update');
+        Route::delete('/types/{type}', [ShaftTypeController::class, 'destroy'])->name('type.destroy')->can('delete', 'type');
+
+        Route::get('/items', [ShaftController::class, 'index'])->name('items');
+        Route::post('/items', [ShaftController::class, 'store'])->name('items.store');
+        Route::get('/items/{shaft:code}', [ShaftController::class, 'show'])->name('items.show');
+        Route::get('/items/{shaft:code}/edit', [ShaftController::class, 'edit'])->name('items.edit');
+        Route::patch('/items/{shaft}', [ShaftController::class, 'update'])->name('items.update');
+        Route::delete('/items/{shaft}', [ShaftController::class, 'destroy'])->name('items.destroy')->can('delete', 'shaft');
     });
 
     Route::get('/profile', [AdminController::class, 'profile'])->name('profile');

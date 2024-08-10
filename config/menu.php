@@ -39,12 +39,12 @@ return [
             [
                 'route-active' => 'type',
                 'label' => 'Type',
-                // 'route-name' => 'master.type',
+                'route-name' => 'shaft.type',
             ],
             [
                 'route-active' => 'grips',
                 'label' => 'Data',
-                // 'route-name' => 'grips',
+                'route-name' => 'shaft.items',
             ],
         ],
         'admin-only' => false,
