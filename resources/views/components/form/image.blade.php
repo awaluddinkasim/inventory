@@ -11,6 +11,9 @@
                         text: 'File must be an image with .jpg, .jpeg, or .png extension',
                     });
 
+                    $(this).val(null);
+                    $('#{{ $id }}Preview').html('<span>Choose Image</span>');
+
                     return;
                 }
 
