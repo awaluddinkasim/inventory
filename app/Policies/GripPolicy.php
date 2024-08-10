@@ -2,14 +2,15 @@
 
 namespace App\Policies;
 
+use App\Models\Admin;
 use App\Models\Grip;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
 class GripPolicy
 {
-    public function delete(User $user): bool
+    public function delete(Admin $admin): bool
     {
-        return $user->role == 'admin';
+        return $admin->role == 'admin';
     }
 }
