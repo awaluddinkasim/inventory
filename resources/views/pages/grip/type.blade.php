@@ -4,9 +4,9 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">Types</h5>
                 <x-form.modal label="New Type" title="Form Type" action="{{ route('grip.type.store') }}">
-                    <x-form.datalist label="MFG" name="mfg" id="mfgInput" :required="true">
-                        @foreach ($mfgs as $mfg)
-                            <option value="{{ $mfg }}">{{ $mfg }}</option>
+                    <x-form.datalist label="MFG" name="brand" id="brandInput" :required="true">
+                        @foreach ($brands as $brand)
+                            <option value="{{ $brand }}">{{ $brand }}</option>
                         @endforeach
                     </x-form.datalist>
                     <x-form.input label="Name" name="name" id="nameInput" :required="true" />
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="card-body">
-            <livewire:grip-type :$mfgs />
+            <livewire:grip-type :$brands />
         </div>
     </div>
 
