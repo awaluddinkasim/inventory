@@ -36,7 +36,7 @@
                             <td>{{ $admin->email }}</td>
                             <td>{{ $admin->phone }}</td>
                             <td>{{ Str::ucfirst($admin->role) }}</td>
-                            <td>{{ $admin->last_login }}</td>
+                            <td>{{ $admin->last_login ?? '-' }}</td>
                             <td class="text-center">
                                 @if ($admin->id != auth()->user()->id)
                                     <x-component.button label="Edit"
