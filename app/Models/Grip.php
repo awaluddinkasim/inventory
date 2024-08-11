@@ -21,6 +21,7 @@ class Grip extends Model
         'core_size',
         'wholesale',
         'percent',
+        'retail',
         'img',
     ];
 
@@ -34,11 +35,21 @@ class Grip extends Model
         return $this->hasMany(Stock::class, 'grip_id');
     }
 
+    public function purchases(): HasMany
+    {
+        return $this->hasMany(GripPurchase::class, 'grip_id');
+    }
+
     public function retail(): Attribute
     {
         return Attribute::make(
             get: fn() => $this->wholesale + ($this->wholesale * $this->percent / 100)
         );
+    }
+
+    public function sales(): HasMany
+    {
+        return $this->hasMany(GripSale::class, 'grip_id');
     }
 
     public function amount(): Attribute

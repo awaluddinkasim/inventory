@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('core_size');
             $table->double('wholesale');
             $table->integer('percent');
+            $table->double('retail');
             $table->string('img');
             $table->timestamps();
 

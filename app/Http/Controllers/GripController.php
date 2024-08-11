@@ -47,6 +47,7 @@ class GripController extends BaseController
         $data['weight'] = convertToNumber($data['weight']);
         $data['wholesale'] = convertToNumber($data['wholesale']);
         $data['percent'] = convertToNumber($data['percent']);
+        $data['retail'] = $data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100);
 
         $file = $request->file('img');
         $fileName = $data['code'] . '.' . $file->extension();
@@ -104,6 +105,8 @@ class GripController extends BaseController
         $data['wholesale'] = convertToNumber($data['wholesale']);
         $data['weight'] = convertToNumber($data['weight']);
         $data['percent'] = convertToNumber($data['percent']);
+        $data['retail'] = $data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100);
+
         if ($request->hasFile('img')) {
             $file = $request->file('img');
             $fileName = $grip->code . '.' . $file->extension();

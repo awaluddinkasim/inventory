@@ -18,9 +18,10 @@ class Shaft extends Model
         'flex',
         'length',
         'weight',
-        'img',
         'wholesale',
         'percent',
+        'retail',
+        'img',
     ];
 
     public function type(): BelongsTo
