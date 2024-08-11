@@ -84,7 +84,7 @@ return [
     ],
     [
         'route-active' => 'stock-in',
-        'label' => 'Stock In',
+        'label' => 'Purchase',
         'icon' => 'bx-archive-in',
         'submenu' => [
             [
@@ -107,7 +107,7 @@ return [
     ],
     [
         'route-active' => 'stock-out',
-        'label' => 'Stock Out',
+        'label' => 'Sales',
         'icon' => 'bx-archive-out',
         'submenu' => [
             [
