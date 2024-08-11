@@ -28,6 +28,11 @@ return [
                 'label' => 'Item',
                 'route-name' => 'grip.items',
             ],
+            [
+                'route-active' => 'barcode',
+                'label' => 'Barcode',
+                // 'route-name' => '#',
+            ],
         ],
         'admin-only' => false,
     ],
@@ -46,6 +51,11 @@ return [
                 'label' => 'Item',
                 'route-name' => 'shaft.items',
             ],
+            [
+                'route-active' => 'barcode',
+                'label' => 'Barcode',
+                // 'route-name' => '#',
+            ],
         ],
         'admin-only' => false,
     ],
@@ -57,12 +67,17 @@ return [
             [
                 'route-active' => 'type',
                 'label' => 'Type',
-                // 'route-name' => 'master.type',
+                // 'route-name' => '#',
             ],
             [
                 'route-active' => 'grips',
                 'label' => 'Data',
-                // 'route-name' => 'grips',
+                // 'route-name' => '#',
+            ],
+            [
+                'route-active' => 'barcode',
+                'label' => 'Barcode',
+                // 'route-name' => '#',
             ],
         ],
         'admin-only' => false,
@@ -71,28 +86,53 @@ return [
         'route-active' => 'stock-in',
         'label' => 'Stock In',
         'icon' => 'bx-archive-in',
-        // 'route-name' => 'stock',
+        'submenu' => [
+            [
+                'route-active' => 'grip',
+                'label' => 'Grip',
+                // 'route-name' => '#',
+            ],
+            [
+                'route-active' => 'shaft',
+                'label' => 'Shaft',
+                // 'route-name' => '#',
+            ],
+            [
+                'route-active' => 'club-head',
+                'label' => 'Club Head',
+                // 'route-name' => '#',
+            ],
+        ],
         'admin-only' => false,
     ],
     [
         'route-active' => 'stock-out',
         'label' => 'Stock Out',
         'icon' => 'bx-archive-out',
-        // 'route-name' => 'stock',
-        'admin-only' => false,
-    ],
-    [
-        'route-active' => 'barcode',
-        'label' => 'Barcode',
-        'icon' => 'bx-barcode',
-        'route-name' => 'barcode',
+        'submenu' => [
+            [
+                'route-active' => 'grip',
+                'label' => 'Grip',
+                // 'route-name' => '#',
+            ],
+            [
+                'route-active' => 'shaft',
+                'label' => 'Shaft',
+                // 'route-name' => '#',
+            ],
+            [
+                'route-active' => 'club-head',
+                'label' => 'Club Head',
+                // 'route-name' => '#',
+            ],
+        ],
         'admin-only' => false,
     ],
     [
         'route-active' => 'report',
         'label' => 'Report',
         'icon' => 'bx-chart',
-        // 'route-name' => 'report',
+        // 'route-name' => '#',
         'admin-only' => false,
     ],
     [
