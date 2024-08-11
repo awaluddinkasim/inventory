@@ -26,7 +26,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-7">
-                            <x-form.input label="Wholesale Price" name="wholesale" id="wholesaleInput" :isNumeric="true"
+                            <x-form.input label="Wholesale Price"  name="wholesale" id="wholesaleInput" :isNumeric="true"
                                 :required="true" />
                         </div>
                         <div class="col-md-5">

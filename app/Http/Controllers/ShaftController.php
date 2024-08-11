@@ -36,6 +36,8 @@ class ShaftController extends BaseController
         $data['code'] = generateShaftCode($data['shaft'], $data['type_id']);
         $data['length'] = convertToNumber($data['length']);
         $data['weight'] = convertToNumber($data['weight']);
+        $data['wholesale'] = convertToNumber($data['wholesale']);
+        $data['percent'] = convertToNumber($data['percent']);
 
         $file = $request->file('img');
         $fileName = $data['code'] . '.' . $file->extension();
@@ -81,6 +83,8 @@ class ShaftController extends BaseController
         $data['code'] = generateShaftCode($data['shaft'], $data['type_id']);
         $data['length'] = convertToNumber($data['length']);
         $data['weight'] = convertToNumber($data['weight']);
+        $data['wholesale'] = convertToNumber($data['wholesale']);
+        $data['percent'] = convertToNumber($data['percent']);
 
         if ($request->hasFile('img')) {
             $file = $request->file('img');
