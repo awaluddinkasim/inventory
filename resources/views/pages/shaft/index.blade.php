@@ -12,21 +12,21 @@
                             <option value="{{ $type->id }}">{{ $type->name }}</option>
                         @endforeach
                     </x-form.select-search>
-                    <x-form.input label="Shaft" type="text" id="shaft" name="shaft" required="true" />
-                    <x-form.input label="Flex" type="text" id="flex" name="flex" required="true" />
+                    <x-form.input label="Shaft" id="shaft" name="shaft" required="true" />
+                    <x-form.input label="Flex" id="flex" name="flex" required="true" />
                     <div class="row">
                         <div class="col-md-6">
-                            <x-form.input label="Length" type="text" id="text" name="length" isNumeric="true"
+                            <x-form.input label="Length" id="length" name="length" isNumeric="true"
                                 required="true" />
                         </div>
                         <div class="col-md-6">
-                            <x-form.input label="Weight" type="text" id="text" name="weight" isNumeric="true"
+                            <x-form.input label="Weight" id="weight" name="weight" isNumeric="true"
                                 required="true" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-7">
-                            <x-form.input label="Wholesale Price"  name="wholesale" id="wholesaleInput" :isNumeric="true"
+                            <x-form.input label="Wholesale Price" name="wholesale" id="wholesaleInput" :isNumeric="true"
                                 :required="true" />
                         </div>
                         <div class="col-md-5">
