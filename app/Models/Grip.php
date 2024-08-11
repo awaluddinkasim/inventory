@@ -30,32 +30,13 @@ class Grip extends Model
         return $this->belongsTo(GripModel::class, 'model_id');
     }
 
-    public function stock(): HasMany
-    {
-        return $this->hasMany(Stock::class, 'grip_id');
-    }
-
     public function purchases(): HasMany
     {
         return $this->hasMany(GripPurchase::class, 'grip_id');
     }
 
-    public function retail(): Attribute
-    {
-        return Attribute::make(
-            get: fn() => $this->wholesale + ($this->wholesale * $this->percent / 100)
-        );
-    }
-
     public function sales(): HasMany
     {
         return $this->hasMany(GripSale::class, 'grip_id');
-    }
-
-    public function amount(): Attribute
-    {
-        return Attribute::make(
-            get: fn() => $this->stock->sum('amount')
-        );
     }
 }

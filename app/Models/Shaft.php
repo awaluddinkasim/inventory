@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Shaft extends Model
 {
@@ -29,10 +30,13 @@ class Shaft extends Model
         return $this->belongsTo(ShaftType::class);
     }
 
-    public function retail(): Attribute
+    public function purchases(): HasMany
     {
-        return Attribute::make(
-            get: fn() => $this->wholesale + ($this->wholesale * $this->percent / 100)
-        );
+        return $this->hasMany(ShaftPurchase::class, 'shaft_id');
+    }
+
+    public function sales(): HasMany
+    {
+        return $this->hasMany(ShaftSale::class, 'shaft_id');
     }
 }
