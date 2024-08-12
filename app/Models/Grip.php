@@ -39,4 +39,11 @@ class Grip extends Model
     {
         return $this->hasMany(GripSale::class, 'grip_id');
     }
+
+    public function stock(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->purchases->sum('quantity') - $this->sales->sum('quantity')
+        );
+    }
 }

@@ -39,4 +39,11 @@ class Shaft extends Model
     {
         return $this->hasMany(ShaftSale::class, 'shaft_id');
     }
+
+    public function stock(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->purchases->sum('quantity') - $this->sales->sum('quantity')
+        );
+    }
 }
