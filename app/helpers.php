@@ -38,6 +38,6 @@ if (!function_exists('generateShaftCode')) {
         }
         $typeId = str_pad($type, 4, '0', STR_PAD_LEFT);
 
-        return strtoupper($flexCode . $typeId . Random::generate(4, '0-9'));
+        return strtoupper($flexCode . $typeId . Random::generate(6, '0-9'));
     }
 }
