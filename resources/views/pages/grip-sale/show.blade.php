@@ -16,8 +16,8 @@
                     <x-form.input label="Grip Model" name="grip" id="gripInput"
                         value="{{ $grip->model->name }} - {{ $grip->size }} ({{ $grip->color }})"
                         :readonly="true" />
-                    <x-form.input label="Wholesale Price" name="wholesale" id="wholesaleInput" :isNumeric="true"
-                        value="{{ $grip->wholesale }}" :required="true" />
+                    <x-form.input label="Retail Price" name="retail" id="retailInput" :isNumeric="true"
+                        value="{{ $grip->retail }}" :required="true" />
                     <x-form.input label="Quantity" name="quantity" type="number" id="quantityInput" min="1"
                         :required="true" />
                     <x-form.input label="Date" name="date" type="date" id="dateInput" :required="true" />
@@ -30,7 +30,7 @@
                     <th>#</th>
                     <th>Size</th>
                     <th>Color</th>
-                    <th>Wholesale Price</th>
+                    <th>Retail Price</th>
                     <th>Quantity</th>
                     <th>Amount</th>
                     <th>Sale Date</th>
@@ -42,9 +42,9 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $sale->grip->size }}</td>
                             <td>{{ $sale->grip->color }}</td>
-                            <td>Rp. {{ number_format($sale->grip->wholesale) }}</td>
+                            <td>Rp. {{ number_format($sale->grip->retail) }}</td>
                             <td>{{ $sale->quantity }}</td>
-                            <td>Rp. {{ number_format($sale->amount) }}</td>
+                            <td>Rp. {{ number_format($sale->salesAmount) }}</td>
                             <td>{{ $sale->date }}</td>
 
                             <td class="text-center">

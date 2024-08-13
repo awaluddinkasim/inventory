@@ -32,7 +32,7 @@ class GripSaleController extends BaseController
     public function store(Request $request, Grip $grip): RedirectResponse
     {
         $data = $request->validate([
-            'wholesale' => 'required',
+            'retail' => 'required',
             'quantity' => 'required',
             'date' => 'required',
         ]);
