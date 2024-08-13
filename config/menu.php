@@ -105,6 +105,7 @@ return [
         ],
         'admin-only' => false,
     ],
+
     [
         'route-active' => 'stock-out',
         'label' => 'Sales',
@@ -113,7 +114,7 @@ return [
             [
                 'route-active' => 'grip',
                 'label' => 'Grip',
-                // 'route-name' => '#',
+                'route-name' => 'sale.grip',
             ],
             [
                 'route-active' => 'shaft',

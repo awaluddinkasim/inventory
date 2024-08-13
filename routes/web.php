@@ -13,6 +13,7 @@ use App\Http\Controllers\GripModelController;
 use App\Http\Controllers\ShaftTypeController;
 use App\Http\Controllers\ShaftImageController;
 use App\Http\Controllers\GripPurchaseController;
+use App\Http\Controllers\GripSaleController;
 use App\Http\Controllers\ShaftPurchaseController;
 
 Route::get('/', function () {
@@ -83,7 +84,10 @@ Route::middleware('auth:admin')->group(function () {
     });
 
     Route::group(['prefix' => 'sales', 'as' => 'sale.'], function () {
-        // sale routes
+        Route::get('/grip', [GripSaleController::class, 'index'])->name('grip');
+        Route::get('/grip/{grip:code}', [GripSaleController::class, 'show'])->name('grip.show');
+        Route::post('/grip/{grip:code}', [GripSaleController::class, 'store'])->name('grip.store');
+        Route::delete('/grip/{sale}', [GripSaleController::class, 'destroy'])->name('grip.destroy');
     });
 
     Route::group(['middleware' => 'admin', 'prefix' => 'users', 'as' => 'user.'], function () {
