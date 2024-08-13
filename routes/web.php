@@ -6,6 +6,7 @@ use App\Http\Controllers\BarcodeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GripController;
 use App\Http\Controllers\GripModelController;
+use App\Http\Controllers\GripPurchaseController;
 use App\Http\Controllers\GripTypeController;
 use App\Http\Controllers\ShaftController;
 use App\Http\Controllers\ShaftTypeController;
@@ -58,13 +59,15 @@ Route::middleware('auth:admin')->group(function () {
         Route::delete('/items/{shaft}', [ShaftController::class, 'destroy'])->name('items.destroy');
     });
 
+    Route::group(['prefix' => 'purchases', 'as' => 'purchase.'], function () {
+        Route::get('/grip', [GripPurchaseController::class, 'index'])->name('grip');
+        Route::get('/grip/{grip:code}', [GripPurchaseController::class, 'show'])->name('grip.show');
+        Route::post('/grip/{grip:code}', [GripPurchaseController::class, 'store'])->name('grip.store');
+        Route::delete('/grip/{purchase}', [GripPurchaseController::class, 'destroy'])->name('grip.destroy');
+    });
+
     Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
     Route::patch('/profile', [AdminController::class, 'updateProfile'])->name('profile-update');
-
-    Route::get('/stock', [StockController::class, 'index'])->name('stock');
-    Route::get('/stock/{grip}', [StockController::class, 'show'])->name('stock.show');
-    Route::post('/stock/{grip}', [StockController::class, 'store'])->name('stock.store');
-    Route::delete('/stock/{stock}', [StockController::class, 'destroy'])->name('stock.destroy');
 
     Route::get('/barcode', [BarcodeController::class, 'index'])->name('barcode');
 

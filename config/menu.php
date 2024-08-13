@@ -83,14 +83,14 @@ return [
         'admin-only' => false,
     ],
     [
-        'route-active' => 'stock-in',
+        'route-active' => 'purchases',
         'label' => 'Purchase',
         'icon' => 'bx-archive-in',
         'submenu' => [
             [
                 'route-active' => 'grip',
                 'label' => 'Grip',
-                // 'route-name' => '#',
+                'route-name' => 'purchase.grip',
             ],
             [
                 'route-active' => 'shaft',
