@@ -36,9 +36,9 @@
                 <div class="card-body">
                     @if ($shaft->images->count() > 0)
                         <x-component.img-carousel id="grip">
-                            @foreach ($grip->images as $image)
+                            @foreach ($shaft->images as $image)
                                 <div class="carousel-item @if ($loop->first) active @endif">
-                                    <img src="{{ asset('img/grips/' . $image->filename) }}" class="d-block"
+                                    <img src="{{ asset('img/shafts/' . $image->filename) }}" class="d-block"
                                         alt="{{ $image->filename }}">
                                 </div>
                             @endforeach

@@ -42,6 +42,9 @@ class ShaftController extends BaseController
             ]);
         }
 
+        $type = ShaftType::find($data['type_id']);
+
+        $data['shaft'] = $type->name . '-' . $data['shaft'];
         $data['code'] = generateShaftCode($data['flex'], $data['type_id']);
         $data['length'] = convertToNumber($data['length']);
         $data['weight'] = convertToNumber($data['weight']);
@@ -101,6 +104,9 @@ class ShaftController extends BaseController
             ]);
         }
 
+        $type = ShaftType::find($data['type_id']);
+
+        $data['shaft'] = $type->name . '-' . $data['shaft'];
         $data['length'] = convertToNumber($data['length']);
         $data['weight'] = convertToNumber($data['weight']);
         $data['wholesale'] = convertToNumber($data['wholesale']);
