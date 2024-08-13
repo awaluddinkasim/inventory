@@ -30,7 +30,8 @@ if (!function_exists('generateShaftCode')) {
     function generateShaftCode($flex, $type): string
     {
         $flex = trim($flex);
-        if (str_contains($flex, '/')) {
+        if (str_contains($flex, '/') || str_contains($flex, '-')) {
+            $flex = str_replace('-', '/', $flex);
             $words = explode('/', $flex);
             $flexCode = strtolower($words[0][0] . $words[1][0]);
         } else {

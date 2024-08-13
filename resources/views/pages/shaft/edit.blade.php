@@ -35,8 +35,9 @@
                                 </option>
                             @endforeach
                         </x-form.select-search>
-                        <x-form.input-group value="{{ explode('-', $shaft->shaft)[1] }}" label="Shaft" name="shaft"
-                            id="shaftInput" prefix="{{ explode('-', $shaft->shaft)[0] }}" :required="true" />
+                        <x-form.input-group value="{{ trim(str_replace($shaft->type->name, '', $shaft->shaft)) }}"
+                            label="Shaft" name="shaft" id="shaftInput" prefix="{{ $shaft->type->name }}"
+                            :required="true" />
                         <x-form.input value="{{ $shaft->flex }}" label="Flex" name="flex" id="flexInput"
                             :required="true" />
 
