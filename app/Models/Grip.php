@@ -23,7 +23,6 @@ class Grip extends Model
         'wholesale',
         'percent',
         'retail',
-        'img',
     ];
 
     public function model(): BelongsTo

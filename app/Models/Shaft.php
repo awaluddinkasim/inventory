@@ -23,7 +23,6 @@ class Shaft extends Model
         'wholesale',
         'percent',
         'retail',
-        'img',
     ];
 
     public function type(): BelongsTo
