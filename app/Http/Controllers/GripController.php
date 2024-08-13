@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Grip;
 use App\Models\GripModel;
+use Illuminate\Contracts\View\View as ViewView;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -47,7 +48,7 @@ class GripController extends BaseController
         $data['weight'] = convertToNumber($data['weight']);
         $data['wholesale'] = convertToNumber($data['wholesale']);
         $data['percent'] = convertToNumber($data['percent']);
-        $data['retail'] = $data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100);
+        $data['retail'] = round($data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100), -3);
 
         $file = $request->file('img');
         $fileName = $data['code'] . '.' . $file->extension();
@@ -105,7 +106,7 @@ class GripController extends BaseController
         $data['wholesale'] = convertToNumber($data['wholesale']);
         $data['weight'] = convertToNumber($data['weight']);
         $data['percent'] = convertToNumber($data['percent']);
-        $data['retail'] = $data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100);
+        $data['retail'] = round($data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100), -3);
 
         if ($request->hasFile('img')) {
             $file = $request->file('img');
@@ -132,5 +133,10 @@ class GripController extends BaseController
             'status' => 'success',
             'message' => 'Grip data deleted successfully',
         ]);
+    }
+
+    public function barcode(): View
+    {
+        return view('pages.grip.barcode');
     }
 }

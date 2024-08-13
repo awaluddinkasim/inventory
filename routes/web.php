@@ -44,7 +44,7 @@ Route::middleware('auth:admin')->group(function () {
         Route::patch('/items/{grip}', [GripController::class, 'update'])->name('items.update');
         Route::delete('/items/{grip}', [GripController::class, 'destroy'])->name('items.destroy')->can('delete', 'grip');
 
-        Route::get('/barcode', [BarcodeController::class, 'index'])->name('barcode');
+        Route::get('/barcode', [GripController::class, 'barcode'])->name('barcode');
     });
 
     Route::group(['prefix' => 'shafts', 'as' => 'shaft.'], function () {

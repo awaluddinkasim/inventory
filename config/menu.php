@@ -31,7 +31,7 @@ return [
             [
                 'route-active' => 'barcode',
                 'label' => 'Barcode',
-                // 'route-name' => '#',
+                'route-name' => 'grip.barcode',
             ],
         ],
         'admin-only' => false,
