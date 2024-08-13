@@ -5,7 +5,7 @@
 
             let type = text.split('-')[1].trim();
 
-            $('#shaftInputPrefix').text(type + ' -');
+            $('#shaftInputPrefix').text(type);
             $('#shaftInput').focus();
         })
     </script>
@@ -35,8 +35,8 @@
                                 </option>
                             @endforeach
                         </x-form.select-search>
-                        <x-form.input-group value="{{ $shaft->shaft }}" label="Shaft" name="shaft" id="shaftInput"
-                            prefix="Type -" :required="true" />
+                        <x-form.input-group value="{{ explode('-', $shaft->shaft)[1] }}" label="Shaft" name="shaft"
+                            id="shaftInput" prefix="{{ explode('-', $shaft->shaft)[0] }}" :required="true" />
                         <x-form.input value="{{ $shaft->flex }}" label="Flex" name="flex" id="flexInput"
                             :required="true" />
 
