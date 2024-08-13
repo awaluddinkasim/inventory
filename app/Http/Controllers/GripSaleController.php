@@ -39,7 +39,7 @@ class GripSaleController extends BaseController
 
         $data['grip_id'] = $grip->id;
 
-        GripPurchase::create($data);
+        GripSale::create($data);
 
         return $this->redirectBack([
             'status' => 'success',
@@ -47,9 +47,9 @@ class GripSaleController extends BaseController
         ]);
     }
 
-    public function destroy(GripPurchase $purchase): RedirectResponse
+    public function destroy(GripSale $sale): RedirectResponse
     {
-        $purchase->delete();
+        $sale->delete();
 
         return $this->redirectBack([
             'status' => 'success',
