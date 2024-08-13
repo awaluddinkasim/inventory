@@ -33,7 +33,15 @@ class ShaftController extends BaseController
             'img' => 'required|image',
         ]);
 
-        $data['code'] = generateShaftCode($data['shaft'], $data['type_id']);
+        $check = Shaft::where('type_id', $data['type_id'])->where('shaft', $data['shaft'])->first();
+        if ($check) {
+            return $this->redirectBack([
+                'status' => 'error',
+                'message' => 'Shaft with the same type and name already exists',
+            ]);
+        }
+
+        $data['code'] = generateShaftCode($data['flex'], $data['type_id']);
         $data['length'] = convertToNumber($data['length']);
         $data['weight'] = convertToNumber($data['weight']);
         $data['wholesale'] = convertToNumber($data['wholesale']);
@@ -81,7 +89,14 @@ class ShaftController extends BaseController
             'img' => 'nullable|image',
         ]);
 
-        $data['code'] = generateShaftCode($data['flex'], $data['type_id']);
+        $check = Shaft::where('type_id', $data['type_id'])->where('shaft', $data['shaft'])->first();
+        if ($check) {
+            return $this->redirectBack([
+                'status' => 'error',
+                'message' => 'Shaft with the same type and name already exists',
+            ]);
+        }
+
         $data['length'] = convertToNumber($data['length']);
         $data['weight'] = convertToNumber($data['weight']);
         $data['wholesale'] = convertToNumber($data['wholesale']);
