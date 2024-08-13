@@ -53,7 +53,7 @@
                             </div>
                             <div class="mb-3">
                                 <h5 class="mb-0">Weight</h5>
-                                <p>{{ $grip->weight }}</p>
+                                <p>{{ $grip->weight }}g</p>
                             </div>
                             <div class="mb-3">
                                 <h5 class="mb-0">Core Size</h5>
