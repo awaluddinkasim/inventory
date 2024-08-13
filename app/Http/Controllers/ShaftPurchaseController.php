@@ -22,7 +22,7 @@ class ShaftPurchaseController extends BaseController
     {
         return view('pages.shaft-purchase.show', [
             'shaft' => $shaft,
-            'purchases' => ShaftPurchase::with(['shaft'])->where('shaft_id', $shaft->id)->get(),
+            'purchases' => ShaftPurchase::with(['shaft'])->where('shaft_id', $shaft->id)->orderBy('date', 'desc')->get(),
         ]);
     }
 

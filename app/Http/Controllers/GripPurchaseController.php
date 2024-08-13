@@ -24,7 +24,7 @@ class GripPurchaseController extends BaseController
     {
         return view('pages.grip-purchase.show', [
             'grip' => $grip,
-            'purchases' => GripPurchase::with(['grip'])->where('grip_id', $grip->id)->get(),
+            'purchases' => GripPurchase::with(['grip'])->where('grip_id', $grip->id)->orderBy('date', 'desc')->get(),
         ]);
     }
 
