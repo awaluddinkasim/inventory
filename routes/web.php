@@ -66,6 +66,10 @@ Route::middleware('auth:admin')->group(function () {
         Route::delete('/items/image/{image}', [ShaftImageController::class, 'destroy'])->name('items.image.destroy');
     });
 
+    Route::group(['prefix' => 'clubheads', 'as' => 'clubhead.'], function () {
+        // clubhead routes
+    });
+
     Route::group(['prefix' => 'purchases', 'as' => 'purchase.'], function () {
         Route::get('/grip', [GripPurchaseController::class, 'index'])->name('grip');
         Route::get('/grip/{grip:code}', [GripPurchaseController::class, 'show'])->name('grip.show');
@@ -76,6 +80,10 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/shaft/{shaft:code}', [ShaftPurchaseController::class, 'show'])->name('shaft.show');
         Route::post('/shaft/{shaft:code}', [ShaftPurchaseController::class, 'store'])->name('shaft.store');
         Route::delete('/shaft/{purchase}', [ShaftPurchaseController::class, 'destroy'])->name('shaft.destroy');
+    });
+
+    Route::group(['prefix' => 'sales', 'as' => 'sale.'], function () {
+        // sale routes
     });
 
     Route::group(['middleware' => 'admin', 'prefix' => 'users', 'as' => 'user.'], function () {
