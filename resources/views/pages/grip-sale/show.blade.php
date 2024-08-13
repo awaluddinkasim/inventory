@@ -1,4 +1,4 @@
-<x-layout title="Purchase">
+<x-layout title="Sale">
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
@@ -33,7 +33,7 @@
                     <th>Wholesale Price</th>
                     <th>Quantity</th>
                     <th>Amount</th>
-                    <th>Purchase Date</th>
+                    <th>Sale Date</th>
                     <th></th>
                 </thead>
                 <tbody>

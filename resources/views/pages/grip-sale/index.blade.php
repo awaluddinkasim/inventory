@@ -1,16 +1,16 @@
-<x-layout title="Purchase">
+<x-layout title="Sale">
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
-                <h5 class="card-title">Grip Purchases</h5>
+                <h5 class="card-title">Grip Sales</h5>
                 <div class="me-lg-5">
                     <span>Grand Total</span>
-                    <h4>Rp. {{ number_format($grips->sum('purchasesAmount')) }}</h4>
+                    <h4>Rp. {{ number_format($grips->sum('salesAmount')) }}</h4>
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <x-component.datatable id="purchaseTable">
+            <x-component.datatable id="SaleTable">
                 <thead>
                     <th>#</th>
                     <th>Grip Model</th>
