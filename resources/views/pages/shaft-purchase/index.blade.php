@@ -16,7 +16,7 @@
                     <th>Brand</th>
                     <th>Shaft</th>
                     <th>Flex</th>
-                    <th>Wholesale Price</th>
+                    <th>Last Purchase</th>
                     <th>Quantity</th>
                     <th>Amount</th>
                     <th></th>
@@ -36,7 +36,7 @@
                                 @endif
                             </td>
                             <td>{{ $shaft->flex }}</td>
-                            <td>Rp. {{ number_format($shaft->wholesale) }}</td>
+                            <td>{{ $shaft->last_purchase }}</td>
                             <td>{{ $shaft->purchases->sum('quantity') }}</td>
                             <td>Rp. {{ number_format($shaft->purchases->sum('amount')) }}</td>
 

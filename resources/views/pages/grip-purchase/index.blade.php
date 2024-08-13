@@ -16,7 +16,7 @@
                     <th>Grip Model</th>
                     <th>Size</th>
                     <th>Color</th>
-                    <th>Wholesale Price</th>
+                    <th>Last Purchase</th>
                     <th>Quantity</th>
                     <th>Amount</th>
                     <th></th>
@@ -36,7 +36,7 @@
                             </td>
                             <td>{{ $grip->size }}</td>
                             <td>{{ $grip->color }}</td>
-                            <td>Rp. {{ number_format($grip->wholesale) }}</td>
+                            <td>{{ $grip->last_purchase }}</td>
                             <td>{{ $grip->purchases->sum('quantity') }}</td>
                             <td>Rp. {{ number_format($grip->purchases->sum('amount')) }}</td>
 
