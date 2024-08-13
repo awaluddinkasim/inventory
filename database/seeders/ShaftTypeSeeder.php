@@ -17,6 +17,7 @@ class ShaftTypeSeeder extends Seeder
             ['brand' => 'Graphite Design', 'name' => 'Tour AD VF'],
             ['brand' => 'Graphite Design', 'name' => 'Tour AD CQ'],
             ['brand' => 'Graphite Design', 'name' => 'Tour AD UB'],
+            ['brand' => 'Graphite Design', 'name' => 'Anti Gravity'],
         ];
 
         ShaftType::insert($types);
