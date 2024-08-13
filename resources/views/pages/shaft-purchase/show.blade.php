@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h5 class="card-title">{{ $shaft->shaft }}</h5>
+                    <h5 class="card-title mb-2">{{ $shaft->shaft }}</h5>
                     <div class="card-subtitle">
                         <a href="{{ route('purchase.shaft') }}" class="d-flex align-items-center">
                             <i class="bx bx-left-arrow me-2"></i>

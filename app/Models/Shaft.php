@@ -31,6 +31,11 @@ class Shaft extends Model
         return $this->belongsTo(ShaftType::class);
     }
 
+    public function images(): HasMany
+    {
+        return $this->hasMany(ShaftImage::class, 'shaft_id');
+    }
+
     public function purchases(): HasMany
     {
         return $this->hasMany(ShaftPurchase::class, 'shaft_id');

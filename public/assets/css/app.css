@@ -107,3 +107,7 @@ img.app-brand-logo {
 .img-container img {
     height: 100%;
 }
+
+.card-title {
+    margin: 0;
+}

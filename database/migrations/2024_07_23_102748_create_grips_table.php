@@ -22,7 +22,6 @@ return new class extends Migration
             $table->double('wholesale');
             $table->integer('percent');
             $table->double('retail');
-            $table->string('img');
             $table->timestamps();
 
             $table->foreign('model_id')->references('id')->on('grip_models')->cascadeOnDelete();

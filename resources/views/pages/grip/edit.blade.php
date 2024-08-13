@@ -3,7 +3,7 @@
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Edit Grip</h5>
+                    <h5 class="card-title mb-2">Edit Grip</h5>
                     <div class="card-subtitle">
                         <a href="{{ route('grip.items.show', $grip->code) }}" class="d-flex align-items-center">
                             <i class="bx bx-left-arrow me-2"></i>
@@ -12,12 +12,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="img-container text-center mb-3" style="height: 250px">
-                        <img src="{{ asset('img/grips/' . $grip->img) }}" alt="" class="img-fluid rounded">
-                    </div>
-
-                    <form action="{{ route('grip.items.update', $grip->id) }}" method="POST" autocomplete="off"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('grip.items.update', $grip->id) }}" method="POST" autocomplete="off">
                         @csrf
                         @method('PATCH')
                         <x-form.select-search label="Model" name="model_id" id="modelSelect" :required="true">
@@ -54,14 +49,57 @@
                                     id="percentInput" :isNumeric="true" :required="true" />
                             </div>
                         </div>
-                        <x-form.image label="Change Image" name="img" id="imgInput" />
                         <x-component.button label="Save Changes" color="primary" type="submit" />
                     </form>
                 </div>
             </div>
         </div>
         <div class="col-lg-6">
-            <img src="{{ asset('assets/img/illustrations/server.svg') }}" alt="">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h5 class="card-title">Grip Images</h5>
+                        <x-form.modal title="Add Grip Image"
+                            action="{{ route('grip.items.image.store', $grip->code) }}" label="Upload"
+                            :hasFile="true">
+                            <x-form.image label="Image" name="img" id="imgInput" />
+                        </x-form.modal>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <x-component.datatable id="gripImages">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Image</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($grip->images as $image)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>
+                                        {{ $image->filename }}
+                                    </td>
+                                    <td>
+                                        <a href="{{ asset('img/grips/' . $image->filename) }}" target="_blank"
+                                            class="btn btn-sm btn-info">
+                                            View
+                                        </a>
+                                        <form action="{{ route('grip.items.image.destroy', $image->id) }}"
+                                            class="d-inline" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </x-component.datatable>
+                </div>
+            </div>
         </div>
     </div>
 </x-layout>

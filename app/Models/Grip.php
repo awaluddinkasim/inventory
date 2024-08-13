@@ -31,6 +31,11 @@ class Grip extends Model
         return $this->belongsTo(GripModel::class, 'model_id');
     }
 
+    public function images(): HasMany
+    {
+        return $this->hasMany(GripImage::class, 'grip_id');
+    }
+
     public function purchases(): HasMany
     {
         return $this->hasMany(GripPurchase::class, 'grip_id');

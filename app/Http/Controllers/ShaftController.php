@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\BaseController;
+use App\Models\ShaftImage;
 
 class ShaftController extends BaseController
 {
@@ -48,12 +49,16 @@ class ShaftController extends BaseController
         $data['percent'] = convertToNumber($data['percent']);
         $data['retail'] = round($data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100), -3);
 
-        $file = $request->file('img');
-        $fileName = $data['code'] . '.' . $file->extension();
-        $file->move(public_path('img/shafts'), $fileName);
-        $data['img'] = $fileName;
+        $shaft = Shaft::create($data);
 
-        Shaft::create($data);
+        $file = $request->file('img');
+        $filename = $data['code'] . '.' . $file->extension();
+        $file->move(public_path('img/shafts'), $filename);
+
+        $image = new ShaftImage();
+        $image->shaft_id = $shaft->id;
+        $image->filename = $filename;
+        $image->save();
 
         return $this->redirectBack([
             'status' => 'success',
@@ -86,7 +91,6 @@ class ShaftController extends BaseController
             'weight' => 'required',
             'wholesale' => 'required',
             'percent' => 'required',
-            'img' => 'nullable|image',
         ]);
 
         $check = Shaft::where('type_id', $data['type_id'])->where('shaft', $data['shaft'])->first();
@@ -103,13 +107,6 @@ class ShaftController extends BaseController
         $data['percent'] = convertToNumber($data['percent']);
         $data['retail'] = round($data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100), -3);
 
-        if ($request->hasFile('img')) {
-            $file = $request->file('img');
-            $fileName = $data['code'] . '.' . $file->extension();
-            $file->move(public_path('img/shafts'), $fileName);
-            $data['img'] = $fileName;
-        }
-
         $shaft->update($data);
 
         return $this->redirect(route('shaft.items.show', $shaft->code), [
@@ -120,7 +117,9 @@ class ShaftController extends BaseController
 
     public function destroy(Shaft $shaft): RedirectResponse
     {
-        File::delete(public_path('img/shafts/' . $shaft->img));
+        foreach ($shaft->images as $image) {
+            File::delete(public_path('img/shafts/' . $image->filename));
+        }
 
         $shaft->delete();
 

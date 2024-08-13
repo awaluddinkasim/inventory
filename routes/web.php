@@ -1,17 +1,19 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\GripController;
-use App\Http\Controllers\GripModelController;
-use App\Http\Controllers\GripPurchaseController;
-use App\Http\Controllers\GripTypeController;
-use App\Http\Controllers\ShaftController;
-use App\Http\Controllers\ShaftPurchaseController;
-use App\Http\Controllers\ShaftTypeController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GripController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ShaftController;
+use App\Http\Controllers\GripTypeController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GripImageController;
+use App\Http\Controllers\GripModelController;
+use App\Http\Controllers\ShaftTypeController;
+use App\Http\Controllers\ShaftImageController;
+use App\Http\Controllers\GripPurchaseController;
+use App\Http\Controllers\ShaftPurchaseController;
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
@@ -42,6 +44,8 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/items/{grip:code}/edit', [GripController::class, 'edit'])->name('items.edit');
         Route::patch('/items/{grip}', [GripController::class, 'update'])->name('items.update');
         Route::delete('/items/{grip}', [GripController::class, 'destroy'])->name('items.destroy')->can('delete', 'grip');
+        Route::post('/items/{grip:code}/image', [GripImageController::class, 'store'])->name('items.image.store');
+        Route::delete('/items/image/{image}', [GripImageController::class, 'destroy'])->name('items.image.destroy');
 
         Route::get('/barcode', [GripController::class, 'barcode'])->name('barcode');
     });
@@ -58,6 +62,8 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/items/{shaft:code}/edit', [ShaftController::class, 'edit'])->name('items.edit');
         Route::patch('/items/{shaft:code}', [ShaftController::class, 'update'])->name('items.update');
         Route::delete('/items/{shaft}', [ShaftController::class, 'destroy'])->name('items.destroy');
+        Route::post('/items/{grip:code}/image', [ShaftImageController::class, 'store'])->name('items.image.store');
+        Route::delete('/items/image/{image}', [ShaftImageController::class, 'destroy'])->name('items.image.destroy');
     });
 
     Route::group(['prefix' => 'purchases', 'as' => 'purchase.'], function () {

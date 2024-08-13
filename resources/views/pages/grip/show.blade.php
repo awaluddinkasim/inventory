@@ -37,10 +37,22 @@
                     <h5 class="card-title">Grip Detail</h5>
                 </div>
                 <div class="card-body">
-                    <div class="mb-5 img-container text-center">
-                        <img src="{{ asset('img/grips/' . $grip->img) }}" alt="" style="height: 300px"
-                            class="img-fluid rounded">
-                    </div>
+                    @if ($grip->images->count() > 0)
+                        <x-component.img-carousel id="grip">
+                            @foreach ($grip->images as $image)
+                                <div class="carousel-item @if ($loop->first) active @endif">
+                                    <img src="{{ asset('img/grips/' . $image->filename) }}" class="d-block"
+                                        alt="{{ $image->filename }}">
+                                </div>
+                            @endforeach
+                        </x-component.img-carousel>
+                    @else
+                        <div class="d-flex justify-content-center align-items-center bg-secondary rounded mb-5"
+                            style="height: 300px">
+                            <span class="text-white">No Image</span>
+                        </div>
+                    @endif
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">

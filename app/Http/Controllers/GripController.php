@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grip;
+use App\Models\GripImage;
 use App\Models\GripModel;
-use Illuminate\Contracts\View\View as ViewView;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -50,12 +50,16 @@ class GripController extends BaseController
         $data['percent'] = convertToNumber($data['percent']);
         $data['retail'] = round($data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100), -3);
 
-        $file = $request->file('img');
-        $fileName = $data['code'] . '.' . $file->extension();
-        $file->move(public_path('img/grips'), $fileName);
-        $data['img'] = $fileName;
+        $grip = Grip::create($data);
 
-        Grip::create($data);
+        $file = $request->file('img');
+        $filename = $data['code'] . '-' . time() . '.' . $file->extension();
+        $file->move(public_path('img/grips'), $filename);
+
+        $image = new GripImage();
+        $image->grip_id = $grip->id;
+        $image->filename = $filename;
+        $image->save();
 
         return $this->redirectBack([
             'status' => 'success',
@@ -89,7 +93,6 @@ class GripController extends BaseController
             'core_size' => 'required',
             'wholesale' => 'required',
             'percent' => 'required',
-            'img' => 'nullable|image',
         ]);
 
         $check = Grip::where('id', '!=', $grip->id)
@@ -108,13 +111,6 @@ class GripController extends BaseController
         $data['percent'] = convertToNumber($data['percent']);
         $data['retail'] = round($data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100), -3);
 
-        if ($request->hasFile('img')) {
-            $file = $request->file('img');
-            $fileName = $grip->code . '.' . $file->extension();
-            $file->move(public_path('img/grips'), $fileName);
-            $data['img'] = $fileName;
-        }
-
         $grip->update($data);
 
         return $this->redirect(route('grip.items.show', $grip->code), [
@@ -125,7 +121,9 @@ class GripController extends BaseController
 
     public function destroy(Grip $grip): RedirectResponse
     {
-        File::delete(public_path('img/grips/' . $grip->img));
+        foreach ($grip->images as $image) {
+            File::delete(public_path('img/grips/' . $image->filename));
+        }
 
         $grip->delete();
 
