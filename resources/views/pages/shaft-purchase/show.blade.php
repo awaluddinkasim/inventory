@@ -2,14 +2,13 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
-                <h5 class="card-title">{{ $grip->model->name }}</h5>
+                <h5 class="card-title">{{ $shaft->shaft }}</h5>
                 <x-form.modal label="New Purchase" title="Form Purchase"
-                    action="{{ route('purchase.grip.store', $grip->code) }}">
-                    <x-form.input label="Grip Model" name="grip" id="gripInput"
-                        value="{{ $grip->model->name }} - {{ $grip->size }} ({{ $grip->color }})"
-                        :readonly="true" />
+                    action="{{ route('purchase.shaft.store', $shaft->code) }}">
+                    <x-form.input label="Shaft" name="shaft" id="shaftInput"
+                        value="{{ $shaft->type->brand }} - {{ $shaft->shaft }}" :readonly="true" />
                     <x-form.input label="Wholesale Price" name="wholesale" id="wholesaleInput" :isNumeric="true"
-                        value="{{ $grip->wholesale }}" :required="true" />
+                        value="{{ $shaft->wholesale }}" :required="true" />
                     <x-form.input label="Quantity" name="quantity" type="number" id="quantityInput" min="1"
                         :required="true" />
                     <x-form.input label="Date" name="date" type="date" id="dateInput" :required="true" />
@@ -20,8 +19,7 @@
             <x-component.datatable id="stockTable">
                 <thead>
                     <th>#</th>
-                    <th>Size</th>
-                    <th>Color</th>
+                    <th>Flex</th>
                     <th>Wholesale Price</th>
                     <th>Quantity</th>
                     <th>Amount</th>
@@ -32,15 +30,14 @@
                     @foreach ($purchases as $purchase)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $purchase->grip->size }}</td>
-                            <td>{{ $purchase->grip->color }}</td>
-                            <td>Rp. {{ number_format($purchase->grip->wholesale) }}</td>
+                            <td>{{ $purchase->shaft->flex }}</td>
+                            <td>Rp. {{ number_format($purchase->shaft->wholesale) }}</td>
                             <td>{{ $purchase->quantity }}</td>
                             <td>Rp. {{ number_format($purchase->amount) }}</td>
                             <td>{{ $purchase->date }}</td>
 
                             <td class="text-center">
-                                <form action="{{ route('purchase.grip.destroy', $purchase->id) }}" class="d-inline"
+                                <form action="{{ route('purchase.shaft.destroy', $purchase->id) }}" class="d-inline"
                                     method="POST">
                                     @method('DELETE')
                                     @csrf

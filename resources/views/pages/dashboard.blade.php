@@ -1,8 +1,8 @@
-@push('styles')
+{{-- @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}">
-@endpush
+@endpush --}}
 
-@push('scripts')
+{{-- @push('scripts')
     <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
     <script>
         const topGripModelsChartEl = document.querySelector('#topGripModelsChart');
@@ -196,7 +196,7 @@
         const cumulativeStockChart = new ApexCharts(cumulativeStockChartEl, cumulativeStockChartConfig);
         cumulativeStockChart.render();
     </script>
-@endpush
+@endpush --}}
 
 <x-layout>
     <h4 class="fw-bold py-3 mb-4">Dashboard</h4>
@@ -212,30 +212,30 @@
         <div class="col-md-3">
             <div class="card my-2 my-md-0">
                 <div class="card-body">
-                    <span class="fw-semibold d-block mb-1">Grip Types</span>
-                    <h3 class="card-title mb-2">{{ number_format($totalGripTypes) }}</h3>
+                    <span class="fw-semibold d-block mb-1">Grip</span>
+                    <h3 class="card-title mb-2">{{ number_format($grips) }}</h3>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card my-2 my-md-0">
                 <div class="card-body">
-                    <span class="fw-semibold d-block mb-1">Grip Models</span>
-                    <h3 class="card-title mb-2">{{ number_format($totalGripModels) }}</h3>
+                    <span class="fw-semibold d-block mb-1">Shaft</span>
+                    <h3 class="card-title mb-2">{{ number_format($shafts) }}</h3>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card my-2 my-md-0">
                 <div class="card-body">
-                    <span class="fw-semibold d-block mb-1">Grips</span>
-                    <h3 class="card-title mb-2">{{ number_format($totalGrips) }}</h3>
+                    <span class="fw-semibold d-block mb-1">Club Head</span>
+                    <h3 class="card-title mb-2">{{ number_format(0) }}</h3>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-8">
             <div class="card my-2 my-md-0">
                 <h5 class="card-header m-0 pb-3">Top 5 Grip Models Stock</h5>
@@ -249,5 +249,5 @@
                 <div id="cumulativeStockChart"></div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </x-layout>

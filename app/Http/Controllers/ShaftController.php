@@ -38,7 +38,7 @@ class ShaftController extends BaseController
         $data['weight'] = convertToNumber($data['weight']);
         $data['wholesale'] = convertToNumber($data['wholesale']);
         $data['percent'] = convertToNumber($data['percent']);
-        $data['retail'] = $data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100);
+        $data['retail'] = round($data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100), -3);
 
         $file = $request->file('img');
         $fileName = $data['code'] . '.' . $file->extension();
@@ -81,12 +81,12 @@ class ShaftController extends BaseController
             'img' => 'nullable|image',
         ]);
 
-        $data['code'] = generateShaftCode($data['shaft'], $data['type_id']);
+        $data['code'] = generateShaftCode($data['flex'], $data['type_id']);
         $data['length'] = convertToNumber($data['length']);
         $data['weight'] = convertToNumber($data['weight']);
         $data['wholesale'] = convertToNumber($data['wholesale']);
         $data['percent'] = convertToNumber($data['percent']);
-        $data['retail'] = $data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100);
+        $data['retail'] = round($data['wholesale'] + ($data['wholesale'] * $data['percent'] / 100), -3);
 
         if ($request->hasFile('img')) {
             $file = $request->file('img');

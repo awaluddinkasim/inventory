@@ -9,8 +9,8 @@ use App\Http\Controllers\GripModelController;
 use App\Http\Controllers\GripPurchaseController;
 use App\Http\Controllers\GripTypeController;
 use App\Http\Controllers\ShaftController;
+use App\Http\Controllers\ShaftPurchaseController;
 use App\Http\Controllers\ShaftTypeController;
-use App\Http\Controllers\StockController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +43,8 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/items/{grip:code}/edit', [GripController::class, 'edit'])->name('items.edit');
         Route::patch('/items/{grip}', [GripController::class, 'update'])->name('items.update');
         Route::delete('/items/{grip}', [GripController::class, 'destroy'])->name('items.destroy')->can('delete', 'grip');
+
+        Route::get('/barcode', [BarcodeController::class, 'index'])->name('barcode');
     });
 
     Route::group(['prefix' => 'shafts', 'as' => 'shaft.'], function () {
@@ -64,12 +66,12 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/grip/{grip:code}', [GripPurchaseController::class, 'show'])->name('grip.show');
         Route::post('/grip/{grip:code}', [GripPurchaseController::class, 'store'])->name('grip.store');
         Route::delete('/grip/{purchase}', [GripPurchaseController::class, 'destroy'])->name('grip.destroy');
+
+        Route::get('/shaft', [ShaftPurchaseController::class, 'index'])->name('shaft');
+        Route::get('/shaft/{shaft:code}', [ShaftPurchaseController::class, 'show'])->name('shaft.show');
+        Route::post('/shaft/{shaft:code}', [ShaftPurchaseController::class, 'store'])->name('shaft.store');
+        Route::delete('/shaft/{purchase}', [ShaftPurchaseController::class, 'destroy'])->name('shaft.destroy');
     });
-
-    Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
-    Route::patch('/profile', [AdminController::class, 'updateProfile'])->name('profile-update');
-
-    Route::get('/barcode', [BarcodeController::class, 'index'])->name('barcode');
 
     Route::group(['middleware' => 'admin', 'prefix' => 'users', 'as' => 'user.'], function () {
         Route::get('/admins', [AdminController::class, 'index'])->name('admins');
@@ -83,6 +85,9 @@ Route::middleware('auth:admin')->group(function () {
         Route::patch('/members/{user}/update', [UserController::class, 'update'])->name('members.update');
         Route::delete('/members/{user}', [UserController::class, 'destroy'])->name('members.destroy');
     });
+
+    Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
+    Route::patch('/profile', [AdminController::class, 'updateProfile'])->name('profile-update');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

@@ -7,19 +7,21 @@
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <h5 class="mb-0">Shaft</h5>
-                        <p>{{ $shaft->shaft }}</p>
-                    </div>
-
-                    <div class="mb-3">
                         <h5 class="mb-0">Brand</h5>
                         <p>{{ $shaft->type->brand }}</p>
                     </div>
-
+                    <div class="mb-3">
+                        <h5 class="mb-0">Type</h5>
+                        <p>{{ $shaft->type->name }}</p>
+                    </div>
                     <div class="mb-3">
                         <h5 class="mb-0">Link</h5>
                         <p>
-                            {{ $shaft->type->url }}
+                            @if ($shaft->type->url)
+                                <a href="{{ $shaft->type->url }}" target="_blank">{{ $shaft->type->url }}</a>
+                            @else
+                                -
+                            @endif
                         </p>
                     </div>
                 </div>
@@ -43,31 +45,35 @@
                                 <p>{{ $shaft->code }}</p>
                             </div>
                             <div class="mb-3">
-                                <h5 class="mb-0">Type</h5>
-                                <p>{{ $shaft->type->name }}</p>
+                                <h5 class="mb-0">Shaft</h5>
+                                <p>{{ $shaft->shaft }}</p>
                             </div>
 
                             <div class="mb-3">
                                 <h5 class="mb-0">Length</h5>
-                                <p>{{ $shaft->length }}</p>
+                                <p>{{ $shaft->length }}"</p>
+                            </div>
+                            <div class="mb-3">
+                                <h5 class="mb-0">Weight</h5>
+                                <p>{{ $shaft->weight }}g</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <h5 class="mb-0">Weight</h5>
-                                <p>{{ $shaft->weight }}</p>
+                                <h5 class="mb-0">WholeSale Price</h5>
+                                <p>Rp. {{ number_format($shaft->wholesale) }}</p>
                             </div>
                             <div class="mb-3">
-                                <h5 class="mb-0">WholeSale</h5>
-                                <p>Rp. {{ $shaft->wholesale }}</p>
+                                <h5 class="mb-0">Retail Percentage</h5>
+                                <p>{{ number_format($shaft->percent) }}%</p>
                             </div>
                             <div class="mb-3">
-                                <h5 class="mb-0">Percent</h5>
-                                <p>{{ $shaft->percent }}</p>
+                                <h5 class="mb-0">Retail Price</h5>
+                                <p>Rp. {{ number_format($shaft->retail) }}</p>
                             </div>
                             <div class="mb-3">
                                 <h5 class="mb-0">Stock</h5>
-                                <p></p>
+                                <p>{{ $shaft->stock }}</p>
                             </div>
                         </div>
                         <div class="text-end">

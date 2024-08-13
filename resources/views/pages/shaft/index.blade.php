@@ -1,3 +1,16 @@
+@push('scripts')
+    <script>
+        $('#type').on('change', function() {
+            let text = this.options[this.selectedIndex].text;
+
+            let type = text.split('-')[1].trim();
+
+            $('#shaft').val(type + '-');
+            $('#shaft').focus();
+        })
+    </script>
+@endpush
+
 <x-layout title="Shafts">
     <div class="card">
         <div class="card-header">
@@ -9,7 +22,7 @@
                     <x-form.select-search label="Type" id="type" name="type_id" required="true"
                         modalId="formModal">
                         @foreach ($types as $type)
-                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                            <option value="{{ $type->id }}">{{ $type->brand }} - {{ $type->name }}</option>
                         @endforeach
                     </x-form.select-search>
                     <x-form.input label="Shaft" id="shaft" name="shaft" required="true" />
@@ -42,6 +55,7 @@
             <x-component.datatable id="gripTable">
                 <thead>
                     <th>#</th>
+                    <th>Code</th>
                     <th>Shaft</th>
                     <th>Flex</th>
                     <th>Length</th>
@@ -53,6 +67,7 @@
                     @foreach ($shafts as $shaft)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
+                            <td>{{ $shaft->code }}</td>
                             <td>{{ $shaft->shaft }}</td>
                             <td>{{ $shaft->flex }}</td>
                             <td>{{ $shaft->length }}"</td>

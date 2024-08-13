@@ -1,3 +1,16 @@
+@push('scripts')
+    <script>
+        $('#typeSelect').on('change', function() {
+            let text = this.options[this.selectedIndex].text;
+
+            let type = text.split('-')[1].trim();
+
+            $('#shaftInput').val(type + '-');
+            $('#shaftInput').focus();
+        })
+    </script>
+@endpush
+
 <x-layout title="Shaft Grip">
     <div class="row">
         <div class="col-lg-6">
@@ -18,7 +31,8 @@
                         <x-form.select-search label="Type" name="type_id" id="typeSelect" :required="true">
                             @foreach ($types as $type)
                                 <option value="{{ $type->id }}" @if ($type->id == $shaft->type_id) selected @endif>
-                                    {{ $type->name }}</option>
+                                    {{ $type->brand }} - {{ $type->name }}
+                                </option>
                             @endforeach
                         </x-form.select-search>
                         <x-form.input value="{{ $shaft->shaft }}" label="Shaft" name="shaft" id="shaftInput"

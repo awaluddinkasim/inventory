@@ -46,4 +46,18 @@ class Shaft extends Model
             get: fn() => $this->purchases->sum('quantity') - $this->sales->sum('quantity')
         );
     }
+
+    public function purchasesAmount(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->purchases->sum('amount')
+        );
+    }
+
+    public function salesAmount(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->sales->sum('amount')
+        );
+    }
 }

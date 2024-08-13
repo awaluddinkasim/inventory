@@ -75,7 +75,7 @@
                             </div>
                             <div class="mb-3">
                                 <h5 class="mb-0">Stock</h5>
-                                <p>{{ $grip->stock->sum('quantity') }}</p>
+                                <p>{{ $grip->stock }}</p>
                             </div>
                         </div>
                         <div class="text-end">

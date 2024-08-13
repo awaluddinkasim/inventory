@@ -95,7 +95,7 @@ return [
             [
                 'route-active' => 'shaft',
                 'label' => 'Shaft',
-                // 'route-name' => '#',
+                'route-name' => 'purchase.shaft',
             ],
             [
                 'route-active' => 'club-head',
