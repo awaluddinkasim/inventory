@@ -84,7 +84,7 @@ return [
     ],
     [
         'route-active' => 'purchases',
-        'label' => 'Purchase',
+        'label' => 'Purchases',
         'icon' => 'bx-archive-in',
         'submenu' => [
             [
