@@ -4,6 +4,12 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">Edit Grip</h5>
+                    <div class="card-subtitle">
+                        <a href="{{ route('grip.items.show', $grip->code) }}" class="d-flex align-items-center">
+                            <i class="bx bx-left-arrow me-2"></i>
+                            <span>Back</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="img-container text-center mb-3" style="height: 250px">

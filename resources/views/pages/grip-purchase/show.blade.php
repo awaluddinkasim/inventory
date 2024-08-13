@@ -2,7 +2,15 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
-                <h5 class="card-title">{{ $grip->model->name }}</h5>
+                <div>
+                    <h5 class="card-title">{{ $grip->model->name }}</h5>
+                    <div class="card-subtitle">
+                        <a href="{{ route('purchase.grip') }}" class="d-flex align-items-center">
+                            <i class="bx bx-left-arrow me-2"></i>
+                            <span>Back</span>
+                        </a>
+                    </div>
+                </div>
                 <x-form.modal label="New Purchase" title="Form Purchase"
                     action="{{ route('purchase.grip.store', $grip->code) }}">
                     <x-form.input label="Grip Model" name="grip" id="gripInput"
