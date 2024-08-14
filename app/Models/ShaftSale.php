@@ -34,7 +34,7 @@ class ShaftSale extends Model
     public function amount(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->quantity * $this->grip->wholesale
+            get: fn() => $this->quantity * $this->grip->retail
         );
     }
 }
