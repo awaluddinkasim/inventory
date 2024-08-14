@@ -73,7 +73,13 @@
                             <td>{{ $shaft->flex }}</td>
                             <td>{{ $shaft->length }}"</td>
                             <td>{{ $shaft->weight }}g</td>
-                            <td>{{ number_format($shaft->stock) }}</td>
+                            <td>
+                                @if ($grip->stock < 0)
+                                    <span class="text-danger">{{ $grip->stock }}</span>
+                                @else
+                                    <span>{{ number_format($grip->stock) }}</span>
+                                @endif
+                            </td>
                             <td>Rp. {{ number_format($shaft->retail) }}</td>
                             <td class="text-center">
                                 <x-component.button-icon label="Detail" icon="bx-detail"

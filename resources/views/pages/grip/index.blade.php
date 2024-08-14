@@ -71,7 +71,13 @@
                             <td>{{ $grip->color }}</td>
                             <td>{{ $grip->weight }}g</td>
                             <td>{{ $grip->core_size }}</td>
-                            <td>{{ number_format($grip->stock) }}</td>
+                            <td>
+                                @if ($grip->stock < 0)
+                                    <span class="text-danger">{{ $grip->stock }}</span>
+                                @else
+                                    <span>{{ number_format($grip->stock) }}</span>
+                                @endif
+                            </td>
                             <td>Rp. {{ number_format($grip->retail) }}</td>
                             <td class="text-center">
                                 <x-component.button-icon label="Detail" icon="bx-detail"
