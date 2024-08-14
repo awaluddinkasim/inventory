@@ -79,9 +79,7 @@
                             @foreach ($grip->images as $image)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>
-                                        {{ $image->filename }}
-                                    </td>
+                                    <td>{{ $image->filename }}</td>
                                     <td>
                                         <a href="{{ asset('img/grips/' . $image->filename) }}" target="_blank"
                                             class="btn btn-sm btn-info">
