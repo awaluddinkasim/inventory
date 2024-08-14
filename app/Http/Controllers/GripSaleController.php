@@ -19,9 +19,7 @@ class GripSaleController extends BaseController
 
         $sales = GripSale::with(['grip'])->orderBy('date')->get();
 
-        $months = [
-            0 => 'All',
-        ];
+        $months = [0 => 'All'];
         for ($i = 1; $i <= 12; $i++) {
             $months[$i] = Carbon::createFromDate($year, $i, 1)->isoFormat('MMMM');
         }
