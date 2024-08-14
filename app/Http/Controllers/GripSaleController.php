@@ -6,7 +6,6 @@ use App\Models\Grip;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
-use App\Models\GripPurchase;
 use App\Models\GripSale;
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -66,7 +65,7 @@ class GripSaleController extends BaseController
 
         return $this->redirectBack([
             'status' => 'success',
-            'message' => 'Grip purchase created successfully',
+            'message' => 'Grip sale created successfully',
         ]);
     }
 
@@ -76,7 +75,7 @@ class GripSaleController extends BaseController
 
         return $this->redirectBack([
             'status' => 'success',
-            'message' => 'Grip purchase deleted successfully',
+            'message' => 'Grip sale deleted successfully',
         ]);
     }
 }
