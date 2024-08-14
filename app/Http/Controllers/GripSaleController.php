@@ -19,6 +19,13 @@ class GripSaleController extends BaseController
 
         $sales = GripSale::with(['grip'])->orderBy('date')->get();
 
+        $months = [
+            '0' => 'All',
+        ];
+        for ($i = 1; $i <= 12; $i++) {
+            $months["$i"] = Carbon::createFromDate($year, $i, 1)->isoFormat('MMMM');
+        }
+
         $years = [];
         foreach ($sales as $sale) {
             $year = Carbon::parse($sale->date)->year;
@@ -28,8 +35,9 @@ class GripSaleController extends BaseController
         }
 
         return view('pages.grip-sale.index', [
-            'month' => $month,
-            'year' => $year,
+            'activeMonth' => $month,
+            'activeYear' => $year,
+            'months' => $months,
             'years' => $years,
             'grips' => Grip::with(['model'])->get()->sortBy(function ($query) {
                 return $query->model->type_id;

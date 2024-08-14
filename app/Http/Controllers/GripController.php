@@ -99,6 +99,7 @@ class GripController extends BaseController
             ->where('model_id', $data['model_id'])
             ->where('color', $data['color'])
             ->where('size', $data['size'])->first();
+
         if ($check) {
             return $this->redirectBack([
                 'status' => 'error',
