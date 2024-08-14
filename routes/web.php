@@ -65,6 +65,8 @@ Route::middleware('auth:admin')->group(function () {
         Route::delete('/items/{shaft}', [ShaftController::class, 'destroy'])->name('items.destroy');
         Route::post('/items/{grip:code}/image', [ShaftImageController::class, 'store'])->name('items.image.store');
         Route::delete('/items/image/{image}', [ShaftImageController::class, 'destroy'])->name('items.image.destroy');
+
+        Route::get('/barcode', [ShaftController::class, 'barcode'])->name('barcode');
     });
 
     Route::group(['prefix' => 'clubheads', 'as' => 'clubhead.'], function () {

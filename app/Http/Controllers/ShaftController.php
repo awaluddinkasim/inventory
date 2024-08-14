@@ -144,4 +144,9 @@ class ShaftController extends BaseController
             'message' => 'Shaft deleted successfully',
         ]);
     }
+
+    public function barcode(): View
+    {
+        return view('pages.shaft.barcode');
+    }
 }

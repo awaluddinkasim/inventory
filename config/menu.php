@@ -54,7 +54,7 @@ return [
             [
                 'route-active' => 'barcode',
                 'label' => 'Barcode',
-                // 'route-name' => '#',
+                'route-name' => 'shaft.barcode',
             ],
         ],
         'admin-only' => false,
