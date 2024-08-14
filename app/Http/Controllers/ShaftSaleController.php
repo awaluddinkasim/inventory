@@ -18,6 +18,11 @@ class ShaftSaleController extends BaseController
 
         $sales = ShaftSale::with(['shaft'])->orderBy('date')->get();
 
+        $months = [0 => 'All'];
+        for ($i = 1; $i <= 12; $i++) {
+            $months[$i] = Carbon::createFromDate($year, $i, 1)->isoFormat('MMMM');
+        }
+
         $years = [];
         foreach ($sales as $sale) {
             $year = Carbon::parse($sale->date)->year;
@@ -27,7 +32,9 @@ class ShaftSaleController extends BaseController
         }
 
         return view('pages.shaft-sale.index', [
-            'month' => $month,
+            'activeMonth' => $month,
+
+            'months' => $months,
             'year' => $year,
             'years' => $years,
             'shafts' => Shaft::with(['type'])->get()->sortBy(function ($query) {

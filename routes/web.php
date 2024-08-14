@@ -15,6 +15,7 @@ use App\Http\Controllers\ShaftImageController;
 use App\Http\Controllers\GripPurchaseController;
 use App\Http\Controllers\GripSaleController;
 use App\Http\Controllers\ShaftPurchaseController;
+use App\Http\Controllers\ShaftSaleController;
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
@@ -86,10 +87,17 @@ Route::middleware('auth:admin')->group(function () {
     });
 
     Route::group(['prefix' => 'sales', 'as' => 'sale.'], function () {
+        // GRIP
         Route::get('/grip', [GripSaleController::class, 'index'])->name('grip');
         Route::get('/grip/detail', [GripSaleController::class, 'show'])->name('grip.show');
         Route::post('/grip', [GripSaleController::class, 'store'])->name('grip.store');
         Route::delete('/grip/{sale}', [GripSaleController::class, 'destroy'])->name('grip.destroy');
+
+        // SHAFT
+        Route::get('/shaft', [ShaftSaleController::class, 'index'])->name('shaft');
+        Route::get('/shaft/detail', [ShaftSaleController::class, 'show'])->name('shaft.show');
+        Route::post('/shaft', [ShaftSaleController::class, 'store'])->name('shaft.store');
+        Route::delete('/shaft/{sale}', [ShaftSaleController::class, 'destroy'])->name('shaft.destroy');
     });
 
     Route::group(['middleware' => 'admin', 'prefix' => 'users', 'as' => 'user.'], function () {
