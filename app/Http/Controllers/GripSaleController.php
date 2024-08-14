@@ -41,7 +41,7 @@ class GripSaleController extends BaseController
     public function show(): View
     {
         if (! request()->has('date')) {
-            return back();
+            abort(404);
         }
 
         $date = request()->get('date');
