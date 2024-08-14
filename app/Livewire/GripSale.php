@@ -5,9 +5,13 @@ namespace App\Livewire;
 use App\Models\GripSale as Model;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithoutUrlPagination;
+use Livewire\WithPagination;
 
 class GripSale extends Component
 {
+    use WithPagination, WithoutUrlPagination;
+
     public $month;
     public $year;
 
