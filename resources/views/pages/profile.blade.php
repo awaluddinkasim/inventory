@@ -14,10 +14,10 @@
                             :required="true" />
                         <x-form.input value="{{ auth()->user()->email }}" type="email" label="Email" name="email"
                             id="emailInput" :required="true" />
-                        <x-form.input value="{{ auth()->user()->phone }}" label="Phone Number" type="tel"
-                            name="phone" id="phoneInput" :required="true" />
                         <x-form.input label="Password" name="password" type="password" id="passwordInput"
                             helperText="If you don't want to change password, leave it blank" />
+                        <x-form.input value="{{ auth()->user()->phone }}" label="Phone Number" type="tel"
+                            name="phone" id="phoneInput" :required="true" />
 
                         <x-component.button label="Save Changes" :block="true" type="submit" />
                     </form>

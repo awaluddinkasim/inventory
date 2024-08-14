@@ -1,7 +1,7 @@
 <x-layout title="Edit Admin">
     <div class="row">
         <div class="col-lg-6 d-none d-lg-block">
-            <img src="{{ asset('assets/img/illustrations/user-form.svg') }}" alt="">
+            <img src="{{ asset('assets/img/illustrations/server.svg') }}" alt="">
         </div>
         <div class="col-lg-6">
             <div class="card">
