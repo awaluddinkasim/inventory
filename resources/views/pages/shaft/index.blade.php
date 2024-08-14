@@ -60,6 +60,7 @@
                     <th>Flex</th>
                     <th>Length</th>
                     <th>Weight</th>
+                    <th>Stock</th>
                     <th>Retail Price</th>
                     <th></th>
                 </thead>
@@ -72,6 +73,7 @@
                             <td>{{ $shaft->flex }}</td>
                             <td>{{ $shaft->length }}"</td>
                             <td>{{ $shaft->weight }}g</td>
+                            <td>{{ number_format($shaft->stock) }}</td>
                             <td>Rp. {{ number_format($shaft->retail) }}</td>
                             <td class="text-center">
                                 <x-component.button-icon label="Detail" icon="bx-detail"

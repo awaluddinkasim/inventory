@@ -63,7 +63,7 @@
     </script>
 @endpush
 
-<div class="mb-5">
+<div class="mb-3">
     <div id="{{ $id }}" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner rounded">
             {{-- <div class="carousel-item active">

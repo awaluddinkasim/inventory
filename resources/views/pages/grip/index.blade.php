@@ -49,6 +49,7 @@
                     <th>Color</th>
                     <th>Weight</th>
                     <th>Core Size</th>
+                    <th>Stock</th>
                     <th>Retail Price</th>
                     <th></th>
                 </thead>
@@ -70,6 +71,7 @@
                             <td>{{ $grip->color }}</td>
                             <td>{{ $grip->weight }}g</td>
                             <td>{{ $grip->core_size }}</td>
+                            <td>{{ number_format($grip->stock) }}</td>
                             <td>Rp. {{ number_format($grip->retail) }}</td>
                             <td class="text-center">
                                 <x-component.button-icon label="Detail" icon="bx-detail"
