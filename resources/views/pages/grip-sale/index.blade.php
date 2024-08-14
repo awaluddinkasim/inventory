@@ -59,7 +59,7 @@
                     <x-form.select-search label="Grip" name="grip_id" id="gripSelect" modalId="formModal">
                         @foreach ($grips as $grip)
                             <option value="{{ $grip->id }}" price="{{ $grip->retail }}">
-                                {{ $grip->model->name }} - {{ $grip->size }}
+                                {{ $grip->model->name }} - {{ $grip->size }} ({{ $grip->color }})
                             </option>
                         @endforeach
                     </x-form.select-search>
