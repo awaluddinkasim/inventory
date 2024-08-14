@@ -16,14 +16,6 @@ class GripSale extends Component
     {
         $this->month = $month;
         $this->year = $year;
-
-        if ($month == 0) {
-            $amount = Model::whereYear('date', $year)->get()->sum('amount');
-        } else {
-            $amount = Model::whereYear('date', $year)->whereMonth('date', $month)->get()->sum('amount');
-        }
-
-        $this->dispatch('amount', $amount);
     }
 
     public function render()

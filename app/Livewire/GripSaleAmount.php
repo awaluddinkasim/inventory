@@ -11,9 +11,15 @@ class GripSaleAmount extends Component
 {
     public $amount;
 
-    #[On('amount')]
-    public function amount($amount)
+    #[On('filter')]
+    public function amount($month, $year)
     {
+        if ($month == 0) {
+            $amount = GripSale::whereYear('date', $year)->get()->sum('amount');
+        } else {
+            $amount = GripSale::whereYear('date', $year)->whereMonth('date', $month)->get()->sum('amount');
+        }
+
         $this->amount = $amount;
     }
 
