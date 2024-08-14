@@ -85,8 +85,8 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::group(['prefix' => 'sales', 'as' => 'sale.'], function () {
         Route::get('/grip', [GripSaleController::class, 'index'])->name('grip');
-        Route::get('/grip/{grip:code}', [GripSaleController::class, 'show'])->name('grip.show');
-        Route::post('/grip/{grip:code}', [GripSaleController::class, 'store'])->name('grip.store');
+        Route::get('/grip/detail', [GripSaleController::class, 'show'])->name('grip.show');
+        Route::post('/grip', [GripSaleController::class, 'store'])->name('grip.store');
         Route::delete('/grip/{sale}', [GripSaleController::class, 'destroy'])->name('grip.destroy');
     });
 

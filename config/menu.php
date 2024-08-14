@@ -107,7 +107,7 @@ return [
     ],
 
     [
-        'route-active' => 'stock-out',
+        'route-active' => 'sales',
         'label' => 'Sales',
         'icon' => 'bx-archive-out',
         'submenu' => [
