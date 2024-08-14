@@ -32,11 +32,11 @@
                 </div>
                 <div class="card-body">
                     @if ($grip != null)
-                        <img src="{{ asset(DNS1D::getBarcodePNGPath($grip->code, 'C39', 3, 100)) }}" alt=""
+                        <img src="{{ asset(DNS1D::getBarcodeJPGPath($grip->code, 'C39', 3, 100)) }}" alt=""
                             class="w-100 mt-4">
 
                         <div class="mt-4 text-center">
-                            <a href="{{ asset('barcodes/' . $grip->code . '.png') }}" class="btn btn-info"
+                            <a href="{{ asset('barcodes/' . $grip->code . '.jpg') }}" class="btn btn-info"
                                 download>Download</a>
                         </div>
                     @else
