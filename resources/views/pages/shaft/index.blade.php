@@ -74,10 +74,10 @@
                             <td>{{ $shaft->length }}"</td>
                             <td>{{ $shaft->weight }}g</td>
                             <td>
-                                @if ($grip->stock < 0)
-                                    <span class="text-danger">{{ $grip->stock }}</span>
+                                @if ($shaft->stock < 0)
+                                    <span class="text-danger">{{ $shaft->stock }}</span>
                                 @else
-                                    <span>{{ number_format($grip->stock) }}</span>
+                                    <span>{{ number_format($shaft->stock) }}</span>
                                 @endif
                             </td>
                             <td>Rp. {{ number_format($shaft->retail) }}</td>
