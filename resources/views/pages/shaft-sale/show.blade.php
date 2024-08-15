@@ -1,3 +1,24 @@
+@push('scripts')
+    <script>
+        $('#shaftSelect').on('change', function() {
+            let retail = this.options[this.selectedIndex].attributes['price'].value;
+
+            const element = AutoNumeric.getAutoNumericElement('#retailInput')
+            element.set(retail);
+        })
+
+        function filter() {
+            let month = $('#month').val();
+            let year = $('#year').val();
+
+            Livewire.dispatch('filter', {
+                month,
+                year
+            });
+        }
+    </script>
+@endpush
+
 <x-layout title="Sale">
     <div class="card">
         <div class="card-header">
@@ -11,6 +32,21 @@
                         </a>
                     </div>
                 </div>
+                <x-form.modal label="New Sale" title="Form Sale" action="{{ route('sale.shaft.store') }}">
+                    <x-form.select-search label="Shaft" name="shaft_id" id="shaftSelect" modalId="formModal">
+                        @foreach ($shafts as $shaft)
+                            <option value="{{ $shaft->id }}" price="{{ $shaft->retail }}">
+                                {{ $shaft->type->name }} - {{ $shaft->flex }} ({{ $shaft->type->brand }})
+                            </option>
+                        @endforeach
+                    </x-form.select-search>
+                    <x-form.input label="Retail Price" name="retail" id="retailInput" :isNumeric="true"
+                        :required="true" />
+                    <x-form.input label="Quantity" name="quantity" type="number" id="quantityInput" min="1"
+                        :required="true" />
+                    <input type="hidden" name="date" id="dateInput"
+                        value="{{ Carbon\Carbon::parse($sales[0]->date)->format('Y-m-d') }}">
+                </x-form.modal>
             </div>
         </div>
         <div class="card-body">
@@ -37,7 +73,6 @@
                             <td>Rp. {{ number_format($sale->retail) }}</td>
                             <td>{{ $sale->quantity }}</td>
                             <td>Rp. {{ number_format($sale->amount) }}</td>
-
                             <td class="text-center">
                                 <form action="{{ route('sale.shaft.destroy', $sale->id) }}" class="d-inline"
                                     method="POST">

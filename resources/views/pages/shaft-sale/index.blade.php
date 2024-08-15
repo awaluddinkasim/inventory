@@ -55,9 +55,8 @@
                             </option>
                         @endforeach
                     </x-form.select-search>
-                    <x-form.input label="Retail
-                                Price" name="retail" id="retailInput"
-                        :isNumeric="true" :required="true" />
+                    <x-form.input label="Retail Price" name="retail" id="retailInput" :isNumeric="true"
+                        :required="true" />
                     <x-form.input label="Quantity" name="quantity" type="number" id="quantityInput" min="1"
                         :required="true" />
                     <x-form.input label="Date" name="date" type="date" id="dateInput" :required="true" />

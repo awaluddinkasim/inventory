@@ -56,6 +56,10 @@ class GripSaleController extends BaseController
 
         return view('pages.grip-sale.show', [
             'sales' => $sales,
+            'grips' => Grip::with(['model'])->get()
+                ->sortBy(fn($grip) => $grip->size)
+                ->sortBy(fn($grip) => $grip->model_id)
+                ->sortBy(fn($grip) => $grip->model->type_id)
         ]);
     }
 

@@ -53,6 +53,7 @@ class ShaftSaleController extends BaseController
 
         return view('pages.shaft-sale.show', [
             'sales' => $sales,
+            'shafts' => Shaft::with(['type', 'sales'])->orderBy('type_id')->get(),
         ]);
     }
 
