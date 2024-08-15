@@ -9,6 +9,22 @@
             $('#shaft').focus();
         })
     </script>
+     <script>
+        function exportExcel() {
+            Swal.fire({
+                icon: 'info',
+                title: 'Information',
+                text: 'Are you sure want to export?',
+                showCancelButton: true,
+                confirmButtonText: 'Export',
+                denyButtonText: 'Cancel',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.open('{{ route('shaft.export') }}', '_blank');
+                }
+            })
+        }
+    </script>
 @endpush
 
 <x-layout title="Shaft List">
