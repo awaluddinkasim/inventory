@@ -149,7 +149,7 @@ class ShaftController extends BaseController
 
     public function export()
     {
-        return Excel::download(new ShaftsExport, 'shafts-data-' . time() . '.xlsx');
+        return Excel::download(new ShaftsExport, 'shafts-' . date('Y-m-d') . ' ' . time() . '.xlsx');
     }
 
     public function barcode(): View

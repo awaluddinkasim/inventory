@@ -9,12 +9,12 @@
             $('#shaft').focus();
         })
     </script>
-     <script>
+    <script>
         function exportExcel() {
             Swal.fire({
                 icon: 'info',
                 title: 'Information',
-                text: 'Are you sure want to export?',
+                text: 'Export data to Excel',
                 showCancelButton: true,
                 confirmButtonText: 'Export',
                 denyButtonText: 'Cancel',

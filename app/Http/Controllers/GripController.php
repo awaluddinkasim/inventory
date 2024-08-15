@@ -139,7 +139,7 @@ class GripController extends BaseController
 
     public function export()
     {
-        return Excel::download(new GripsExport, 'grips-data-' . time() . '.xlsx');
+        return Excel::download(new GripsExport, 'grips-' . date('Y-m-d') . ' ' . time() . '.xlsx');
     }
 
     public function barcode(): View

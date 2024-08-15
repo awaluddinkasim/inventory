@@ -16,6 +16,21 @@
                 year
             });
         }
+
+        function exportPdf() {
+            Swal.fire({
+                icon: 'info',
+                title: 'Information',
+                text: 'Export data to PDF',
+                showCancelButton: true,
+                confirmButtonText: 'Export',
+                denyButtonText: 'Cancel',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // window.open('', '_blank');
+                }
+            })
+        }
     </script>
 @endpush
 
@@ -49,7 +64,7 @@
                 </div>
                 <div>
                     @if ($salesCount)
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger" onclick="exportPdf()">
                             <i class="fa fa-file-pdf"></i>
                         </button>
                     @endif
