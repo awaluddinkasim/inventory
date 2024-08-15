@@ -37,6 +37,7 @@ class ShaftSaleController extends BaseController
             'months' => $months,
             'year' => $year,
             'years' => $years,
+            'salesCount' => ShaftSale::whereMonth('date', $month)->whereYear('date', $year)->count(),
             'shafts' => Shaft::with(['type', 'sales'])->orderBy('type_id')->get(),
         ]);
     }
@@ -78,7 +79,7 @@ class ShaftSaleController extends BaseController
 
     public function destroy(ShaftSale $sale): RedirectResponse
     {
-        $date = $sale->date;
+        $date = Carbon::parse($sale->date)->format('Y-m-d');
 
         $sale->delete();
 

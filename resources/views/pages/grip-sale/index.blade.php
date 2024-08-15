@@ -47,21 +47,28 @@
                     </select>
                     <button class="btn btn-primary" onclick="filter()">Filter</button>
                 </div>
-                <x-form.modal title="Form Sale" action="" label="New Sale">
-                    <x-form.select-search label="Grip" name="grip_id" id="gripSelect" modalId="formModal">
-                        @foreach ($grips as $grip)
-                            <option value="{{ $grip->id }}" price="{{ $grip->retail }}">
-                                {{ $grip->model->name }} - {{ $grip->size }} ({{ $grip->color }})
-                            </option>
-                        @endforeach
-                    </x-form.select-search>
-                    <x-form.input label="Retail
-                                Price" name="retail" id="retailInput"
-                        :isNumeric="true" :required="true" />
-                    <x-form.input label="Quantity" name="quantity" type="number" id="quantityInput" min="1"
-                        :required="true" />
-                    <x-form.input label="Date" name="date" type="date" id="dateInput" :required="true" />
-                </x-form.modal>
+                <div>
+                    @if ($salesCount)
+                        <button class="btn btn-danger">
+                            <i class="fa fa-file-pdf"></i>
+                        </button>
+                    @endif
+                    <x-form.modal title="Form Sale" action="" label="New Sale">
+                        <x-form.select-search label="Grip" name="grip_id" id="gripSelect" modalId="formModal">
+                            @foreach ($grips as $grip)
+                                <option value="{{ $grip->id }}" price="{{ $grip->retail }}">
+                                    {{ $grip->model->name }} - {{ $grip->size }} ({{ $grip->color }})
+                                </option>
+                            @endforeach
+                        </x-form.select-search>
+                        <x-form.input label="Retail
+                                    Price" name="retail"
+                            id="retailInput" :isNumeric="true" :required="true" />
+                        <x-form.input label="Quantity" name="quantity" type="number" id="quantityInput" min="1"
+                            :required="true" />
+                        <x-form.input label="Date" name="date" type="date" id="dateInput" :required="true" />
+                    </x-form.modal>
+                </div>
             </div>
             <livewire:grip-sale :month="$activeMonth" :year="$activeYear" />
         </div>

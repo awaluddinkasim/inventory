@@ -37,6 +37,7 @@ class GripSaleController extends BaseController
             'activeYear' => $year,
             'months' => $months,
             'years' => $years,
+            'salesCount' => GripSale::whereMonth('date', $month)->whereYear('date', $year)->count(),
             'grips' => Grip::with(['model'])->get()
                 ->sortBy(fn($grip) => $grip->size)
                 ->sortBy(fn($grip) => $grip->model_id)
@@ -84,7 +85,7 @@ class GripSaleController extends BaseController
 
     public function destroy(GripSale $sale): RedirectResponse
     {
-        $date = $sale->date;
+        $date = Carbon::parse($sale->date)->format('Y-m-d');
 
         $sale->delete();
 
