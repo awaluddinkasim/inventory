@@ -60,7 +60,7 @@ return [
         'admin-only' => false,
     ],
     [
-        'route-active' => 'clubhead',
+        'route-active' => 'clubheads',
         'label' => 'Club Head',
         'icon' => 'bx-archive',
         'submenu' => [
