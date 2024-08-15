@@ -18,14 +18,14 @@
                 <div class="card-header">
                     <h5 class="card-title mb-2">Edit Shaft</h5>
                     <div class="card-subtitle">
-                        <a href="{{ route('shaft.items.show', $shaft->code) }}" class="d-flex align-items-center">
+                        <a href="{{ route('shaft.list.show', $shaft->code) }}" class="d-flex align-items-center">
                             <i class="bx bx-left-arrow me-2"></i>
                             <span>Back</span>
                         </a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('shaft.items.update', $shaft->code) }}" method="POST" autocomplete="off">
+                    <form action="{{ route('shaft.list.update', $shaft->code) }}" method="POST" autocomplete="off">
                         @csrf
                         @method('PATCH')
                         <x-form.select-search label="Type" name="type_id" id="typeSelect" :required="true">
@@ -73,7 +73,7 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <h5 class="card-title">Shaft Images</h5>
                         <x-form.modal title="Add Shaft Image"
-                            action="{{ route('shaft.items.image.store', $shaft->code) }}" label="Upload"
+                            action="{{ route('shaft.list.image.store', $shaft->code) }}" label="Upload"
                             :hasFile="true">
                             <x-form.image label="Image" name="img" id="imgInput" />
                         </x-form.modal>
@@ -100,7 +100,7 @@
                                             class="btn btn-sm btn-info">
                                             View
                                         </a>
-                                        <form action="{{ route('shaft.items.image.destroy', $image->id) }}"
+                                        <form action="{{ route('shaft.list.image.destroy', $image->id) }}"
                                             class="d-inline" method="POST">
                                             @csrf
                                             @method('DELETE')

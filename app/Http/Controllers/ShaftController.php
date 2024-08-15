@@ -13,9 +13,9 @@ use App\Models\ShaftImage;
 
 class ShaftController extends BaseController
 {
-    public function index(): View
+    public function list(): View
     {
-        return view('pages.shaft.index', [
+        return view('pages.shaft.list', [
             'types' => ShaftType::all(),
             'shafts' => Shaft::all(),
         ]);
@@ -125,7 +125,7 @@ class ShaftController extends BaseController
 
         $shaft->update($data);
 
-        return $this->redirect(route('shaft.items.show', $shaft->code), [
+        return $this->redirect(route('shaft.list.show', $shaft->code), [
             'status' => 'success',
             'message' => 'Shaft updated successfully',
         ]);
@@ -139,7 +139,7 @@ class ShaftController extends BaseController
 
         $shaft->delete();
 
-        return $this->redirect(route('shaft.items'), [
+        return $this->redirect(route('shaft.list'), [
             'status' => 'success',
             'message' => 'Shaft deleted successfully',
         ]);

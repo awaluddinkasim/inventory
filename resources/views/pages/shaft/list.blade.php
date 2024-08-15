@@ -11,13 +11,13 @@
     </script>
 @endpush
 
-<x-layout title="Shafts">
+<x-layout title="Shaft List">
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">Shafts</h5>
 
-                <x-form.modal label="New Item" title="Form Shaft" action="{{ route('shaft.items.store') }}"
+                <x-form.modal label="New Item" title="Form Shaft" action="{{ route('shaft.list.store') }}"
                     :hasFile="true">
                     <x-form.select-search label="Type" id="type" name="type_id" required="true"
                         modalId="formModal">
@@ -83,7 +83,7 @@
                             <td>Rp. {{ number_format($shaft->retail) }}</td>
                             <td class="text-center">
                                 <x-component.button-icon label="Detail" icon="bx-detail"
-                                    href="{{ route('shaft.items.show', $shaft->code) }}" />
+                                    href="{{ route('shaft.list.show', $shaft->code) }}" />
                             </td>
                         </tr>
                     @endforeach

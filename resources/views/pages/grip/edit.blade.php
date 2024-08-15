@@ -5,14 +5,14 @@
                 <div class="card-header">
                     <h5 class="card-title mb-2">Edit Grip</h5>
                     <div class="card-subtitle">
-                        <a href="{{ route('grip.items.show', $grip->code) }}" class="d-flex align-items-center">
+                        <a href="{{ route('grip.list.show', $grip->code) }}" class="d-flex align-items-center">
                             <i class="bx bx-left-arrow me-2"></i>
                             <span>Back</span>
                         </a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('grip.items.update', $grip->id) }}" method="POST" autocomplete="off">
+                    <form action="{{ route('grip.list.update', $grip->id) }}" method="POST" autocomplete="off">
                         @csrf
                         @method('PATCH')
                         <x-form.select-search label="Model" name="model_id" id="modelSelect" :required="true">
@@ -60,7 +60,7 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <h5 class="card-title">Grip Images</h5>
                         <x-form.modal title="Add Grip Image"
-                            action="{{ route('grip.items.image.store', $grip->code) }}" label="Upload"
+                            action="{{ route('grip.list.image.store', $grip->code) }}" label="Upload"
                             :hasFile="true">
                             <x-form.image label="Image" name="img" id="imgInput" />
                         </x-form.modal>
@@ -85,7 +85,7 @@
                                             class="btn btn-sm btn-info">
                                             View
                                         </a>
-                                        <form action="{{ route('grip.items.image.destroy', $image->id) }}"
+                                        <form action="{{ route('grip.list.image.destroy', $image->id) }}"
                                             class="d-inline" method="POST">
                                             @csrf
                                             @method('DELETE')

@@ -24,9 +24,9 @@ return [
                 'route-name' => 'grip.model',
             ],
             [
-                'route-active' => 'items',
-                'label' => 'Item',
-                'route-name' => 'grip.items',
+                'route-active' => 'list',
+                'label' => 'List',
+                'route-name' => 'grip.list',
             ],
             [
                 'route-active' => 'barcode',
@@ -47,9 +47,9 @@ return [
                 'route-name' => 'shaft.type',
             ],
             [
-                'route-active' => 'items',
-                'label' => 'Item',
-                'route-name' => 'shaft.items',
+                'route-active' => 'list',
+                'label' => 'List',
+                'route-name' => 'shaft.list',
             ],
             [
                 'route-active' => 'barcode',
@@ -70,8 +70,8 @@ return [
                 // 'route-name' => '#',
             ],
             [
-                'route-active' => 'grips',
-                'label' => 'Data',
+                'route-active' => 'list',
+                'label' => 'List',
                 // 'route-name' => '#',
             ],
             [

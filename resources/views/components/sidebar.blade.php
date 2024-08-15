@@ -17,7 +17,7 @@
             @endif
 
             @if (isset($menu['submenu']))
-                <li class="menu-item @if ($menu['route-active'] == request()->segment(1)) active open @endif">
+                <li class="menu-item @if ($menu['route-active'] == request()->segment(2)) active open @endif">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons bx {{ $menu['icon'] ?? 'bx-circle' }}"></i>
                         <div data-i18n="{{ $menu['label'] }}">{{ $menu['label'] }}</div>
@@ -25,7 +25,7 @@
 
                     <ul class="menu-sub">
                         @foreach ($menu['submenu'] as $submenu)
-                            <li class="menu-item @if ($menu['route-active'] == request()->segment(1) && $submenu['route-active'] == request()->segment(2)) active @endif">
+                            <li class="menu-item @if ($menu['route-active'] == request()->segment(2) && $submenu['route-active'] == request()->segment(3)) active @endif">
                                 <a href="{{ isset($submenu['route-name']) ? route($submenu['route-name']) : '#' }}"
                                     class="menu-link">
                                     <div data-i18n="{{ $submenu['label'] }}">{{ $submenu['label'] }}</div>
@@ -35,7 +35,7 @@
                     </ul>
                 </li>
             @else
-                <li class="menu-item @if ($menu['route-active'] == request()->segment(1)) active @endif">
+                <li class="menu-item @if ($menu['route-active'] == request()->segment(2)) active @endif">
                     <a href="{{ isset($menu['route-name']) ? route($menu['route-name']) : '#' }}" class="menu-link">
                         <i class="menu-icon tf-icons bx {{ $menu['icon'] ?? 'bx-circle' }}"></i>
                         <div data-i18n="{{ $menu['label'] }}">{{ $menu['label'] }}</div>

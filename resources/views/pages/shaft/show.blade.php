@@ -96,9 +96,9 @@
                         </div>
                         <div class="text-end">
                             <x-component.button-icon icon="bx-edit" label="Edit" color="primary"
-                                href="{{ route('shaft.items.edit', $shaft->code) }}" />
+                                href="{{ route('shaft.list.edit', $shaft->code) }}" />
                             {{-- @can('delete', $shaft) --}}
-                            <form action="{{ route('shaft.items.destroy', $shaft) }}" method="post" class="d-inline">
+                            <form action="{{ route('shaft.list.destroy', $shaft) }}" method="post" class="d-inline">
                                 @csrf
                                 @method('delete')
                                 <x-component.button-icon icon="bx-trash" label="Delete" color="danger" type="submit" />

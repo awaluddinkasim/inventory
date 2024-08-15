@@ -12,9 +12,9 @@ use Illuminate\View\View;
 
 class GripController extends BaseController
 {
-    public function index(): View
+    public function list(): View
     {
-        return view('pages.grip.index', [
+        return view('pages.grip.list', [
             'models' => GripModel::all(),
             'sizes' => Grip::groupBy('size')->pluck('size'),
             'grips' => Grip::with(['model'])->get()->sortBy(function ($query) {
@@ -114,7 +114,7 @@ class GripController extends BaseController
 
         $grip->update($data);
 
-        return $this->redirect(route('grip.items.show', $grip->code), [
+        return $this->redirect(route('grip.list.show', $grip->code), [
             'status' => 'success',
             'message' => 'Grip data updated successfully',
         ]);
@@ -128,7 +128,7 @@ class GripController extends BaseController
 
         $grip->delete();
 
-        return $this->redirect(route('grip.items'), [
+        return $this->redirect(route('grip.list'), [
             'status' => 'success',
             'message' => 'Grip data deleted successfully',
         ]);
