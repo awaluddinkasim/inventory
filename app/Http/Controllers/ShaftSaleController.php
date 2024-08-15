@@ -37,9 +37,7 @@ class ShaftSaleController extends BaseController
             'months' => $months,
             'year' => $year,
             'years' => $years,
-            'shafts' => Shaft::with(['type'])->get()->sortBy(function ($query) {
-                return $query->type_id;
-            }),
+            'shafts' => Shaft::with(['type', 'sales'])->orderBy('type_id')->get(),
         ]);
     }
 

@@ -1,42 +1,69 @@
+@push('scripts')
+    <script>
+        function exportExcel() {
+            Swal.fire({
+                icon: 'info',
+                title: 'Information',
+                text: 'Are you sure want to export?',
+                showCancelButton: true,
+                confirmButtonText: 'Export',
+                denyButtonText: 'Cancel',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.open('{{ route('grip.export') }}', '_blank');
+                }
+            })
+        }
+    </script>
+@endpush
+
 <x-layout title="Grip List">
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">Grip List</h5>
-                <x-form.modal label="New Grip" title="Form Grip" action="{{ route('grip.list.store') }}"
-                    :hasFile="true">
-                    <x-form.select-search label="Model" name="model_id" id="modelSelect" :required="true"
-                        modalId="formModal">
-                        @foreach ($models as $model)
-                            <option value="{{ $model->id }}">{{ $model->name }}</option>
-                        @endforeach
-                    </x-form.select-search>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <x-form.datalist label="Size" name="size" id="sizeInput" :required="true">
-                                @foreach ($sizes as $size)
-                                    <option value="{{ $size }}">{{ $size }}</option>
-                                @endforeach
-                            </x-form.datalist>
+                <div>
+                    @if ($grips->count())
+                        <button class="btn btn-success" onclick="exportExcel()">
+                            <i class="fa fa-file-excel"></i>
+                        </button>
+                    @endif
+                    <x-form.modal label="New Grip" title="Form Grip" action="{{ route('grip.list.store') }}"
+                        :hasFile="true">
+                        <x-form.select-search label="Model" name="model_id" id="modelSelect" :required="true"
+                            modalId="formModal">
+                            @foreach ($models as $model)
+                                <option value="{{ $model->id }}">{{ $model->name }}</option>
+                            @endforeach
+                        </x-form.select-search>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <x-form.datalist label="Size" name="size" id="sizeInput" :required="true">
+                                    @foreach ($sizes as $size)
+                                        <option value="{{ $size }}">{{ $size }}</option>
+                                    @endforeach
+                                </x-form.datalist>
+                            </div>
+                            <div class="col-md-6">
+                                <x-form.input label="Color" name="color" id="colorInput" :required="true" />
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <x-form.input label="Color" name="color" id="colorInput" :required="true" />
+                        <x-form.input label="Weight" name="weight" id="weightInput" :isNumeric="true"
+                            :required="true" />
+                        <x-form.input label="Core Size" name="core_size" id="coreSizeInput" :required="true" />
+                        <div class="row">
+                            <div class="col-md-7">
+                                <x-form.input label="Wholesale Price" name="wholesale" id="wholesaleInput"
+                                    :isNumeric="true" :required="true" />
+                            </div>
+                            <div class="col-md-5">
+                                <x-form.input label="Retail Percentage (%)" name="percent" id="percentInput"
+                                    :isNumeric="true" :required="true" />
+                            </div>
                         </div>
-                    </div>
-                    <x-form.input label="Weight" name="weight" id="weightInput" :isNumeric="true" :required="true" />
-                    <x-form.input label="Core Size" name="core_size" id="coreSizeInput" :required="true" />
-                    <div class="row">
-                        <div class="col-md-7">
-                            <x-form.input label="Wholesale Price" name="wholesale" id="wholesaleInput" :isNumeric="true"
-                                :required="true" />
-                        </div>
-                        <div class="col-md-5">
-                            <x-form.input label="Retail Percentage (%)" name="percent" id="percentInput"
-                                :isNumeric="true" :required="true" />
-                        </div>
-                    </div>
-                    <x-form.image label="Image" name="img" id="imgInput" :required="true" />
-                </x-form.modal>
+                        <x-form.image label="Image" name="img" id="imgInput" :required="true" />
+                    </x-form.modal>
+                </div>
             </div>
         </div>
         <div class="card-body">

@@ -40,6 +40,7 @@ Route::middleware('auth:admin')->group(function () {
         Route::post('/list/{grip:code}/image', [GripImageController::class, 'store'])->name('list.image.store');
         Route::delete('/list/image/{image}', [GripImageController::class, 'destroy'])->name('list.image.destroy');
 
+        Route::get('/export', [GripController::class, 'export'])->name('export');
         Route::get('/barcode', [GripController::class, 'barcode'])->name('barcode');
     });
 
@@ -58,6 +59,7 @@ Route::middleware('auth:admin')->group(function () {
         Route::post('/list/{grip:code}/image', [ShaftImageController::class, 'store'])->name('list.image.store');
         Route::delete('/list/image/{image}', [ShaftImageController::class, 'destroy'])->name('list.image.destroy');
 
+        Route::get('/export', [ShaftController::class, 'export'])->name('export');
         Route::get('/barcode', [ShaftController::class, 'barcode'])->name('barcode');
     });
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ShaftsExport;
 use App\Models\Shaft;
 use App\Models\ShaftType;
 use Illuminate\View\View;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\BaseController;
 use App\Models\ShaftImage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ShaftController extends BaseController
 {
@@ -17,7 +19,7 @@ class ShaftController extends BaseController
     {
         return view('pages.shaft.list', [
             'types' => ShaftType::all(),
-            'shafts' => Shaft::all(),
+            'shafts' => Shaft::with(['type'])->orderBy('type_id')->get(),
         ]);
     }
 
@@ -143,6 +145,11 @@ class ShaftController extends BaseController
             'status' => 'success',
             'message' => 'Shaft deleted successfully',
         ]);
+    }
+
+    public function export()
+    {
+        return Excel::download(new ShaftsExport, 'shafts-data-' . time() . '.xlsx');
     }
 
     public function barcode(): View

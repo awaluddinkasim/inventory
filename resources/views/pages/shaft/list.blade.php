@@ -17,38 +17,46 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">Shaft List</h5>
 
-                <x-form.modal label="New Shaft" title="Form Shaft" action="{{ route('shaft.list.store') }}"
-                    :hasFile="true">
-                    <x-form.select-search label="Type" id="type" name="type_id" required="true"
-                        modalId="formModal">
-                        @foreach ($types as $type)
-                            <option value="{{ $type->id }}">{{ $type->brand }} - {{ $type->name }}</option>
-                        @endforeach
-                    </x-form.select-search>
-                    <x-form.input-group label="Shaft" id="shaft" name="shaft" prefix="Type" required="true" />
-                    <x-form.input label="Flex" id="flex" name="flex" required="true" />
-                    <div class="row">
-                        <div class="col-md-6">
-                            <x-form.input label="Length" id="length" name="length" isNumeric="true"
-                                required="true" />
+                <div>
+                    @if ($shafts->count())
+                        <button class="btn btn-success" onclick="exportExcel()">
+                            <i class="fa fa-file-excel"></i>
+                        </button>
+                    @endif
+                    <x-form.modal label="New Shaft" title="Form Shaft" action="{{ route('shaft.list.store') }}"
+                        :hasFile="true">
+                        <x-form.select-search label="Type" id="type" name="type_id" required="true"
+                            modalId="formModal">
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}">{{ $type->brand }} - {{ $type->name }}</option>
+                            @endforeach
+                        </x-form.select-search>
+                        <x-form.input-group label="Shaft" id="shaft" name="shaft" prefix="Type"
+                            required="true" />
+                        <x-form.input label="Flex" id="flex" name="flex" required="true" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <x-form.input label="Length" id="length" name="length" isNumeric="true"
+                                    required="true" />
+                            </div>
+                            <div class="col-md-6">
+                                <x-form.input label="Weight" id="weight" name="weight" isNumeric="true"
+                                    required="true" />
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <x-form.input label="Weight" id="weight" name="weight" isNumeric="true"
-                                required="true" />
+                        <div class="row">
+                            <div class="col-md-7">
+                                <x-form.input label="Wholesale Price" name="wholesale" id="wholesaleInput"
+                                    :isNumeric="true" :required="true" />
+                            </div>
+                            <div class="col-md-5">
+                                <x-form.input label="Retail Percentage (%)" name="percent" id="percentInput"
+                                    :isNumeric="true" :required="true" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-7">
-                            <x-form.input label="Wholesale Price" name="wholesale" id="wholesaleInput" :isNumeric="true"
-                                :required="true" />
-                        </div>
-                        <div class="col-md-5">
-                            <x-form.input label="Retail Percentage (%)" name="percent" id="percentInput"
-                                :isNumeric="true" :required="true" />
-                        </div>
-                    </div>
-                    <x-form.image label="Image" name="img" id="imgInput" :required="true" />
-                </x-form.modal>
+                        <x-form.image label="Image" name="img" id="imgInput" :required="true" />
+                    </x-form.modal>
+                </div>
             </div>
         </div>
         <div class="card-body">

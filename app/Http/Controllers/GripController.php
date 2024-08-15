@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Grip;
 use App\Models\GripImage;
 use App\Models\GripModel;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
+use App\Exports\GripsExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\View\View;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Http\RedirectResponse;
 
 class GripController extends BaseController
 {
@@ -132,6 +134,11 @@ class GripController extends BaseController
             'status' => 'success',
             'message' => 'Grip data deleted successfully',
         ]);
+    }
+
+    public function export()
+    {
+        return Excel::download(new GripsExport, 'grips-data-' . time() . '.xlsx');
     }
 
     public function barcode(): View
