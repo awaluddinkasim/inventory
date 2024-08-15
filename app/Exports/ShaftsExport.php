@@ -4,7 +4,6 @@ namespace App\Exports;
 
 use App\Models\Shaft;
 use Illuminate\View\View;
-use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
@@ -16,8 +15,8 @@ class ShaftsExport implements FromView, ShouldAutoSize, WithStyles, WithColumnWi
 {
     public function view(): View
     {
-        return view('excel.grips', [
-            'grips' => Shaft::with(['type'])->orderBy('type_id')->get(),
+        return view('excel.shafts', [
+            'shafts' => Shaft::with(['type'])->orderBy('type_id')->get(),
         ]);
     }
 

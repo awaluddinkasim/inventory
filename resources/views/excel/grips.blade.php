@@ -1,7 +1,7 @@
 <table>
     <thead>
         <tr>
-            <th style="width: 50px">#</th>
+            <th>#</th>
             <th>Brand</th>
             <th>Type</th>
             <th>Model</th>

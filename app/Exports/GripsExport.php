@@ -15,8 +15,8 @@ class GripsExport implements FromView, ShouldAutoSize, WithStyles, WithColumnWid
 {
     public function view(): View
     {
-        return view('excel.shafts', [
-            'shafts' => Grip::with(['model'])->get()->sortBy(function ($query) {
+        return view('excel.grips', [
+            'grips' => Grip::with(['model'])->get()->sortBy(function ($query) {
                 return $query->model->type_id;
             }),
         ]);
