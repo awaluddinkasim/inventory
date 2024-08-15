@@ -2,8 +2,8 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
-                <h5 class="card-title">Grips</h5>
-                <x-form.modal label="New Item" title="Form Grip" action="{{ route('grip.list.store') }}"
+                <h5 class="card-title">Grip List</h5>
+                <x-form.modal label="New Grip" title="Form Grip" action="{{ route('grip.list.store') }}"
                     :hasFile="true">
                     <x-form.select-search label="Model" name="model_id" id="modelSelect" :required="true"
                         modalId="formModal">

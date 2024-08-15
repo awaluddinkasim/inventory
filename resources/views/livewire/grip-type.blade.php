@@ -53,7 +53,7 @@
             @csrf
             @method('PATCH')
             <div class="modal-body">
-                <x-form.datalist label="MFG" name="brand" id="brandInput" :value="$currentEdit?->brand" :required="true">
+                <x-form.datalist label="Brand" name="brand" id="brandInput" :value="$currentEdit?->brand" :required="true">
                     @foreach ($brands as $brand)
                         <option value="{{ $brand }}">{{ $brand }}</option>
                     @endforeach

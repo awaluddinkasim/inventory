@@ -15,9 +15,9 @@
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
-                <h5 class="card-title">Shafts</h5>
+                <h5 class="card-title">Shaft List</h5>
 
-                <x-form.modal label="New Item" title="Form Shaft" action="{{ route('shaft.list.store') }}"
+                <x-form.modal label="New Shaft" title="Form Shaft" action="{{ route('shaft.list.store') }}"
                     :hasFile="true">
                     <x-form.select-search label="Type" id="type" name="type_id" required="true"
                         modalId="formModal">

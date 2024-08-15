@@ -64,7 +64,7 @@
                 <x-form.select label="Type" name="type_id" id="typeSelect" :required="true">
                     @foreach ($types as $type)
                         <option value="{{ $type->id }}" @if ($currentEdit?->type_id == $type->id) selected @endif>
-                            {{ $type->mfg }} - {{ $type->name }}</option>
+                            {{ $type->brand }} - {{ $type->name }}</option>
                     @endforeach
                 </x-form.select>
                 <x-form.input label="Name" name="name" id="nameInput" :value="$currentEdit?->name" :required="true" />
