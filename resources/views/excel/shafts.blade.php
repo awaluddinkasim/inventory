@@ -1,7 +1,7 @@
 <table>
     <thead>
         <tr>
-            <th>No</th>
+            <th>#</th>
         </tr>
     </thead>
     <tbody>
