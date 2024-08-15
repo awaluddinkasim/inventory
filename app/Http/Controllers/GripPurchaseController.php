@@ -14,9 +14,11 @@ class GripPurchaseController extends BaseController
     public function index(): View
     {
         return view('pages.grip-purchase.index', [
-            'grips' => Grip::with(['model', 'purchases'])->get()->sortBy(function ($query) {
-                return $query->model->type_id;
-            }),
+            'grips' => Grip::with(['model', 'purchases'])->get()->sortBy([
+                fn($grip) => $grip->model->type_id,
+                fn($grip) => $grip->size,
+                fn($grip) => $grip->color
+            ]),
         ]);
     }
 

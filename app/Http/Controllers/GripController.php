@@ -19,9 +19,11 @@ class GripController extends BaseController
         return view('pages.grip.list', [
             'models' => GripModel::all(),
             'sizes' => Grip::groupBy('size')->pluck('size'),
-            'grips' => Grip::with(['model'])->get()->sortBy(function ($query) {
-                return $query->model->type_id;
-            }),
+            'grips' => Grip::with(['model'])->get()->sortBy([
+                fn($grip) => $grip->model->type_id,
+                fn($grip) => $grip->size,
+                fn($grip) => $grip->color
+            ]),
         ]);
     }
 
