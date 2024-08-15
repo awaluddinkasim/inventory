@@ -37,11 +37,10 @@ class GripSaleController extends BaseController
             'activeYear' => $year,
             'months' => $months,
             'years' => $years,
-            'grips' => Grip::with(['model'])->get()->sortBy([
-                fn($grip) => $grip->model->type_id,
-                fn($grip) => $grip->size,
-                fn($grip) => $grip->color
-            ]),
+            'grips' => Grip::with(['model'])->get()
+                ->sortBy(fn($grip) => $grip->size)
+                ->sortBy(fn($grip) => $grip->model_id)
+                ->sortBy(fn($grip) => $grip->model->type_id)
         ]);
     }
 
