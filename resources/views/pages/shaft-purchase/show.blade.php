@@ -39,11 +39,10 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $purchase->shaft->flex }}</td>
-                            <td>Rp. {{ number_format($purchase->shaft->wholesale) }}</td>
+                            <td>Rp. {{ number_format($purchase->wholesale) }}</td>
                             <td>{{ $purchase->quantity }}</td>
                             <td>Rp. {{ number_format($purchase->amount) }}</td>
                             <td>{{ $purchase->date }}</td>
-
                             <td class="text-center">
                                 <form action="{{ route('purchase.shaft.destroy', $purchase->id) }}" class="d-inline"
                                     method="POST">

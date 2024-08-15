@@ -35,6 +35,7 @@ class ShaftPurchaseController extends BaseController
         ]);
 
         $data['shaft_id'] = $shaft->id;
+        $data['wholesale'] = convertToNumber($data['wholesale']);
 
         ShaftPurchase::create($data);
 

@@ -38,6 +38,7 @@ class GripPurchaseController extends BaseController
         ]);
 
         $data['grip_id'] = $grip->id;
+        $data['wholesale'] = convertToNumber($data['wholesale']);
 
         GripPurchase::create($data);
 

@@ -39,7 +39,7 @@
                     </select>
                     <select name="year" id="year" class="form-control me-1" style="width: 100px">
                         @forelse ($years as $year)
-                            <option value="{{ $year }}" @if ($year == $years) selected @endif>
+                            <option value="{{ $year }}" @if ($year == $activeYear) selected @endif>
                                 {{ $year }}</option>
                         @empty
                             <option value="2024">2024</option>
@@ -63,7 +63,7 @@
                     <x-form.input label="Date" name="date" type="date" id="dateInput" :required="true" />
                 </x-form.modal>
             </div>
-            <livewire:shaft-sale :month="$activeMonth" :year="$years" />
+            <livewire:shaft-sale :month="$activeMonth" :year="$activeYear" />
         </div>
     </div>
 

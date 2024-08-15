@@ -42,7 +42,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $purchase->grip->size }}</td>
                             <td>{{ $purchase->grip->color }}</td>
-                            <td>Rp. {{ number_format($purchase->grip->wholesale) }}</td>
+                            <td>Rp. {{ number_format($purchase->wholesale) }}</td>
                             <td>{{ $purchase->quantity }}</td>
                             <td>Rp. {{ number_format($purchase->amount) }}</td>
                             <td>{{ $purchase->date }}</td>

@@ -33,7 +33,7 @@ class ShaftSaleController extends BaseController
 
         return view('pages.shaft-sale.index', [
             'activeMonth' => $month,
-
+            'activeYear' => $year,
             'months' => $months,
             'year' => $year,
             'years' => $years,
@@ -65,6 +65,8 @@ class ShaftSaleController extends BaseController
             'date' => 'required',
         ]);
 
+        $data['retail'] = convertToNumber($data['retail']);
+
         ShaftSale::create($data);
 
         return $this->redirectBack([
@@ -75,7 +77,18 @@ class ShaftSaleController extends BaseController
 
     public function destroy(ShaftSale $sale): RedirectResponse
     {
+        $date = $sale->date;
+
         $sale->delete();
+
+        $count = ShaftSale::where('date', $date)->count();
+
+        if ($count == 0) {
+            return $this->redirect(route('sale.shaft'), [
+                'status' => 'success',
+                'message' => 'Shaft sale deleted successfully',
+            ]);
+        }
 
         return $this->redirectBack([
             'status' => 'success',

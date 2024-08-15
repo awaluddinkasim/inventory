@@ -68,6 +68,8 @@ class GripSaleController extends BaseController
             'date' => 'required',
         ]);
 
+        $data['retail'] = convertToNumber($data['retail']);
+
         GripSale::create($data);
 
         return $this->redirectBack([
@@ -78,7 +80,18 @@ class GripSaleController extends BaseController
 
     public function destroy(GripSale $sale): RedirectResponse
     {
+        $date = $sale->date;
+
         $sale->delete();
+
+        $count = GripSale::where('date', $date)->count();
+
+        if ($count == 0) {
+            return $this->redirect(route('sale.grip'), [
+                'status' => 'success',
+                'message' => 'Grip sale deleted successfully',
+            ]);
+        }
 
         return $this->redirectBack([
             'status' => 'success',
