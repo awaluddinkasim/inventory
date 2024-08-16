@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Shaft;
 use App\Models\ShaftSale;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class ShaftSaleController extends BaseController
@@ -96,5 +98,22 @@ class ShaftSaleController extends BaseController
             'status' => 'success',
             'message' => 'Shaft sale deleted successfully',
         ]);
+    }
+
+    public function exportPdf(Request $request): Response
+    {
+        if (! $request->has('month') && ! $request->has('year')) {
+            abort(404);
+        }
+
+        $sales = ShaftSale::with(['shaft'])
+            ->whereMonth('date', $request->get('month'))->whereYear('date', $request->get('year'))
+            ->orderBy('date')->get();
+
+        $pdf = Pdf::loadView('pdf.shaft-sales', [
+            'sales' => $sales
+        ]);
+
+        return $pdf->stream('shaft-sales ' . Carbon::parse($sales[0]->date)->isoFormat('MM-YY') . '.pdf');
     }
 }

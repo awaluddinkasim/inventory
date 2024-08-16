@@ -7,7 +7,9 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use App\Models\GripSale;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use Illuminate\Http\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class GripSaleController extends BaseController
@@ -102,5 +104,22 @@ class GripSaleController extends BaseController
             'status' => 'success',
             'message' => 'Grip sale deleted successfully',
         ]);
+    }
+
+    public function exportPdf(Request $request): Response
+    {
+        if (! $request->has('month') && ! $request->has('year')) {
+            abort(404);
+        }
+
+        $sales = GripSale::with(['grip'])
+            ->whereMonth('date', $request->get('month'))->whereYear('date', $request->get('year'))
+            ->orderBy('date')->get();
+
+        $pdf = Pdf::loadView('pdf.grip-sales', [
+            'sales' => $sales
+        ]);
+
+        return $pdf->stream('grip-sales ' . Carbon::parse($sales[0]->date)->isoFormat('MM-YY') . '.pdf');
     }
 }

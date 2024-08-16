@@ -27,7 +27,12 @@
                 denyButtonText: 'Cancel',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // window.open('', '_blank');
+                    let month = $('#month').val();
+                    let year = $('#year').val();
+
+                    window.open(
+                        `{{ route('sale.grip.export.pdf') }}?month=${month}&year=${year}`,
+                        '_blank');
                 }
             })
         }

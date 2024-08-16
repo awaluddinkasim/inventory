@@ -85,12 +85,14 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/grip/detail', [GripSaleController::class, 'show'])->name('grip.show');
         Route::post('/grip', [GripSaleController::class, 'store'])->name('grip.store');
         Route::delete('/grip/{sale}', [GripSaleController::class, 'destroy'])->name('grip.destroy');
+        Route::get('/grip/export/pdf', [GripSaleController::class, 'exportPdf'])->name('grip.export.pdf');
 
         // SHAFT
         Route::get('/shaft', [ShaftSaleController::class, 'index'])->name('shaft');
         Route::get('/shaft/detail', [ShaftSaleController::class, 'show'])->name('shaft.show');
         Route::post('/shaft', [ShaftSaleController::class, 'store'])->name('shaft.store');
         Route::delete('/shaft/{sale}', [ShaftSaleController::class, 'destroy'])->name('shaft.destroy');
+        Route::get('/shaft/export/pdf', [ShaftSaleController::class, 'exportPdf'])->name('shaft.export.pdf');
     });
 
     Route::group(['middleware' => 'admin', 'prefix' => 'users', 'as' => 'user.'], function () {
