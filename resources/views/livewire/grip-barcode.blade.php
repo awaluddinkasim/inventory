@@ -37,10 +37,9 @@
                         <h4 class="mb-0">{{ $grip->code }}</h4>
                         <p>{{ $grip->model->name }} - {{ $grip->size }} ({{ $grip->color }})</p>
                     </div>
-
                     <div class="mt-4 text-center">
-                        <a href="{{ asset('barcodes/' . $grip->code . '.jpg') }}" class="btn btn-info"
-                            download>Download</a>
+                        <a href="{{ asset(DNS1D::getBarcodeJPGPath($grip->code, 'C39', 3, 100)) }}"
+                            class="btn btn-info" download>Download</a>
                     </div>
                 @else
                     <div class="text-center py-5 mb-4">
