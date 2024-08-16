@@ -59,29 +59,29 @@ return [
         ],
         'admin-only' => false,
     ],
-    [
-        'route-active' => 'clubheads',
-        'label' => 'Club Head',
-        'icon' => 'bx-archive',
-        'submenu' => [
-            [
-                'route-active' => 'type',
-                'label' => 'Type',
-                // 'route-name' => '#',
-            ],
-            [
-                'route-active' => 'list',
-                'label' => 'List',
-                // 'route-name' => '#',
-            ],
-            [
-                'route-active' => 'barcode',
-                'label' => 'Barcode',
-                // 'route-name' => '#',
-            ],
-        ],
-        'admin-only' => false,
-    ],
+    // [
+    //     'route-active' => 'clubheads',
+    //     'label' => 'Club Head',
+    //     'icon' => 'bx-archive',
+    //     'submenu' => [
+    //         [
+    //             'route-active' => 'type',
+    //             'label' => 'Type',
+    //             // 'route-name' => '#',
+    //         ],
+    //         [
+    //             'route-active' => 'list',
+    //             'label' => 'List',
+    //             // 'route-name' => '#',
+    //         ],
+    //         [
+    //             'route-active' => 'barcode',
+    //             'label' => 'Barcode',
+    //             // 'route-name' => '#',
+    //         ],
+    //     ],
+    //     'admin-only' => false,
+    // ],
     [
         'route-active' => 'purchases',
         'label' => 'Purchases',
@@ -97,11 +97,11 @@ return [
                 'label' => 'Shaft',
                 'route-name' => 'purchase.shaft',
             ],
-            [
-                'route-active' => 'club-head',
-                'label' => 'Club Head',
-                // 'route-name' => '#',
-            ],
+            // [
+            //     'route-active' => 'club-head',
+            //     'label' => 'Club Head',
+            //     // 'route-name' => '#',
+            // ],
         ],
         'admin-only' => false,
     ],
@@ -121,11 +121,11 @@ return [
                 'label' => 'Shaft',
                 'route-name' => 'sale.shaft',
             ],
-            [
-                'route-active' => 'club-head',
-                'label' => 'Club Head',
-                // 'route-name' => '#',
-            ],
+            // [
+            //     'route-active' => 'club-head',
+            //     'label' => 'Club Head',
+            //     // 'route-name' => '#',
+            // ],
         ],
         'admin-only' => false,
     ],
