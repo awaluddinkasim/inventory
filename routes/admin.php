@@ -15,6 +15,7 @@ use App\Http\Controllers\ShaftSaleController;
 use App\Http\Controllers\ShaftTypeController;
 use App\Http\Controllers\ShaftImageController;
 use App\Http\Controllers\GripPurchaseController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ShaftPurchaseController;
 
 Route::middleware('auth:admin')->group(function () {
@@ -94,6 +95,8 @@ Route::middleware('auth:admin')->group(function () {
         Route::delete('/shaft/{sale}', [ShaftSaleController::class, 'destroy'])->name('shaft.destroy');
         Route::get('/shaft/export/pdf', [ShaftSaleController::class, 'exportPdf'])->name('shaft.export.pdf');
     });
+
+    Route::get('/reports', [ReportController::class, 'index'])->name('reports');
 
     Route::group(['middleware' => 'admin', 'prefix' => 'users', 'as' => 'user.'], function () {
         Route::get('/admins', [AdminController::class, 'index'])->name('admins');
