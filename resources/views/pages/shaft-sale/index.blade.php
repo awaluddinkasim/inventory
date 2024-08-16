@@ -16,21 +16,6 @@
                 year
             });
         }
-
-        function exportPdf() {
-            Swal.fire({
-                icon: 'info',
-                title: 'Information',
-                text: 'Export data to PDF',
-                showCancelButton: true,
-                confirmButtonText: 'Export',
-                denyButtonText: 'Cancel',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // window.open('', '_blank');
-                }
-            })
-        }
     </script>
 @endpush
 
@@ -63,11 +48,7 @@
                     <button class="btn btn-primary" onclick="filter()">Filter</button>
                 </div>
                 <div>
-                    @if ($salesCount)
-                        <button class="btn btn-danger" onclick="exportPdf()">
-                            <i class="fa fa-file-pdf"></i>
-                        </button>
-                    @endif
+                    <livewire:shaft-sale-export :month="$activeMonth" :year="$activeYear" />
                     <x-form.modal title="Form Sale" action="" label="New Sale">
                         <x-form.select-search label="Shaft" name="shaft_id" id="shaftSelect" modalId="formModal">
                             @foreach ($shafts as $shaft)

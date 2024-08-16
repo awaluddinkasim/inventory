@@ -39,7 +39,6 @@ class ShaftSaleController extends BaseController
             'months' => $months,
             'year' => $year,
             'years' => $years,
-            'salesCount' => ShaftSale::whereMonth('date', $month)->whereYear('date', $year)->count(),
             'shafts' => Shaft::with(['type', 'sales'])->orderBy('type_id')->get(),
         ]);
     }

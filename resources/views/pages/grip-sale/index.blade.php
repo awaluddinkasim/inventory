@@ -16,26 +16,6 @@
                 year
             });
         }
-
-        function exportPdf() {
-            Swal.fire({
-                icon: 'info',
-                title: 'Information',
-                text: 'Export data to PDF',
-                showCancelButton: true,
-                confirmButtonText: 'Export',
-                denyButtonText: 'Cancel',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    let month = $('#month').val();
-                    let year = $('#year').val();
-
-                    window.open(
-                        `{{ route('sale.grip.export.pdf') }}?month=${month}&year=${year}`,
-                        '_blank');
-                }
-            })
-        }
     </script>
 @endpush
 
@@ -68,11 +48,7 @@
                     <button class="btn btn-primary" onclick="filter()">Filter</button>
                 </div>
                 <div>
-                    @if ($salesCount)
-                        <button class="btn btn-danger" onclick="exportPdf()">
-                            <i class="fa fa-file-pdf"></i>
-                        </button>
-                    @endif
+                    <livewire:grip-sale-export :month="$activeMonth" :year="$activeYear" />
                     <x-form.modal title="Form Sale" action="" label="New Sale">
                         <x-form.select-search label="Grip" name="grip_id" id="gripSelect" modalId="formModal">
                             @foreach ($grips as $grip)

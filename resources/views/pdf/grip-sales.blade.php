@@ -17,7 +17,7 @@
         }
 
         .company-info {
-            width: 300px;
+            width: 350px;
         }
 
         .logo {
@@ -57,6 +57,14 @@
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
+        footer {
+            position: fixed;
+            bottom: -50px;
+            right: 0px;
+            height: 50px;
+            font-size: 10pt;
+        }
     </style>
 </head>
 
@@ -68,6 +76,10 @@
             <p>Jl. Urip Sumoharjo, Kel. Panaikang, Kec. Panakkukang, Kota Makassar</p>
         </div>
     </div>
+
+    <footer>
+        {{ Carbon\Carbon::now()->isoFormat('dddd, DD MMMM YYYY HH:mm') }}
+    </footer>
 
     <h3>Grip Sales Report</h3>
     <p>{{ Carbon\Carbon::parse($sales[0]->date)->isoFormat('MMMM YYYY') }}</p>
