@@ -53,7 +53,7 @@
                         <x-form.select-search label="Shaft" name="shaft_id" id="shaftSelect" modalId="formModal">
                             @foreach ($shafts as $shaft)
                                 <option value="{{ $shaft->id }}" price="{{ $shaft->retail }}">
-                                    {{ $shaft->type->name }} - {{ $shaft->flex }} ({{ $shaft->type->brand }})
+                                    {{ $shaft->shaft }} ({{ $shaft->flex }})
                                 </option>
                             @endforeach
                         </x-form.select-search>
