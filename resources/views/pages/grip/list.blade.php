@@ -75,7 +75,6 @@
                     <th>Size</th>
                     <th>Color</th>
                     <th>Weight</th>
-                    <th>Core Size</th>
                     <th>Stock</th>
                     <th>Retail Price</th>
                     <th></th>
@@ -97,7 +96,6 @@
                             <td>{{ $grip->size }}</td>
                             <td>{{ $grip->color }}</td>
                             <td>{{ $grip->weight }}g</td>
-                            <td>{{ $grip->core_size }}</td>
                             <td>
                                 @if ($grip->stock < 0)
                                     <span class="text-danger">{{ $grip->stock }}</span>
