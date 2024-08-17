@@ -1,22 +1,21 @@
-{{-- @push('styles')
+@push('styles')
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}">
-@endpush --}}
+@endpush
 
-{{-- @push('scripts')
+@push('scripts')
     <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
     <script>
-        const topGripModelsChartEl = document.querySelector('#topGripModelsChart');
-        const cumulativeStockChartEl = document.querySelector('#cumulativeStockChart');
-
-        topGripModelsChartOptions = {
+        var weeklySalesOptions = {
             series: [{
-                name: 'Total',
-                data: {!! json_encode($topGripModels->pluck('total_stock')) !!}
-            }, ],
+                name: 'Grip',
+                data: @json($gripSales)
+            }, {
+                name: 'Shaft',
+                data: @json($shaftSales)
+            }],
             chart: {
-                height: 300,
-                stacked: true,
                 type: 'bar',
+                height: 350,
                 toolbar: {
                     show: false
                 }
@@ -24,183 +23,68 @@
             plotOptions: {
                 bar: {
                     horizontal: false,
-                    borderRadius: 12,
-                    startingShape: 'rounded',
+                    columnWidth: '55%',
                     endingShape: 'rounded'
-                }
+                },
             },
-            colors: [config.colors.primary],
             dataLabels: {
                 enabled: false
             },
             stroke: {
-                curve: 'smooth',
-                width: 6,
-                lineCap: 'round',
-                colors: [config.colors.white]
-            },
-            legend: {
                 show: true,
-                horizontalAlign: 'left',
-                position: 'top',
-                markers: {
-                    height: 8,
-                    width: 8,
-                    radius: 12,
-                    offsetX: -3
-                },
-                labels: {
-                    colors: config.colors.axisColor
-                },
-                itemMargin: {
-                    horizontal: 10
-                }
-            },
-            grid: {
-                borderColor: config.colors.borderColor,
-                padding: {
-                    top: 0,
-                    bottom: -8,
-                    left: 20,
-                    right: 20
-                }
-            },
-            xaxis: {
-                categories: {!! json_encode($topGripModels->pluck('name')) !!},
-                labels: {
-                    style: {
-                        fontSize: '13px',
-                        colors: config.colors.axisColor
-                    }
-                },
-                axisTicks: {
-                    show: false
-                },
-                axisBorder: {
-                    show: false
-                }
-            },
-            yaxis: {
-                labels: {
-                    style: {
-                        fontSize: '13px',
-                        colors: config.colors.axisColor
-                    }
-                }
-            },
-            states: {
-                hover: {
-                    filter: {
-                        type: 'none'
-                    }
-                },
-                active: {
-                    filter: {
-                        type: 'none'
-                    }
-                }
-            }
-        };
-
-        const topGripModelsChart = new ApexCharts(topGripModelsChartEl, topGripModelsChartOptions);
-        topGripModelsChart.render();
-
-
-        cumulativeStockChartConfig = {
-            series: [{
-                name: 'Stock',
-                data: {!! json_encode($cumulativeStock['data']) !!}
-            }],
-            chart: {
-                height: 298,
-                parentHeightOffset: 0,
-                parentWidthOffset: 0,
-                toolbar: {
-                    show: false
-                },
-                type: 'area'
-            },
-            dataLabels: {
-                enabled: false
-            },
-            stroke: {
                 width: 2,
-                curve: 'smooth'
-            },
-            legend: {
-                show: false
-            },
-            markers: {
-                size: 6,
-                colors: 'transparent',
-                strokeColors: 'transparent',
-                strokeWidth: 4,
-                discrete: [{
-                    fillColor: config.colors.white,
-                    seriesIndex: 0,
-                    dataPointIndex: {{ count($cumulativeStock['data']) - 1 }},
-                    strokeColor: config.colors.primary,
-                    strokeWidth: 2,
-                    size: 6,
-                    radius: 8
-                }],
-                hover: {
-                    size: 7
-                }
-            },
-            colors: [config.colors.primary],
-            fill: {
-                type: 'gradient',
-                gradient: {
-                    shade: config.colors.shadeColor,
-                    shadeIntensity: 0.6,
-                    opacityFrom: 0.5,
-                    opacityTo: 0.25,
-                    stops: [0, 95, 100]
-                }
-            },
-            grid: {
-                borderColor: config.colors.borderColor,
-                strokeDashArray: 3,
-                padding: {
-                    top: -20,
-                    bottom: -8,
-                    left: -10,
-                    right: 8
-                }
+                colors: ['transparent']
             },
             xaxis: {
-                categories: {!! json_encode($cumulativeStock['labels']) !!},
-                axisBorder: {
-                    show: false
-                },
-                axisTicks: {
-                    show: false
-                },
-                labels: {
-                    show: true,
-                    style: {
-                        fontSize: '13px',
-                        colors: config.colors.axisColor
+                categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            },
+            yaxis: {
+                title: {
+                    text: 'Sales'
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function(val) {
+                        return "Rp. " + val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                     }
                 }
             },
-            yaxis: {
-                labels: {
-                    show: false
-                },
-                tickAmount: 4
-            }
         };
 
-        const cumulativeStockChart = new ApexCharts(cumulativeStockChartEl, cumulativeStockChartConfig);
-        cumulativeStockChart.render();
+        var chart = new ApexCharts(document.querySelector("#weeklySalesChart"), weeklySalesOptions);
+        chart.render();
+
+        var purchasesPieOptions = {
+            series: @json($purchases),
+            chart: {
+                height: 350,
+                type: 'pie',
+            },
+            labels: [
+                'Grip Purchases',
+                'Shaft Purchases',
+            ],
+            tooltip: {
+                y: {
+                    formatter: function(val) {
+                        return "Rp. " + val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                    }
+                }
+            },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#purchasesPie"), purchasesPieOptions);
+        chart.render();
     </script>
-@endpush --}}
+@endpush
 
 <x-layout>
     <h4 class="fw-bold py-3 mb-4">Dashboard</h4>
-    <div class="row mb-3">
+    <div class="row mb-lg-4">
         <div class="col-md-3">
             <div class="card my-2 my-md-0">
                 <div class="card-body">
@@ -212,7 +96,7 @@
         <div class="col-md-3">
             <div class="card my-2 my-md-0">
                 <div class="card-body">
-                    <span class="fw-semibold d-block mb-1">Grip</span>
+                    <span class="fw-semibold d-block mb-1">Grip Stocks</span>
                     <h3 class="card-title mb-2">{{ number_format($grips) }}</h3>
                 </div>
             </div>
@@ -220,7 +104,7 @@
         <div class="col-md-3">
             <div class="card my-2 my-md-0">
                 <div class="card-body">
-                    <span class="fw-semibold d-block mb-1">Shaft</span>
+                    <span class="fw-semibold d-block mb-1">Shaft Stocks</span>
                     <h3 class="card-title mb-2">{{ number_format($shafts) }}</h3>
                 </div>
             </div>
@@ -228,26 +112,32 @@
         <div class="col-md-3">
             <div class="card my-2 my-md-0">
                 <div class="card-body">
-                    <span class="fw-semibold d-block mb-1">Club Head</span>
+                    <span class="fw-semibold d-block mb-1">Club Head Stocks</span>
                     <h3 class="card-title mb-2">{{ number_format(0) }}</h3>
                 </div>
             </div>
         </div>
     </div>
 
-    {{-- <div class="row">
-        <div class="col-md-8">
-            <div class="card my-2 my-md-0">
-                <h5 class="card-header m-0 pb-3">Top 5 Grip Models Stock</h5>
-                <div id="topGripModelsChart" class="px-2"></div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card my-2 my-lg-0">
+                <h5 class="card-header m-0 pb-3">Weekly Sales</h5>
+                <div id="weeklySalesChart" class="px-2"></div>
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card pb-3">
-                <h5 class="card-header m-0 pb-3">6-Month Cumulative Grip Stock</h5>
-                <div id="cumulativeStockChart"></div>
+        <div class="col-lg-4">
+            <div class="card mb-2">
+                <div class="card-body">
+                    <span class="fw-semibold d-block mb-1">Sales Today</span>
+                    <h3 class="card-title mb-2">Rp. {{ number_format($todaySales) }}</h3>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <h5 class="card-header m-0 pb-3">Purchases</h5>
+                <div id="purchasesPie" class="px-2"></div>
             </div>
         </div>
-    </div> --}}
+    </div>
 </x-layout>
