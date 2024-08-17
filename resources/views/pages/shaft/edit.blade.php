@@ -38,9 +38,12 @@
                         <x-form.input-group value="{{ trim(str_replace($shaft->type->name, '', $shaft->shaft)) }}"
                             label="Shaft" name="shaft" id="shaftInput" prefix="{{ $shaft->type->name }}"
                             :required="true" />
-                        <x-form.input value="{{ $shaft->flex }}" label="Flex" name="flex" id="flexInput"
-                            :required="true" />
-
+                        <x-form.datalist label="Flex" name="flex" id="flex" value="{{ $shaft->flex }}"
+                            :required="true">
+                            @foreach ($flexes as $flex)
+                                <option value="{{ $flex }}">{{ $flex }}</option>
+                            @endforeach
+                        </x-form.datalist>
                         <div class="row">
                             <div class="col-md-6">
                                 <x-form.input value="{{ $shaft->length }}" label="Length" name="length"
@@ -61,7 +64,6 @@
                                     value="{{ $shaft->percent }}" :isNumeric="true" :required="true" />
                             </div>
                         </div>
-                        <x-form.image label="Image" name="img" id="imgInput" />
                         <x-component.button label="Save Changes" color="primary" type="submit" />
                     </form>
                 </div>

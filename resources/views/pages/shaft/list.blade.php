@@ -49,7 +49,11 @@
                         </x-form.select-search>
                         <x-form.input-group label="Shaft" id="shaft" name="shaft" prefix="Type"
                             required="true" />
-                        <x-form.input label="Flex" id="flex" name="flex" required="true" />
+                        <x-form.datalist label="Flex" name="flex" id="flex" :required="true">
+                            @foreach ($flexes as $flex)
+                                <option value="{{ $flex }}">{{ $flex }}</option>
+                            @endforeach
+                        </x-form.datalist>
                         <div class="row">
                             <div class="col-md-6">
                                 <x-form.input label="Length" id="length" name="length" isNumeric="true"

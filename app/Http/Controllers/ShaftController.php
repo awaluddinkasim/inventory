@@ -19,6 +19,7 @@ class ShaftController extends BaseController
     {
         return view('pages.shaft.list', [
             'types' => ShaftType::all(),
+            'flexes' => Shaft::groupBy('flex')->pluck('flex'),
             'shafts' => Shaft::with(['type'])->orderBy('type_id')->get(),
         ]);
     }
@@ -87,6 +88,7 @@ class ShaftController extends BaseController
     {
         return view('pages.shaft.edit', [
             'types' => ShaftType::all(),
+            'flexes' => Shaft::groupBy('flex')->pluck('flex'),
             'shaft' => $shaft,
         ]);
     }
