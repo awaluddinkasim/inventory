@@ -41,6 +41,11 @@
             yaxis: {
                 title: {
                     text: 'Sales'
+                },
+                labels: {
+                    formatter: (val) => {
+                        return "Rp. " + val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                    },
                 }
             },
             fill: {
