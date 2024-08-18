@@ -70,7 +70,7 @@
 
 <body>
     <div class="header">
-        <img src="{{ public_path('assets/img/logo.png') }}" alt="logo" class="logo">
+        <img src="{{ url('assets/img/logo.png') }}" alt="logo" class="logo">
         <div class="company-info">
             <h2>CV. Degrees Golf</h2>
             <p>Jl. Urip Sumoharjo, Kel. Panaikang, Kec. Panakkukang, Kota Makassar</p>

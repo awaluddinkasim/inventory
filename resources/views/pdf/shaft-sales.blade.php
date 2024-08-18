@@ -70,7 +70,7 @@
 
 <body>
     <div class="header">
-        <img src="{{ public_path('assets/img/logo.png') }}" alt="logo" class="logo">
+        <img src="{{ url('assets/img/logo.png') }}" alt="logo" class="logo">
         <div class="company-info">
             <h2>CV. Degrees Golf</h2>
             <p>Jl. Urip Sumoharjo, Kel. Panaikang, Kec. Panakkukang, Kota Makassar</p>
@@ -83,6 +83,40 @@
 
     <h3>Shaft Sales Report</h3>
     <p>{{ Carbon\Carbon::parse($sales[0]->date)->isoFormat('MMMM YYYY') }}</p>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Date</th>
+                <th>Shaft</th>
+                <th>Flex</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach ($sales as $sale)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ Carbon\Carbon::parse($sale->date)->isoFormat('DD/MMM/YY') }}</td>
+                    <td>{{ $sale->shaft->shaft }}</td>
+                    <td>{{ $sale->shaft->flex }}</td>
+                    <td>Rp. {{ number_format($sale->retail) }}</td>
+                    <td>{{ $sale->quantity }}</td>
+                    <td>Rp. {{ number_format($sale->amount) }}</td>
+                </tr>
+            @endforeach
+
+            <tr>
+                <th colspan="6" style="text-align: right">Grand Total</th>
+                <td>Rp. {{ number_format($sales->sum('amount')) }}</td>
+            </tr>
+
+        </tbody>
 
 </body>
 

@@ -14,6 +14,8 @@
 
         .carousel-thumbnails {
             margin-top: 10px;
+            width: 100%;
+            overflow-x: auto;
         }
 
         .carousel-thumbnails img {
