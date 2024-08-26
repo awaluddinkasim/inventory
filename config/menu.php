@@ -130,10 +130,10 @@ return [
         'admin-only' => false,
     ],
     [
-        'route-active' => 'reports',
-        'label' => 'Reports',
+        'route-active' => 'charts',
+        'label' => 'Charts',
         'icon' => 'bx-chart',
-        'route-name' => 'reports',
+        'route-name' => 'charts',
         'admin-only' => false,
     ],
     [

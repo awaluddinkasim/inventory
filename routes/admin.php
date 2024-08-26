@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GripController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\ShaftController;
 use App\Http\Controllers\GripSaleController;
 use App\Http\Controllers\GripTypeController;
@@ -15,7 +16,6 @@ use App\Http\Controllers\ShaftSaleController;
 use App\Http\Controllers\ShaftTypeController;
 use App\Http\Controllers\ShaftImageController;
 use App\Http\Controllers\GripPurchaseController;
-use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ShaftPurchaseController;
 
 Route::middleware('auth:admin')->group(function () {
@@ -96,7 +96,7 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/shaft/export/pdf', [ShaftSaleController::class, 'exportPdf'])->name('shaft.export.pdf');
     });
 
-    Route::get('/reports', [ReportController::class, 'index'])->name('reports');
+    Route::get('/charts', [ChartController::class, 'index'])->name('charts');
 
     Route::group(['middleware' => 'admin', 'prefix' => 'users', 'as' => 'user.'], function () {
         Route::get('/admins', [AdminController::class, 'index'])->name('admins');

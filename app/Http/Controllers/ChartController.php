@@ -11,7 +11,7 @@ use App\Models\ShaftSale;
 use Carbon\Carbon;
 use Illuminate\View\View;
 
-class ReportController extends Controller
+class ChartController extends Controller
 {
     public function index(): View
     {
