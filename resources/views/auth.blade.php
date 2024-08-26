@@ -54,7 +54,7 @@
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Welcome! 👋</h4>
+                        <h4 class="mb-2">Welcome!</h4>
                         <form id="formAuthentication" class="mb-3" action="{{ route('authenticate') }}"
                             method="POST" autocomplete="off">
                             @csrf
